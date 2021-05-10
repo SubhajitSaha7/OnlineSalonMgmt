@@ -29,7 +29,7 @@ public class OnlineSalon_Customer {
 	@Column(name = "cust_contact", length = 25, nullable = false)
 	private String contactNo;
 	
-	@Column(name = "cust_dob")
+	@Column(name = "cust_dob") 
 	private LocalDate dob;
 	
 	@Column(name = "cust_doorno", length = 25, nullable = false)

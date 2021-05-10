@@ -37,7 +37,7 @@ public class OnlineSalon_SalonServiceSchedule {
 	}
 	public LocalDate getScheduleDate() {
 		return scheduleDate;
-	}
+	} 
 	public void setScheduleDate(LocalDate scheduleDate) {
 		this.scheduleDate = scheduleDate;
 	}

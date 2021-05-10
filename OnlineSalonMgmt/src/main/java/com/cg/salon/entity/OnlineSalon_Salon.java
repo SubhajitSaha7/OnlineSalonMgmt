@@ -27,7 +27,7 @@ public class OnlineSalon_Salon {
 	private String contactNo;
 	
 	public Integer getSalonId() {
-		return salonId;
+		return salonId; 
 	}
 	public void setSalonId(Integer salonId) {
 		this.salonId = salonId;

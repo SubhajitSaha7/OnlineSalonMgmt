@@ -23,7 +23,7 @@ public class OnlineSalon_BankAccount {
 	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
-	public long getAmount() {
+	public long getAmount() { 
 		return amount;
 	}
 	public void setAmount(long amount) {

@@ -18,7 +18,7 @@ public class OnlineSalon_Appointment {
 	@SequenceGenerator(name = "seq1",sequenceName = "appointment_seq1",allocationSize = 1)
 	@Column(name = "appointment_id")
 	private long appointmentId;
-	
+	 
 	
 	@Column(name = "appointment_date")
 	private LocalDate preferredDate;

@@ -23,7 +23,7 @@ public class OnlineSalon_Payment {
 	
 	@Column(name = "payment_status", length = 25, nullable = false)
 	private String status;
-	
+	 
 	@Column(name = "payment_card_name", length = 25, nullable = false)
 	private String cardName;
 	

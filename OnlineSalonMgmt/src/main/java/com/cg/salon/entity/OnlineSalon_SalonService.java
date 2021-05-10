@@ -29,7 +29,7 @@ public class OnlineSalon_SalonService {
 	@Column(name = "service_discount")
 	private Integer discount;
 	
-	
+	 
 	private OnlineSalon_Salon salon;
 	
 	
