@@ -7,12 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "cg_salon_service_schedule")
-public class OnlineSalon_SalonServiceSchedule {
+public class SalonServiceSchedule {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO,generator = "seq1")
 	@SequenceGenerator(name = "seq1",sequenceName = "schedule_seq1",allocationSize = 1)
@@ -25,9 +27,9 @@ public class OnlineSalon_SalonServiceSchedule {
 	@Column(name = "schedule_slot", length = 10, nullable = false)
 	private String slot;
 	
-	
-	private OnlineSalon_Appointment appointments;
-	private OnlineSalon_SalonService salonService;
+	@ManyToOne
+	@JoinColumn(name = "service_id", referencedColumnName = "salon_service_id")
+	private SalonService salonService;
 	
 	public Integer getServiceScheduleId() {
 		return serviceScheduleId;
@@ -47,31 +49,21 @@ public class OnlineSalon_SalonServiceSchedule {
 	public void setSlot(String slot) {
 		this.slot = slot;
 	}
-	public OnlineSalon_Appointment getAppointments() {
-		return appointments;
-	}
-	public void setAppointments(OnlineSalon_Appointment appointments) {
-		this.appointments = appointments;
-	}
-	public OnlineSalon_SalonService getSalonService() {
-		return salonService;
-	}
-	public void setSalonService(OnlineSalon_SalonService salonService) {
-		this.salonService = salonService;
-	}
-	public OnlineSalon_SalonServiceSchedule(Integer serviceScheduleId, LocalDate scheduleDate, String slot,
-			OnlineSalon_Appointment appointments, OnlineSalon_SalonService salonService) {
-		super();
-		this.serviceScheduleId = serviceScheduleId;
-		this.scheduleDate = scheduleDate;
-		this.slot = slot;
-		this.appointments = appointments;
-		this.salonService = salonService;
-	}
+	
+	
 	@Override
 	public String toString() {
-		return " " + serviceScheduleId + " "
-				+ scheduleDate + " " + slot + " ";
+		return " " + serviceScheduleId + " " + scheduleDate
+				+ " " + slot + " ";
+	}
+	public SalonService getSalonService() {
+		return salonService;
+	}
+	public void setSalonService(SalonService salonService) {
+		this.salonService = salonService;
+	}
+	public SalonServiceSchedule() {
+		super();
 	}
 	
 	

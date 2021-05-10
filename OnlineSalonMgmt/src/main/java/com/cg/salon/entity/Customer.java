@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cg_customer")
-public class OnlineSalon_Customer {
+public class Customer {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO,generator = "seq1")
@@ -116,27 +116,16 @@ public class OnlineSalon_Customer {
 	public void setPincode(Integer pincode) {
 		this.pincode = pincode;
 	}
-	public OnlineSalon_Customer(Integer userId, String name, String email, String contactNo, LocalDate dob,
-			String doorNo, String street, String area, String city, String state, Integer pincode) {
+	public Customer() {
 		super();
-		this.userId = userId;
-		this.name = name;
-		this.email = email;
-		this.contactNo = contactNo;
-		this.dob = dob;
-		this.doorNo = doorNo;
-		this.street = street;
-		this.area = area;
-		this.city = city;
-		this.state = state;
-		this.pincode = pincode;
 	}
 	@Override
 	public String toString() {
-		return " " + userId + " " + name + " " + email + " "
-				+ contactNo + " " + dob + " " + doorNo + " " + street + " " + area
-				+ " " + city + " " + state + " " + pincode + " ";
+		return " " + userId + " " + name + " " + email + " " + contactNo
+				+ " " + dob + " " + doorNo + " " + street + " " + area + " " + city
+				+ " " + state + " " + pincode + " ";
 	}
+	
 
 	
 }

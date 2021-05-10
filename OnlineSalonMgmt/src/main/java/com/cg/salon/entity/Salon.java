@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cg_salon")
-public class OnlineSalon_Salon {
+public class Salon {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO,generator = "seq1")
 	@SequenceGenerator(name = "seq1",sequenceName = "salon_seq1",allocationSize = 1)
@@ -50,12 +50,8 @@ public class OnlineSalon_Salon {
 	public void setContactNo(String contactNo) {
 		this.contactNo = contactNo;
 	}
-	public OnlineSalon_Salon(Integer salonId, String salonCentreName, String address, String contactNo) {
+	public Salon() {
 		super();
-		this.salonId = salonId;
-		this.salonCentreName = salonCentreName;
-		this.address = address;
-		this.contactNo = contactNo;
 	}
 	@Override
 	public String toString() {
@@ -63,5 +59,5 @@ public class OnlineSalon_Salon {
 				+ " " + contactNo + " ";
 	}
 	
-
+	
 }

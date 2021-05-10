@@ -5,12 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "cg_salon_service")
-public class OnlineSalon_SalonService {
+public class SalonService {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO,generator = "seq1")
 	@SequenceGenerator(name = "seq1",sequenceName = "salon_service_seq1",allocationSize = 1)
@@ -29,8 +31,9 @@ public class OnlineSalon_SalonService {
 	@Column(name = "service_discount")
 	private Integer discount;
 	
-	 
-	private OnlineSalon_Salon salon;
+	@ManyToOne
+	@JoinColumn(name = "salon_id", referencedColumnName = "salon_id")
+	private Salon salon;
 	
 	
 	public Integer getServiceId() {
@@ -63,27 +66,21 @@ public class OnlineSalon_SalonService {
 	public void setDiscount(Integer discount) {
 		this.discount = discount;
 	}
-	public OnlineSalon_Salon getSalon() {
+	public Salon getSalon() {
 		return salon;
 	}
-	public void setSalon(OnlineSalon_Salon salon) {
+	public void setSalon(Salon salon) {
 		this.salon = salon;
 	}
-	public OnlineSalon_SalonService(Integer serviceId, String serviceName, String servicePrice, String serviceDuration,
-			Integer discount, OnlineSalon_Salon salon) {
+	public SalonService() {
 		super();
-		this.serviceId = serviceId;
-		this.serviceName = serviceName;
-		this.servicePrice = servicePrice;
-		this.serviceDuration = serviceDuration;
-		this.discount = discount;
-		this.salon = salon;
 	}
 	@Override
 	public String toString() {
 		return " " + serviceId + " " + serviceName + " "
 				+ servicePrice + " " + serviceDuration + " " + discount + " ";
 	}
+	
 	
 	
 

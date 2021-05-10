@@ -7,29 +7,38 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "cg_appointment")
-public class OnlineSalon_Appointment {
+public class Appointment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO,generator = "seq1")
 	@SequenceGenerator(name = "seq1",sequenceName = "appointment_seq1",allocationSize = 1)
 	@Column(name = "appointment_id")
-	private long appointmentId;
+	private Integer appointmentId;
 	 
 	
 	@Column(name = "appointment_date")
 	private LocalDate preferredDate;
 	
-	private OnlineSalon_Customer customer;
-	private OnlineSalon_Payment payment;
+	@ManyToOne
+	@JoinColumn(name = "cust_id", referencedColumnName = "cust_user_id")
+	private Customer customer;
+	
+	@ManyToOne
+	@JoinColumn(name = "payment_id", referencedColumnName = "payment_id")
+	private Payment payment;
 	
 	@Column(name = "appointment_time_slots", length = 25, nullable = false)
 	private String timeSlots;
 	
-	private OnlineSalon_SalonServiceSchedule salonServiceSchedule;
+	@ManyToOne
+	@JoinColumn(name = "schedule_id", referencedColumnName = "service_schedule_id")
+	private SalonServiceSchedule salonServiceSchedule;
 	
 	@Column(name = "appointment_status", length = 25, nullable = false)
 	private String appointmentStatus;
@@ -38,7 +47,7 @@ public class OnlineSalon_Appointment {
 	public long getAppointmentId() {
 		return appointmentId;
 	}
-	public void setAppointmentId(long appointmentId) {
+	public void setAppointmentId(Integer appointmentId) {
 		this.appointmentId = appointmentId;
 	}
 	public LocalDate getPreferredDate() {
@@ -47,16 +56,16 @@ public class OnlineSalon_Appointment {
 	public void setPreferredDate(LocalDate preferredDate) {
 		this.preferredDate = preferredDate;
 	}
-	public OnlineSalon_Customer getCustomer() {
+	public Customer getCustomer() {
 		return customer;
 	}
-	public void setCustomer(OnlineSalon_Customer customer) {
+	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	public OnlineSalon_Payment getPayment() {
+	public Payment getPayment() {
 		return payment;
 	}
-	public void setPayment(OnlineSalon_Payment payment) {
+	public void setPayment(Payment payment) {
 		this.payment = payment;
 	}
 	public String getTimeSlots() {
@@ -65,10 +74,10 @@ public class OnlineSalon_Appointment {
 	public void setTimeSlots(String timeSlots) {
 		this.timeSlots = timeSlots;
 	}
-	public OnlineSalon_SalonServiceSchedule getSalonServiceSchedule() {
+	public SalonServiceSchedule getSalonServiceSchedule() {
 		return salonServiceSchedule;
 	}
-	public void setSalonServiceSchedule(OnlineSalon_SalonServiceSchedule salonServiceSchedule) {
+	public void setSalonServiceSchedule(SalonServiceSchedule salonServiceSchedule) {
 		this.salonServiceSchedule = salonServiceSchedule;
 	}
 	public String getAppointmentStatus() {
@@ -77,25 +86,14 @@ public class OnlineSalon_Appointment {
 	public void setAppointmentStatus(String appointmentStatus) {
 		this.appointmentStatus = appointmentStatus;
 	}
+	public Appointment() {
+		super();
+	}
 	@Override
 	public String toString() {
-		return " " + appointmentId + " " + preferredDate
-				+ " " + timeSlots + " " + appointmentStatus + " ";
-	}
-	public OnlineSalon_Appointment(long appointmentId, LocalDate preferredDate, OnlineSalon_Customer customer,
-			OnlineSalon_Payment payment, String timeSlots, OnlineSalon_SalonServiceSchedule salonServiceSchedule,
-			String appointmentStatus) {
-		super();
-		this.appointmentId = appointmentId;
-		this.preferredDate = preferredDate;
-		this.customer = customer;
-		this.payment = payment;
-		this.timeSlots = timeSlots;
-		this.salonServiceSchedule = salonServiceSchedule;
-		this.appointmentStatus = appointmentStatus;
+		return " " + appointmentId + " " + preferredDate + " "
+				+ customer + " " + payment + " " + timeSlots + " "
+				+ appointmentStatus + " ";
 	}
 	
-	
-	
-
 }
