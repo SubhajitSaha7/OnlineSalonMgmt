@@ -19,6 +19,7 @@ public class OnlineSalon_Appointment {
 	@Column(name = "appointment_id")
 	private long appointmentId;
 	
+	
 	@Column(name = "appointment_date")
 	private LocalDate preferredDate;
 	
