@@ -125,7 +125,4 @@ public class Customer {
 				+ " " + dob + " " + doorNo + " " + street + " " + area + " " + city
 				+ " " + state + " " + pincode + " ";
 	}
-	
-
-	
 }
