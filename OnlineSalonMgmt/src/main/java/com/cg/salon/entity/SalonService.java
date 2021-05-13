@@ -81,7 +81,4 @@ public class SalonService {
 				+ servicePrice + " " + serviceDuration + " " + discount + " ";
 	}
 	
-	
-	
-
 }
