@@ -22,8 +22,8 @@ public class SalonService {
 	@Column(name = "service_name", length = 25, nullable = false)
 	private String serviceName;
 	
-	@Column(name = "service_price", length = 10, nullable = false)
-	private String servicePrice;
+	@Column(name = "service_price")
+	private Integer servicePrice;
 	
 	@Column(name = "service_duration", length = 25, nullable = false)
 	private String serviceDuration;
@@ -53,10 +53,10 @@ public class SalonService {
 	public void setServiceName(String serviceName) {
 		this.serviceName = serviceName;
 	}
-	public String getServicePrice() {
+	public Integer getServicePrice() {
 		return servicePrice;
 	}
-	public void setServicePrice(String servicePrice) {
+	public void setServicePrice(Integer servicePrice) {
 		this.servicePrice = servicePrice;
 	}
 	public String getServiceDuration() {

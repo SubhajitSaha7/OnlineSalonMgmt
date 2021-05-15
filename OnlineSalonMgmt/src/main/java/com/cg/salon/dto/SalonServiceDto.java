@@ -13,8 +13,8 @@ public class SalonServiceDto {
 	@Pattern(regexp = "([a-zA-Z]+)|([a-zA-Z]+[\\s][a-zA-Z]+)", message = "service name must contain alphabets")
 	private String serviceName;
 	
-    @Min(value= 100, message = "Service price must be minimum 100.0")
-	private String servicePrice;
+    @Min(value= 150, message = "Service price must be minimum 150.0")
+	private Integer servicePrice;
 	
 	private String serviceDuration;
 	
@@ -32,7 +32,7 @@ public class SalonServiceDto {
 		
 	}
 
-	public SalonServiceDto(Integer serviceId, String serviceName, String servicePrice, String serviceDuration,
+	public SalonServiceDto(Integer serviceId, String serviceName, Integer servicePrice, String serviceDuration,
 			Integer discount, String salonAddress, String salonLocation, String salonCentreName) {
 		super();
 		this.serviceId = serviceId;
@@ -61,11 +61,11 @@ public class SalonServiceDto {
 		this.serviceName = serviceName;
 	}
 
-	public String getServicePrice() {
+	public Integer getServicePrice() {
 		return servicePrice;
 	}
 
-	public void setServicePrice(String servicePrice) {
+	public void setServicePrice(Integer servicePrice) {
 		this.servicePrice = servicePrice;
 	}
 
