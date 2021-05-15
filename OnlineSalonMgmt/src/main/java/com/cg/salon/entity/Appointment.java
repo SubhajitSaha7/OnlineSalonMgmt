@@ -30,9 +30,6 @@ public class Appointment {
 	private Customer customer;
 	
 	
-	@Column(name = "appointment_time_slots", length = 25, nullable = false)
-	private String timeSlots;
-	
 	@ManyToOne
 	@JoinColumn(name = "schedule_id", referencedColumnName = "service_schedule_id")
 	private SalonServiceSchedule salonServiceSchedule;
@@ -60,12 +57,6 @@ public class Appointment {
 		this.customer = customer;
 	}
 	
-	public String getTimeSlots() {
-		return timeSlots;
-	}
-	public void setTimeSlots(String timeSlots) {
-		this.timeSlots = timeSlots;
-	}
 	public SalonServiceSchedule getSalonServiceSchedule() {
 		return salonServiceSchedule;
 	}
@@ -84,7 +75,7 @@ public class Appointment {
 	@Override
 	public String toString() {
 		return " " + appointmentId + " " + preferredDate + " "
-				+ customer + " " +  " " + timeSlots + " "
+				+ customer + " " +  " " 
 				+ appointmentStatus + " ";
 	}
 	

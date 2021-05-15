@@ -1,5 +1,7 @@
 package com.cg.salon.entity;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,8 +26,8 @@ public class BankAccount {
 	@Column(name = "bank_card_name", length = 25, nullable = false)
 	private String cardName;
 	
-	@Column(name = "bank_exp_date", length = 25, nullable = false)
-	private String expiryDate;
+	@Column(name = "bank_exp_date")
+	private LocalDate expiryDate;
 	
 	@Column(name = "bank_cvv_no")
 	private String cvvNo;
@@ -44,15 +46,15 @@ public class BankAccount {
 	}
 	public BankAccount() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	public void setCardName(String cardName) {
 		this.cardName = cardName;
 	}
-	public String getExpiryDate() {
+	public LocalDate getExpiryDate() {
 		return expiryDate;
 	}
-	public void setExpiryDate(String expiryDate) {
+	public void setExpiryDate(LocalDate expiryDate) {
 		this.expiryDate = expiryDate;
 	}
 	public String getCvvNo() {
