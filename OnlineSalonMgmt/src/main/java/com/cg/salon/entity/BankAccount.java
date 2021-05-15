@@ -9,6 +9,9 @@ import javax.persistence.Table;
 @Table(name = "cg_bank_acc")
 public class BankAccount {
 	@Id
+	@Column(name = "bank_id")
+	private String bankId;
+	
 	@Column(name = "bank_card_no", length = 16, nullable = false, unique = true)
 	private String cardNumber;
 	
