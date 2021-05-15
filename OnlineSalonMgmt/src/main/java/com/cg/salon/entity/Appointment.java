@@ -1,6 +1,7 @@
 package com.cg.salon.entity;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -25,9 +27,9 @@ public class Appointment {
 	@Column(name = "appointment_date")
 	private LocalDate preferredDate;
 	
-	@ManyToOne
-	@JoinColumn(name = "cust_id", referencedColumnName = "cust_user_id")
-	private Customer customer;
+	
+	@OneToMany(mappedBy = "cust_user_id")
+	private Set<Customer> customer;
 	
 	@ManyToOne
 	@JoinColumn(name = "payment_id", referencedColumnName = "payment_id")
@@ -56,10 +58,10 @@ public class Appointment {
 	public void setPreferredDate(LocalDate preferredDate) {
 		this.preferredDate = preferredDate;
 	}
-	public Customer getCustomer() {
+	public Set<Customer> getCustomer() {
 		return customer;
 	}
-	public void setCustomer(Customer customer) {
+	public void setCustomer(Set<Customer> customer) {
 		this.customer = customer;
 	}
 	public Payment getPayment() {
