@@ -31,9 +31,14 @@ public class SalonService {
 	@Column(name = "service_discount")
 	private Integer discount;
 	
-	@ManyToOne
-	@JoinColumn(name = "salon_id", referencedColumnName = "salon_id")
-	private Salon salon;
+	@Column(name = "salon_address")
+	private String salonAddress;
+	
+	@Column(name = "salon_location")
+	private String salonLocation;
+	
+	@Column(name = "salon_centre_name")
+	private String salonCentreName;
 	
 	
 	public Integer getServiceId() {
@@ -66,11 +71,24 @@ public class SalonService {
 	public void setDiscount(Integer discount) {
 		this.discount = discount;
 	}
-	public Salon getSalon() {
-		return salon;
+	
+	public String getSalonAddress() {
+		return salonAddress;
 	}
-	public void setSalon(Salon salon) {
-		this.salon = salon;
+	public void setSalonAddress(String salonAddress) {
+		this.salonAddress = salonAddress;
+	}
+	public String getSalonLocation() {
+		return salonLocation;
+	}
+	public void setSalonLocation(String salonLocation) {
+		this.salonLocation = salonLocation;
+	}
+	public String getSalonCentreName() {
+		return salonCentreName;
+	}
+	public void setSalonCentreName(String salonCentreName) {
+		this.salonCentreName = salonCentreName;
 	}
 	public SalonService() {
 		super();

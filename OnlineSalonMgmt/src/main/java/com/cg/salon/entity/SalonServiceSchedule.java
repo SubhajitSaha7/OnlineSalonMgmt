@@ -21,6 +21,10 @@ public class SalonServiceSchedule {
 	@Column(name = "service_schedule_id")
 	private Integer serviceScheduleId;
 	
+	@Column(name = "no_of_appointments")
+	private Integer noofappointments;
+	
+	
 	@Column(name = "schedule_date")
 	private LocalDate scheduleDate;
 	
@@ -58,6 +62,12 @@ public class SalonServiceSchedule {
 	}
 	public SalonService getSalonService() {
 		return salonService;
+	}
+	public Integer getNoofappointments() {
+		return noofappointments;
+	}
+	public void setNoofappointments(Integer noofappointments) {
+		this.noofappointments = noofappointments;
 	}
 	public void setSalonService(SalonService salonService) {
 		this.salonService = salonService;

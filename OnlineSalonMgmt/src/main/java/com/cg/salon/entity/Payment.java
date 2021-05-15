@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -26,7 +27,9 @@ public class Payment {
 	@Column(name = "payment_status", length = 25, nullable = false)
 	private String status;
 	 
-	
+	@OneToOne
+	@JoinColumn(name = "appointment_id", referencedColumnName = "appointment_id")
+	private Appointment appointment;
 	
 	@Column(name = "payment_bank_id", length = 25, nullable = false)
 	private String bankId;

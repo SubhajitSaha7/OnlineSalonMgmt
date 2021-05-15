@@ -2,12 +2,13 @@ package com.cg.salon.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "cg_bank_acc")
 public class BankAccount {
-	
+	@Id
 	@Column(name = "bank_card_no", length = 16, nullable = false, unique = true)
 	private String cardNumber;
 	
