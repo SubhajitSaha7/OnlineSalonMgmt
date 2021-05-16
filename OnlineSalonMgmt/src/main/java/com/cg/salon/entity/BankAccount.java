@@ -10,10 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "cg_bank_acc")
 public class BankAccount {
-	@Id
-	@Column(name = "bank_id")
-	private String bankId;
-	
+
 	@Column(name = "bank_card_no", length = 16, nullable = false, unique = true)
 	private String cardNumber;
 	
@@ -29,8 +26,12 @@ public class BankAccount {
 	@Column(name = "bank_exp_date")
 	private LocalDate expiryDate;
 	
+	@Id
 	@Column(name = "bank_cvv_no")
-	private String cvvNo;
+	private Integer cvvNo;
+	
+	@Column(name = "bank_ifsc_no")
+	private String ifscNo;
 	
 	
 	
@@ -38,8 +39,14 @@ public class BankAccount {
 	
 	@Override
 	public String toString() {
-		return " " + cardNumber + " " + amount + " " + bankName + " "
-				+ cardName + " " + expiryDate + " " + cvvNo + " ";
+		return " "+ cardNumber + " " + amount + " " + bankName + " "
+				+ cardName + " " + expiryDate + " " + cvvNo + " "+ ifscNo + " ";
+	}
+	public String getIfscNo() {
+		return ifscNo;
+	}
+	public void setIfscNo(String ifscNo) {
+		this.ifscNo = ifscNo;
 	}
 	public String getCardName() {
 		return cardName;
@@ -57,10 +64,10 @@ public class BankAccount {
 	public void setExpiryDate(LocalDate expiryDate) {
 		this.expiryDate = expiryDate;
 	}
-	public String getCvvNo() {
+	public Integer getCvvNo() {
 		return cvvNo;
 	}
-	public void setCvvNo(String cvvNo) {
+	public void setCvvNo(Integer cvvNo) {
 		this.cvvNo = cvvNo;
 	}
 	
@@ -73,8 +80,8 @@ public class BankAccount {
 	public Double getAmount() { 
 		return amount;
 	}
-	public void setAmount(long amount) {
-		this.amount = (double) amount;
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 	public String getBankName() {
 		return bankName;
