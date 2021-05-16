@@ -2,6 +2,7 @@ package com.cg.salon.dto;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
@@ -20,7 +21,7 @@ public class BankAccountDto {
 	
 	private String cardName;
 	
-	@PastOrPresent(message = "Date of joining must be past or present")
+	@FutureOrPresent(message = "Expiry date must not be in the past")
 	private LocalDate expiryDate;
 	
 	private Integer cvvNo;

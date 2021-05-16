@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.cg.salon.entity.BankAccount;
 
-@Repository
+@Repository("bankaccountdao")
 public interface IBankAccountDao extends JpaRepository<BankAccount, Integer> {
 	
 
