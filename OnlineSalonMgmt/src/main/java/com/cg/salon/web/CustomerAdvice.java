@@ -25,6 +25,6 @@ public class CustomerAdvice extends GlobalAdvice {
 		List<String> errors = ex.getErrors().stream()
 				.map(err->err.getDefaultMessage()).collect(Collectors.toList());
 		
-		return new CustomerErrorMessage(HttpStatus.BAD_REQUEST.toString(), ex.getMessage());
+		return new CustomerErrorMessage(HttpStatus.BAD_REQUEST.toString(), errors);
 	}
 }
