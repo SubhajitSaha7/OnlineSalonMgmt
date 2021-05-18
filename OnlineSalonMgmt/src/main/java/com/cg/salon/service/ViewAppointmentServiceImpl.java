@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.salon.dao.IAppointmentDao;
+import com.cg.salon.dto.AppointmentDto;
 import com.cg.salon.entity.Appointment;
 import com.cg.salon.exceptions.AppointmentNotFoundException;
+import com.cg.salon.exceptions.SalonServiceNotFoundException;
 
 @Service("viewappointment")
-public class ViewAppointmentServiceImpl implements IviewAppointmentService{
+public class ViewAppointmentServiceImpl implements IAppointmentService{
 
 	@Autowired
 	private IAppointmentDao appointmentdao;
@@ -41,6 +43,31 @@ public class ViewAppointmentServiceImpl implements IviewAppointmentService{
 			throw new AppointmentNotFoundException("No appointment found for Schedule Id " + serviceScheduleId);
 		return optappointment.get();
 	
+	}
+
+	@Override
+	public Appointment addAppointment(AppointmentDto appdto) throws SalonServiceNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean editAppointment(AppointmentDto appdto)
+			throws SalonServiceNotFoundException, AppointmentNotFoundException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean removeAppointment(long appointmentId) throws AppointmentNotFoundException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Appointment> viewAppointment() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

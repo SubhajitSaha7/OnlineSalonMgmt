@@ -2,7 +2,7 @@ package com.cg.salon.dto;
 
 import java.util.List;
 
-public class ViewAppointmentErrorMessage {
+public class AppointmentErrorMessage {
 	
 	public String status;
 	public String message;
@@ -10,7 +10,7 @@ public class ViewAppointmentErrorMessage {
 	private List<String> messages;
 	
 	
-	public ViewAppointmentErrorMessage(String status, List<String> messages) {
+	public AppointmentErrorMessage(String status, List<String> messages) {
 		super();
 		this.status = status;
 		this.messages = messages;
@@ -38,7 +38,7 @@ public class ViewAppointmentErrorMessage {
 	}
 	
 	
-	public ViewAppointmentErrorMessage(String status, String message) {
+	public AppointmentErrorMessage(String status, String message) {
 		super();
 		this.status = status;
 		this.message = message;

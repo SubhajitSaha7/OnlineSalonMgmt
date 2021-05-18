@@ -7,7 +7,7 @@ import javax.validation.constraints.FutureOrPresent;
 import com.cg.salon.entity.Customer;
 import com.cg.salon.entity.SalonServiceSchedule;
 
-public class ViewAppointmentDto {
+public class AppointmentDto {
 	
 	private Integer appointmentId;
 	
@@ -20,11 +20,11 @@ public class ViewAppointmentDto {
 	
 	private String appointmentStatus;
 
-	public ViewAppointmentDto() {
+	public AppointmentDto() {
 		super();
 	}
 
-	public ViewAppointmentDto(Integer appointmentId, LocalDate preferredDate, Customer customer,
+	public AppointmentDto(Integer appointmentId, LocalDate preferredDate, Customer customer,
 			SalonServiceSchedule salonServiceSchedule, String appointmentStatus) {
 		super();
 		this.appointmentId = appointmentId;

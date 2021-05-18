@@ -1,6 +1,6 @@
 package com.cg.salon.dto;
 
-public class ViewAppointmentSuccessMessage {
+public class AppointmentSuccessMessage {
 	
 	private String message;
 
@@ -12,7 +12,7 @@ public class ViewAppointmentSuccessMessage {
 		this.message = message;
 	}
 
-	public ViewAppointmentSuccessMessage(String message) {
+	public AppointmentSuccessMessage(String message) {
 		super();
 		this.message = message;
 	}
