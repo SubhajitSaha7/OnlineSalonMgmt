@@ -51,7 +51,7 @@ public class CustomerServiceImpl implements ICustomerService {
 	public List<Customer> viewCustomerByName(String name) throws CustomerNotFoundException {
 		List<Customer> lst = customerdao.viewCustomerByName(name);
 		if (lst.isEmpty())
-			throw new CustomerNotFoundException("No customer found");
+			throw new CustomerNotFoundException("No customer found with name " + name);
 		return lst;
 	}
 	
@@ -59,7 +59,7 @@ public class CustomerServiceImpl implements ICustomerService {
 	public List<Customer> viewCustomerByCity(String city)throws CustomerNotFoundException {
 		List<Customer> lst = customerdao.viewCustomerByCity(city);
 		if (lst.isEmpty())
-			throw new CustomerNotFoundException("No customer found");
+			throw new CustomerNotFoundException("No customer found with city " + city);
 		return lst;
 	}
 	
@@ -67,7 +67,7 @@ public class CustomerServiceImpl implements ICustomerService {
 	public List<Customer> viewCustomerByContactNo(String contactNo)throws CustomerNotFoundException {
 		List<Customer> lst = customerdao.viewCustomerByContactNo(contactNo);
 		if (lst.isEmpty())
-			throw new CustomerNotFoundException("No customer found");
+			throw new CustomerNotFoundException("No customer found" + contactNo);
 		return lst;
 	}
 	

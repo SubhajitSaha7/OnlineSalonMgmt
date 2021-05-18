@@ -57,7 +57,7 @@ public class SalonServiceScheduleImpl implements ISalonServiceSchedule{
 		
 		List<SalonServiceSchedule> id= salonservicescheduledao.viewSalonServiceScheduleByServiceId(serid);
 		if (id.isEmpty())
-		throw new SalonServiceScheduleNotFoundException("No salon service found");
+			throw new SalonServiceScheduleNotFoundException("No salon service found");
 		return id;
 		
 	}

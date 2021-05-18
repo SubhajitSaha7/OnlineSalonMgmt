@@ -1,7 +1,6 @@
-package com.cg.salon.entity;
+package com.cg.salon.dto;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,30 +8,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "cg_payment")
-public class Payment {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO,generator = "seq1")
-	@SequenceGenerator(name = "seq1",sequenceName = "payment_seq1",allocationSize = 1)
-	@Column(name = "payment_id")
+import com.cg.salon.entity.Appointment;
+import com.cg.salon.entity.BankAccount;
+
+public class PaymentDto {
+
 	private long paymentId;
 	
-	@Column(name = "payment_type", length = 25, nullable = false)
 	private String type;
 	
-	@Column(name = "payment_status", length = 25, nullable = false)
 	private String status;
 	 
-	@OneToOne
-	@JoinColumn(name = "appointment_id", referencedColumnName = "appointment_id")
 	private Appointment appointment;
 	
-	@ManyToOne
-	@JoinColumn(name = "bank_cvv", referencedColumnName = "bank_cvv_no")
 	private BankAccount bankAccount;
 	
 	
@@ -55,7 +44,6 @@ public class Payment {
 		this.status = status;
 	}
 	
-	
 	public BankAccount getBankAccount() {
 		return bankAccount;
 	}
@@ -63,16 +51,18 @@ public class Payment {
 		this.bankAccount = bankAccount;
 	}
 	
-	public Payment() {
+	public PaymentDto() {
 		super();
 		
 	}
-	@Override
-	public String toString() {
-		return " " + paymentId + " " + type + " " + status + " " ;
+	public PaymentDto(long paymentId, String type, String status, Appointment appointment, BankAccount bankAccount) {
+		super();
+		this.paymentId = paymentId;
+		this.type = type;
+		this.status = status;
+		this.appointment = appointment;
+		this.bankAccount = bankAccount;
 	}
-	
-	
 	
 
 }
