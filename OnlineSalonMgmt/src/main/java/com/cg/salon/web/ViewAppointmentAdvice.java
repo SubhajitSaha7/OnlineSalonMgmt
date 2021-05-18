@@ -1,4 +1,4 @@
-package com.cg.salon.web;
+v/package com.cg.salon.web;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -17,7 +17,6 @@ public class ViewAppointmentServiceImpl implements IviewAppointmentService{
 	private IAppointmentDao appointmentdao;
 	
 	
-	
 	@Override
 	public Appointment viewAppointmentById(int appId) throws AppointmentNotFoundException {
 		
