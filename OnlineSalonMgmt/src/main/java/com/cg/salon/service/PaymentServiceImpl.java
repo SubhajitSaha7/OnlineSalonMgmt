@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.salon.dao.IPaymentDao;
 import com.cg.salon.dto.PaymentDto;
 import com.cg.salon.entity.BankAccount;
 import com.cg.salon.entity.Customer;
@@ -22,7 +23,7 @@ import com.cg.salon.exceptions.SalonServiceScheduleNotFoundException;
 public class PaymentServiceImpl implements IPaymentService{
 	
 	@Autowired
-	private IPaymentService paymentdao;
+	private IPaymentDao paymentdao;
 	
 	
 	@Override
@@ -41,9 +42,9 @@ public class PaymentServiceImpl implements IPaymentService{
 		}
 	
 	@Override
-	public Payment viewPaymentByAppointmentId(int aid) throws AppointmentNotFoundException {
+	public List<Payment> viewPaymentByAppointmentId(int aid) throws AppointmentNotFoundException, PaymentNotFoundException {
 		
-		Payment pid= paymentdao.viewPaymentByAppointmentId(aid);
+		List<Payment> pid= paymentdao.viewPaymentByAppointmentId(aid);
 		if (pid.isEmpty())
 			throw new PaymentNotFoundException("No Payment Details found");
 		return pid;
@@ -54,7 +55,7 @@ public class PaymentServiceImpl implements IPaymentService{
 	
 
 	@Override
-	public Payment viewPaymentByPaymentId(int pid) throws PaymentNotFoundException {
+	public Payment viewPaymentByPaymentId(long pid) throws PaymentNotFoundException {
 		Optional<Payment> optservice = paymentdao.findById(pid);
 		if (!optservice.isPresent())
 			throw new PaymentNotFoundException("Payment does not exists for "+pid);

@@ -1,5 +1,7 @@
 package com.cg.salon.web;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,7 @@ import com.cg.salon.dto.PaymentDto;
 import com.cg.salon.dto.PaymentSuccessMessage;
 
 import com.cg.salon.entity.Payment;
-
+import com.cg.salon.exceptions.AppointmentNotFoundException;
 import com.cg.salon.exceptions.PaymentNotFoundException;
 
 import com.cg.salon.exceptions.ValidatePaymentException;
@@ -39,10 +41,23 @@ public class PaymentRestController {
 		
 	}
 	@GetMapping("viewbyPaymentid/{Paymentid}")
-	public Payment viewPaymentByPaymentId(@PathVariable("pid") int PaymentId) throws PaymentNotFoundException
+	public Payment viewPaymentByPaymentId(@PathVariable("pid") long paymentId) throws PaymentNotFoundException
 	{
-		return service.viewPaymentByPaymentId(PaymentId);
+		return service.viewPaymentByPaymentId(paymentId);
 	}
+	
+	@GetMapping("viewbyAppointmentid/{Appointmentid}")
+	public List<Payment> viewPaymentByAppointmentId(@PathVariable("aid") int appointmentId) throws PaymentNotFoundException, AppointmentNotFoundException
+	{
+		return service.viewPaymentByAppointmentId(appointmentId);
+	}
+	
+	@GetMapping("viewAllPayment")
+	public List<Payment> viewAllPayment() throws PaymentNotFoundException, AppointmentNotFoundException
+	{
+		return service.viewAllPayment();
+	}
+	
 
 	
 	

@@ -15,9 +15,9 @@ public interface IPaymentService {
 	
 	public Long addPayment(PaymentDto dto) throws PaymentNotFoundException;
 
-	public Payment viewPaymentByAppointmentId(int aid) throws AppointmentNotFoundException;
+	public List<Payment> viewPaymentByAppointmentId(int aid) throws AppointmentNotFoundException,PaymentNotFoundException;
 	
-	public Payment viewPaymentByPaymentId(int pid) throws PaymentNotFoundException;
+	public Payment viewPaymentByPaymentId(long pid) throws PaymentNotFoundException;
 	
 	public List<Payment> viewAllPayment() throws PaymentNotFoundException;
 		
