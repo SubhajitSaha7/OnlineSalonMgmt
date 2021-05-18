@@ -16,11 +16,11 @@ public interface IAppointmentService {
 	public List<Appointment> viewAppointmentByCustomerId(int custId) throws AppointmentNotFoundException;
 	public Appointment viewAppointmentByScheduleId(int serviceScheduleId) throws AppointmentNotFoundException;
 
-    public Appointment addAppointment(AppointmentDto appdto)throws SalonServiceNotFoundException;
+    public Integer addAppointment(AppointmentDto appdto)throws SalonServiceNotFoundException;
 	
 	public boolean editAppointment(AppointmentDto appdto) throws SalonServiceNotFoundException,AppointmentNotFoundException;
-	public boolean removeAppointment(long appointmentId) throws AppointmentNotFoundException;
-	public List<Appointment> viewAppointment();
+	public boolean removeAppointment(int appointmentId) throws AppointmentNotFoundException;
+	public List<Appointment> viewAllAppointment() throws AppointmentNotFoundException;
 	
 	
 }

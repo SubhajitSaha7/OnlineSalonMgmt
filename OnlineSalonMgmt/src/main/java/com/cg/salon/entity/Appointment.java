@@ -38,7 +38,7 @@ public class Appointment {
 	private String appointmentStatus;
 	
 	
-	public long getAppointmentId() {
+	public Integer getAppointmentId() {
 		return appointmentId;
 	}
 	public void setAppointmentId(Integer appointmentId) {
