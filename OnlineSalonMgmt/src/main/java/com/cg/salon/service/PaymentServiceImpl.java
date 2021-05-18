@@ -38,9 +38,7 @@ public class PaymentServiceImpl implements IPaymentService{
 		
 		Payment savedpayment = paymentdao.save(payment);
 		return savedpayment.getPaymentId();
-		
 		}
-	
 	
 	@Override
 	public Payment viewPaymentByAppointmentId(int aid) throws AppointmentNotFoundException {
@@ -50,6 +48,8 @@ public class PaymentServiceImpl implements IPaymentService{
 			throw new PaymentNotFoundException("No Payment Details found");
 		return pid;
 	}
+	
+	
 	
 	
 

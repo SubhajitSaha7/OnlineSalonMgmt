@@ -10,17 +10,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cg.salon.dto.BankAccountDto;
-import com.cg.salon.dto.BankAccountSuccessMessage;
 import com.cg.salon.dto.PaymentDto;
 import com.cg.salon.dto.PaymentSuccessMessage;
-import com.cg.salon.entity.BankAccount;
+
 import com.cg.salon.entity.Payment;
-import com.cg.salon.exceptions.BankAccountNotFoundException;
+
 import com.cg.salon.exceptions.PaymentNotFoundException;
-import com.cg.salon.exceptions.ValidateBankAccountException;
+
 import com.cg.salon.exceptions.ValidatePaymentException;
-import com.cg.salon.service.IBankAccountService;
+
 import com.cg.salon.service.IPaymentService;
 
 @RestController

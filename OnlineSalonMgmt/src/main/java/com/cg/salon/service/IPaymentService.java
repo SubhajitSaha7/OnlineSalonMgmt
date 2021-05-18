@@ -21,7 +21,5 @@ public interface IPaymentService {
 	
 	public List<Payment> viewAllPayment() throws PaymentNotFoundException;
 		
-	
-	
 
 }
