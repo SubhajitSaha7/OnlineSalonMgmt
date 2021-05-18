@@ -3,6 +3,8 @@ package com.cg.salon.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,9 +24,9 @@ public class PaymentServiceImpl implements IPaymentService{
 	@Autowired
 	private IPaymentService paymentdao;
 	
-	//byaid
 	
 	@Override
+	@Transactional
 	public Long addPayment(PaymentDto dto) throws PaymentNotFoundException{
 		
 		Payment payment = new Payment();
@@ -40,26 +42,33 @@ public class PaymentServiceImpl implements IPaymentService{
 		}
 	
 	
-	public Payment viewPaymentById(int pid) throws PaymentNotFoundException {
+	@Override
+	public Payment viewPaymentByAppointmentId(int aid) throws AppointmentNotFoundException {
+		
+		Payment pid= paymentdao.viewPaymentByAppointmentId(aid);
+		if (pid.isEmpty())
+			throw new PaymentNotFoundException("No Payment Details found");
+		return pid;
+	}
+	
+	
+
+	@Override
+	public Payment viewPaymentByPaymentId(int pid) throws PaymentNotFoundException {
 		Optional<Payment> optservice = paymentdao.findById(pid);
 		if (!optservice.isPresent())
 			throw new PaymentNotFoundException("Payment does not exists for "+pid);
 		return optservice.get();
 	}
-	
-	public Payment viewPaymentByAppointmentId(int aid) throws AppointmentNotFoundException {
-		
-		Payment pid= paymentdao.viewPaymentByAppointmentId(aid);
-		if (pid.isEmpty())
-			throw new SalonServiceScheduleNotFoundException("No salon service found");
-		return pid;
-	}
-	
+
 
 	@Override
-	public Payment save(Payment payment) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Payment> viewAllPayment() throws PaymentNotFoundException {
+		List<Payment> lst=paymentdao.findAll();
+		if (lst.isEmpty())
+			throw new PaymentNotFoundException("No Payment Details found");
+		return lst;
+   
 	}
 	
 	

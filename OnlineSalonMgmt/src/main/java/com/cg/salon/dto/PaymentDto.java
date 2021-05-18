@@ -34,6 +34,12 @@ public class PaymentDto {
 	public String getType() {
 		return type;
 	}
+	public Appointment getAppointment() {
+		return appointment;
+	}
+	public void setAppointment(Appointment appointment) {
+		this.appointment = appointment;
+	}
 	public void setType(String type) {
 		this.type = type;
 	}

@@ -13,6 +13,6 @@ public interface ISalonServiceSchedule {
 	public Integer createSchedule(SalonServiceScheduleDto dto);
 	public SalonServiceSchedule viewSalonServiceScheduleById(int sid)throws SalonServiceScheduleNotFoundException;
 	public List<SalonServiceSchedule> viewSalonServiceScheduleByDate(LocalDate date)throws SalonServiceScheduleNotFoundException;
-	public List<SalonServiceSchedule> viewSalonServiceScheduleByServiceId(int serid )throws SalonServiceScheduleNotFoundException;
+	
 	public boolean editSalonServiceSchedule(SalonServiceScheduleDto dto)throws SalonServiceScheduleNotFoundException;
 }
