@@ -6,8 +6,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 public class SalonServiceDto {
-
-    private Integer serviceId;
+	
+	private Integer serviceId;
 	
     @NotBlank(message = "Service name must not be blank")
 	@Pattern(regexp = "([a-zA-Z]+)|([a-zA-Z]+[\\s][a-zA-Z]+)", message = "service name must contain alphabets")
@@ -31,27 +31,20 @@ public class SalonServiceDto {
 	{
 		
 	}
-
-	public SalonServiceDto(Integer serviceId, String serviceName, Integer servicePrice, String serviceDuration,
-			Integer discount, String salonAddress, String salonLocation, String salonCentreName) {
-		super();
-		this.serviceId = serviceId;
-		this.serviceName = serviceName;
-		this.servicePrice = servicePrice;
-		this.serviceDuration = serviceDuration;
-		this.discount = discount;
-		this.salonAddress = salonAddress;
-		this.salonLocation = salonLocation;
-		this.salonCentreName = salonCentreName;
-	}
+	
+	
 
 	public Integer getServiceId() {
 		return serviceId;
 	}
 
+
+
 	public void setServiceId(Integer serviceId) {
 		this.serviceId = serviceId;
 	}
+
+
 
 	public String getServiceName() {
 		return serviceName;

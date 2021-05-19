@@ -12,8 +12,8 @@ import com.cg.salon.entity.SalonService;
 @Repository("salonservicedao")
 public interface ISalonServiceDao extends JpaRepository<SalonService, Integer>{
 
-	@Query("from SalonService s where s.serviceName=:sname")
-	public List<SalonService> viewSalonServiceByName(@Param("sname") String serviceName);
-	@Query("from SalonService s where s.salonLocation=:sloc")
-	public List<SalonService> viewSalonServiceByLocation(@Param("sloc") String serviceLocation);
+
+	public List<SalonService> findByServiceName(String serviceName);
+	
+	public List<SalonService> findBySalonLocation(String salonLocation);
 }

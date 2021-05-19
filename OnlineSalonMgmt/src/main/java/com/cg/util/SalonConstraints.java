@@ -17,4 +17,10 @@ public class SalonConstraints {
 	public static final String CANCELLED = "Cancelled";
 	
 	public static final String AVAILABLE = "Available";
+	
+	public static final String SALON_SERVICE_NOT_EXIST = "Salon Service does not exist";
+	
+	public static final String SALON_SERVICE_ADDED = "Salon Service created";
+	
+	public static final String SALON_SERVICE_EDITED = "Salon Service edited successfully";
 }

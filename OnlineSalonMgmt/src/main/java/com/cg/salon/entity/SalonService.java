@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "cg_salon_service")
 public class SalonService {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO,generator = "seq1")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq1")
 	@SequenceGenerator(name = "seq1",sequenceName = "salon_service_seq1",allocationSize = 1)
 	@Column(name = "salon_service_id")
 	private Integer serviceId;
