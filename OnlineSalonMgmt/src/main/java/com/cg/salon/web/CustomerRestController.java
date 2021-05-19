@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,7 @@ import com.cg.salon.entity.Customer;
 import com.cg.salon.exceptions.CustomerNotFoundException;
 import com.cg.salon.exceptions.ValidateCustomerException;
 import com.cg.salon.service.ICustomerService;
+import com.cg.util.SalonConstraints;
 
 @RestController
 public class CustomerRestController {
@@ -26,16 +29,19 @@ public class CustomerRestController {
 	@Autowired
 	private ICustomerService service;
 	
+	Logger logger = LoggerFactory.getLogger(CustomerRestController.class);
+	
 	@PostMapping("addcustomer")
-	public CustomerSuccessMessage addCustomer(@Valid @RequestBody CustomerDto custdto, BindingResult br) throws ValidateCustomerException
+	public CustomerSuccessMessage addCustomer(@Valid @RequestBody CustomerDto custdto, BindingResult br) 
+			throws ValidateCustomerException
 	{
-		System.out.println("Customer added");
+		logger.info("I am in add customer");
 		
 		if (br.hasErrors())
 			throw new ValidateCustomerException(br.getFieldErrors());
 		int cid = service.addCustomer(custdto);
 		
-		return new CustomerSuccessMessage("Your generated customer id is "+cid);
+		return new CustomerSuccessMessage(SalonConstraints.CUSTOMER_DETAILS_ADDED + cid);
 	}
 	
 	@PutMapping("editcustomer")
@@ -46,7 +52,7 @@ public class CustomerRestController {
 			throw new ValidateCustomerException(br.getFieldErrors());
 		
 		service.editCustomerDetails(custdto);
-		return new CustomerSuccessMessage("Customer details edited successfully");
+		return new CustomerSuccessMessage(SalonConstraints.CUSTOMER_DETAILS_EDITED);
 	}
 	
 	@GetMapping("viewcustomerbyid/{customerid}")

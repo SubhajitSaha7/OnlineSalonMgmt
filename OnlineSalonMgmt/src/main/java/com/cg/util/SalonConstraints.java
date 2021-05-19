@@ -38,5 +38,13 @@ public class SalonConstraints {
 	public static final String SALON_SERVICE_ADDED = "Salon Service created";
 	
 	public static final String SALON_SERVICE_EDITED = "Salon Service edited successfully";
+	
+	
+	public static final String CUSTOMER_DETAILS_EDITED = "Customer details edited successfully";
+	
+	 public static final String CUSTOMER_DETAILS_ADDED = "Customer details added";
+	 
+	 public static final String CUSTOMER_NOT_EXIST = "Customer does not exist" ;
+	
 
 }

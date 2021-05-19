@@ -36,27 +36,11 @@ public class CustomerDto {
 	@NotBlank(message = "Customer state must not be blank")
 	private String state;
 	
-	@NotBlank(message = "Customer pincode must not be blank")
+
 	private Integer pincode;
 	
 	public CustomerDto() {
 		
-	}
-
-	public CustomerDto(Integer userId, String name, String email, String contactNo, LocalDate dob, String doorNo,
-			String street, String area, String city, String state, Integer pincode) {
-		super();
-		this.userId = userId;
-		this.name = name;
-		this.email = email;
-		this.contactNo = contactNo;
-		this.dob = dob;
-		this.doorNo = doorNo;
-		this.street = street;
-		this.area = area;
-		this.city = city;
-		this.state = state;
-		this.pincode = pincode;
 	}
 
 	public Integer getUserId() {
