@@ -18,6 +18,7 @@ public class SalonConstraints {
 	
 	public static final String AVAILABLE = "Available";
 	
+
 	public static final String BANK_ACCOUNT_NOT_FOUND= "Bank Account not found";
 	
 	public static final String BANK_ACCOUNT_ADDED = "Bank Account Created Successfully.";
@@ -31,4 +32,11 @@ public class SalonConstraints {
 	public static final String PAYMENT_ADDED = "Payment Successfull.";
 	
 	
+
+	public static final String SALON_SERVICE_NOT_EXIST = "Salon Service does not exist";
+	
+	public static final String SALON_SERVICE_ADDED = "Salon Service created";
+	
+	public static final String SALON_SERVICE_EDITED = "Salon Service edited successfully";
+
 }

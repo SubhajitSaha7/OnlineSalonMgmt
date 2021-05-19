@@ -40,14 +40,6 @@ public class PaymentServiceImpl implements IPaymentService{
 		return savedpayment.getPaymentId();
 		}
 	
-	@Override
-	public List<Payment> viewPaymentByAppointmentId(int aid) throws AppointmentNotFoundException, PaymentNotFoundException {
-		
-		List<Payment> pid= paymentdao.viewPaymentByAppointmentId(aid);
-		if (pid.isEmpty())
-			throw new PaymentNotFoundException(SalonConstraints.PAYMENT_NOT_FOUND);
-		return pid;
-	}
 
 	@Override
 	public Payment viewPaymentByPaymentId(long pid) throws PaymentNotFoundException {
@@ -65,6 +57,12 @@ public class PaymentServiceImpl implements IPaymentService{
 			throw new PaymentNotFoundException(SalonConstraints.PAYMENT_NOT_FOUND);
 		return lst;
    
+	}
+
+	@Override
+	public Payment viewPaymentByAppointmentId(int aid) throws AppointmentNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

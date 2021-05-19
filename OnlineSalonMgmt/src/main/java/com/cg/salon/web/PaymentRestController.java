@@ -47,11 +47,11 @@ public class PaymentRestController {
 		return service.viewPaymentByPaymentId(paymentId);
 	}
 	
-	@GetMapping("viewbyAppointmentid/{Appointmentid}")
+	/*@GetMapping("viewbyAppointmentid/{Appointmentid}")
 	public List<Payment> viewPaymentByAppointmentId(@PathVariable("aid") int appointmentId) throws PaymentNotFoundException, AppointmentNotFoundException
 	{
 		return service.viewPaymentByAppointmentId(appointmentId);
-	}
+	}*/
 	
 	@GetMapping("viewAllPayment")
 	public List<Payment> viewAllPayment() throws PaymentNotFoundException, AppointmentNotFoundException

@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,7 @@ import com.cg.salon.entity.SalonService;
 import com.cg.salon.exceptions.SalonServiceNotFoundException;
 import com.cg.salon.exceptions.ValidateSalonServiceException;
 import com.cg.salon.service.ISalonService;
+import com.cg.util.SalonConstraints;
 
 
 @RestController
@@ -29,28 +32,31 @@ public class SalonServiceRestController {
 	@Autowired
 	private ISalonService service;
 	
+	Logger logger= LoggerFactory.getLogger(SalonServiceRestController.class);
+	
 	@PostMapping("addsalonservice")
-	public SalonServiceSuccessMessage addEmployee(@Valid @RequestBody SalonServiceDto salondto, BindingResult br) throws ValidateSalonServiceException
+	public SalonServiceSuccessMessage addSalonService(@Valid @RequestBody SalonServiceDto salondto, BindingResult br) throws ValidateSalonServiceException
 	{
-		System.out.println("I am in add salon service");
+		logger.info("I am in add salon service");
+		
 	
 		if (br.hasErrors())
 			throw new ValidateSalonServiceException(br.getFieldErrors());
 		int sid= service.addSalonService(salondto);
 		
-		return new SalonServiceSuccessMessage("Your generated solon service id is "+ sid);
+		return new SalonServiceSuccessMessage(SalonConstraints.SALON_SERVICE_ADDED+ sid);
 		
 	}	
 	
 	@PutMapping("editsalonservice")
-	public SalonServiceSuccessMessage editEmployee(@Valid @RequestBody 	SalonServiceDto salondto, BindingResult br) throws ValidateSalonServiceException, SalonServiceNotFoundException
+	public SalonServiceSuccessMessage editSalonService(@Valid @RequestBody 	SalonServiceDto salondto, BindingResult br) throws ValidateSalonServiceException, SalonServiceNotFoundException
 	{
 		if (br.hasErrors())
 		{
 			throw new ValidateSalonServiceException(br.getFieldErrors());
 		}
 		service.editSalonService(salondto);
-		return new SalonServiceSuccessMessage("Salon service edited successfully");
+		return new SalonServiceSuccessMessage(SalonConstraints.SALON_SERVICE_EDITED);
 	}
 
 	@GetMapping("viewbysalonservice/{salonservicename}")
