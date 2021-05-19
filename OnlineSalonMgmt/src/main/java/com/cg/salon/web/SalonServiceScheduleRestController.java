@@ -5,7 +5,10 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,57 +21,62 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cg.salon.dto.SalonServiceScheduleDto;
 import com.cg.salon.dto.SalonServiceScheduleSuccessMessage;
 import com.cg.salon.entity.SalonServiceSchedule;
+import com.cg.salon.exceptions.SalonServiceNotFoundException;
 import com.cg.salon.exceptions.SalonServiceScheduleNotFoundException;
+import com.cg.salon.exceptions.ScheduleCancelException;
 import com.cg.salon.exceptions.ValidateSalonServiceScheduleException;
 import com.cg.salon.service.ISalonServiceSchedule;
-
+import com.cg.util.SalonConstraints;
 
 @RestController
 public class SalonServiceScheduleRestController {
-	
+
 	@Autowired
 	private ISalonServiceSchedule schedule;
-	
+
+	Logger logger = LoggerFactory.getLogger(SalonServiceRestController.class);
+
 	@PostMapping("createschedule")
-	public SalonServiceScheduleSuccessMessage addEmployee(@Valid @RequestBody SalonServiceScheduleDto scheduledto, BindingResult br) throws ValidateSalonServiceScheduleException
-	{
-		System.out.println("I am in add salon service schedule");
-	
+	public SalonServiceScheduleSuccessMessage addSchedule(@Valid @RequestBody SalonServiceScheduleDto scheduledto,
+			BindingResult br) throws ValidateSalonServiceScheduleException, SalonServiceNotFoundException {
+		logger.info("I am in addSchedule");
+
 		if (br.hasErrors())
 			throw new ValidateSalonServiceScheduleException(br.getFieldErrors());
-		int sid= schedule.createSchedule(scheduledto);
-		
-		return new SalonServiceScheduleSuccessMessage("Your generated solon service schedule id is "+ sid);
-		
-	}	
-	
-	@PutMapping("editsalonservicescheule")
-	public SalonServiceScheduleSuccessMessage editEmployee(@Valid @RequestBody 	SalonServiceScheduleDto scheduledto, BindingResult br) throws ValidateSalonServiceScheduleException, SalonServiceScheduleNotFoundException
-	{
-		if (br.hasErrors())
-		{
-			throw new ValidateSalonServiceScheduleException(br.getFieldErrors());
-		}
-		schedule.editSalonServiceSchedule(scheduledto);
-		return new SalonServiceScheduleSuccessMessage("Salon service schedule edited successfully");
+		int sid = schedule.createSchedule(scheduledto);
+
+		return new SalonServiceScheduleSuccessMessage(SalonConstraints.SCHEDULE_ADDED + sid);
+
 	}
 
-	
-	
+	@PutMapping("editsalonservicescheule/{scheduleid}")
+	public SalonServiceScheduleSuccessMessage cancelSchedule(@PathVariable("scheduleid") int scheduleId)
+			throws ValidateSalonServiceScheduleException, SalonServiceScheduleNotFoundException,
+			ScheduleCancelException {
+
+		schedule.cancelSchedule(scheduleId);
+
+		return new SalonServiceScheduleSuccessMessage(SalonConstraints.SCHEDULE_CANCELLED);
+	}
+
 	@GetMapping("viewbysalonservicescheduleid/{salonservicescheduleid}")
-	public SalonServiceSchedule viewSalonServiceScheduleById(@PathVariable("salonservicescheduleid") int salonServiceScheduleId) throws SalonServiceScheduleNotFoundException
-	{
+	public SalonServiceSchedule viewSalonServiceScheduleById(
+			@PathVariable("salonservicescheduleid") int salonServiceScheduleId)
+			throws SalonServiceScheduleNotFoundException {
 		return schedule.viewSalonServiceScheduleById(salonServiceScheduleId);
 	}
-	
+
 	@GetMapping("viewbysalonservicescheduledate/{salonservicescheduledate}")
-	public List<SalonServiceSchedule> viewSalonServiceScheduleByDate(@PathVariable("salonservicescheduledate") LocalDate salonServiceScheduleDate) throws SalonServiceScheduleNotFoundException
-	{
-	return schedule.viewSalonServiceScheduleByDate(salonServiceScheduleDate);
+	public List<SalonServiceSchedule> viewSalonServiceScheduleByDate(
+			@DateTimeFormat(pattern = "yyyy-MM-dd") @PathVariable("salonservicescheduledate") LocalDate salonServiceScheduleDate)
+			throws SalonServiceScheduleNotFoundException {
+		return schedule.viewSalonServiceScheduleByDate(salonServiceScheduleDate);
 	}
+
 	@GetMapping("viewbysalonservicescheduleserviceid/{salonservicescheduleserviceid}")
-	public SalonServiceSchedule viewSalonServiceScheduleByServiceId(@PathVariable("salonservicescheduleserviceid") int salonServiceScheduleServiceId) throws SalonServiceScheduleNotFoundException
-	{
+	public SalonServiceSchedule viewSalonServiceScheduleByServiceId(
+			@PathVariable("salonservicescheduleserviceid") int salonServiceScheduleServiceId)
+			throws SalonServiceScheduleNotFoundException {
 		return schedule.viewSalonServiceScheduleById(salonServiceScheduleServiceId);
 	}
 }

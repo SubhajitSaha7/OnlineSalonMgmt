@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "cg_salon_service_schedule")
 public class SalonServiceSchedule {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO,generator = "seq1")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq1")
 	@SequenceGenerator(name = "seq1",sequenceName = "schedule_seq1",allocationSize = 1)
 	@Column(name = "service_schedule_id")
 	private Integer serviceScheduleId;
@@ -28,6 +28,15 @@ public class SalonServiceSchedule {
 	@Column(name = "schedule_date")
 	private LocalDate scheduleDate;
 	
+	@Column(name = "schedule_status", length = 25)
+	private String scheduleStatus;
+	
+	public String getScheduleStatus() {
+		return scheduleStatus;
+	}
+	public void setScheduleStatus(String scheduleStatus) {
+		this.scheduleStatus = scheduleStatus;
+	}
 	@Column(name = "schedule_slot", length = 10, nullable = false)
 	private String slot;
 	

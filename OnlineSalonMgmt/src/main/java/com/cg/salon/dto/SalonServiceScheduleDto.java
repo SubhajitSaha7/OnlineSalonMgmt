@@ -5,30 +5,44 @@ import java.time.LocalDate;
 
 import com.cg.salon.entity.SalonService;
 public class SalonServiceScheduleDto {
-	private Integer serviceScheduleId;
+	
 	private Integer noofappointments;
 	private LocalDate scheduleDate;
 	private String slot;
-	private SalonService salonService;
+	private Integer salonServiceId;
+	private String scheduleStatus;
+	
+	public String getScheduleStatus() {
+		return scheduleStatus;
+	}
+
+
+
+	public void setScheduleStatus(String scheduleStatus) {
+		this.scheduleStatus = scheduleStatus;
+	}
+
+
+
 	public SalonServiceScheduleDto()
 	{
 		
 	}
-	public SalonServiceScheduleDto(Integer serviceScheduleId, Integer noofappointments, LocalDate scheduleDate,
-			String slot, SalonService salonService) {
-		super();
-		this.serviceScheduleId = serviceScheduleId;
-		this.noofappointments = noofappointments;
-		this.scheduleDate = scheduleDate;
-		this.slot = slot;
-		this.salonService = salonService;
+	
+	
+	
+	public Integer getSalonServiceId() {
+		return salonServiceId;
 	}
-	public Integer getServiceScheduleId() {
-		return serviceScheduleId;
+
+
+
+	public void setSalonServiceId(Integer salonServiceId) {
+		this.salonServiceId = salonServiceId;
 	}
-	public void setServiceScheduleId(Integer serviceScheduleId) {
-		this.serviceScheduleId = serviceScheduleId;
-	}
+
+
+
 	public Integer getNoofappointments() {
 		return noofappointments;
 	}
@@ -47,11 +61,6 @@ public class SalonServiceScheduleDto {
 	public void setSlot(String slot) {
 		this.slot = slot;
 	}
-	public SalonService getSalonService() {
-		return salonService;
-	}
-	public void setSalonService(SalonService salonService) {
-		this.salonService = salonService;
-	}
+	
 	
 }
