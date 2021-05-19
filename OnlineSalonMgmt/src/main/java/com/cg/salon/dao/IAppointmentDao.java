@@ -11,11 +11,11 @@ import com.cg.salon.entity.Appointment;
 import com.cg.salon.exceptions.AppointmentNotFoundException;
 
 @Repository("appointmentdao")
-public interface IAppointmentDao extends JpaRepository<Appointment, Integer>{
-	
+public interface IAppointmentDao extends JpaRepository<Appointment, Integer> {
+
 	@Query("from Appointment a inner join fetch a.customer c where c.userId=:custId")
-	public List<Appointment> viewAppointmentByCustomerId(@Param("custId")int custId)throws AppointmentNotFoundException;
+	public List<Appointment> findByCustomerId(@Param("custId") int custId) throws AppointmentNotFoundException;
 
 	@Query("from Appointment a inner join fetch a.salonServiceSchedule s where s.serviceScheduleId=:sid")
-	public Appointment viewAppointmentByScheduleId(@Param("sid")int serviceScheduleId) throws AppointmentNotFoundException;
+	public Appointment findByScheduleId(@Param("sid") int serviceScheduleId) throws AppointmentNotFoundException;
 }

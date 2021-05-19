@@ -10,29 +10,6 @@ import com.cg.salon.entity.SalonServiceSchedule;
 public class AppointmentDto {
 	
 	private Integer appointmentId;
-	
-	@FutureOrPresent(message = "Preferred Date must not be in the past")
-	private LocalDate preferredDate;
-	
-	private Customer customer;
-	
-	private SalonServiceSchedule salonServiceSchedule;
-	
-	private String appointmentStatus;
-
-	public AppointmentDto() {
-		super();
-	}
-
-	public AppointmentDto(Integer appointmentId, LocalDate preferredDate, Customer customer,
-			SalonServiceSchedule salonServiceSchedule, String appointmentStatus) {
-		super();
-		this.appointmentId = appointmentId;
-		this.preferredDate = preferredDate;
-		this.customer = customer;
-		this.salonServiceSchedule = salonServiceSchedule;
-		this.appointmentStatus = appointmentStatus;
-	}
 
 	public Integer getAppointmentId() {
 		return appointmentId;
@@ -42,28 +19,41 @@ public class AppointmentDto {
 		this.appointmentId = appointmentId;
 	}
 
-	public LocalDate getPreffeDate() {
+	@FutureOrPresent(message = "Preferred Date must not be in the past")
+	private LocalDate preferredDate;
+
+	private Integer custId;
+
+	private Integer scheduleId;
+
+	private String appointmentStatus;
+
+	public Integer getScheduleId() {
+		return scheduleId;
+	}
+
+	public void setScheduleId(Integer scheduleId) {
+		this.scheduleId = scheduleId;
+	}
+
+	public AppointmentDto() {
+		super();
+	}
+
+	public LocalDate getPreferredDate() {
 		return preferredDate;
 	}
 
-	public void setPreffeDate(LocalDate preffeDate) {
-		this.preferredDate = preffeDate;
+	public void setPreferredDate(LocalDate preferredDate) {
+		this.preferredDate = preferredDate;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public Integer getCustId() {
+		return custId;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public SalonServiceSchedule getSalonServiceSchedule() {
-		return salonServiceSchedule;
-	}
-
-	public void setSalonServiceSchedule(SalonServiceSchedule salonServiceSchedule) {
-		this.salonServiceSchedule = salonServiceSchedule;
+	public void setCustId(Integer custId) {
+		this.custId = custId;
 	}
 
 	public String getAppointmentStatus() {
@@ -73,6 +63,5 @@ public class AppointmentDto {
 	public void setAppointmentStatus(String appointmentStatus) {
 		this.appointmentStatus = appointmentStatus;
 	}
-	
 
 }

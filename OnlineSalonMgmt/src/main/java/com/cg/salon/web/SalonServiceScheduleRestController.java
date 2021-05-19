@@ -34,7 +34,7 @@ public class SalonServiceScheduleRestController {
 	@Autowired
 	private ISalonServiceSchedule schedule;
 
-	Logger logger = LoggerFactory.getLogger(SalonServiceRestController.class);
+	Logger logger = LoggerFactory.getLogger(SalonServiceScheduleRestController.class);
 
 	@PostMapping("createschedule")
 	public SalonServiceScheduleSuccessMessage addSchedule(@Valid @RequestBody SalonServiceScheduleDto scheduledto,

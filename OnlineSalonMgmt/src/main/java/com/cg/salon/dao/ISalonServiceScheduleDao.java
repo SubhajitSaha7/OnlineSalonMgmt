@@ -20,4 +20,6 @@ public interface ISalonServiceScheduleDao extends JpaRepository<SalonServiceSche
 	public List<SalonServiceSchedule> viewSalonServiceScheduleByServiceId(@Param("sid")int serid )throws SalonServiceScheduleNotFoundException;
 	
 	public List<SalonServiceSchedule> findByScheduleDate(LocalDate scheduleDate);
+	
+	public Integer findByNoofappointments(Integer noofappointments);
 }

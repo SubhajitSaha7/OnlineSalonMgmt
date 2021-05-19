@@ -45,6 +45,27 @@ public class SalonConstraints {
 	 public static final String CUSTOMER_DETAILS_ADDED = "Customer details added";
 	 
 	 public static final String CUSTOMER_NOT_EXIST = "Customer does not exist" ;
+	 
+	 public static final String APPOINTMENT_NOT_EXIST = "Appointment does not exist for Appointment Id";
+		
+		public static final String APPOINTMENT_NOT_FOUND = "No appointment found";
+		
+		public static final String NO_APPOINTMENT_FOUND_FOR_SCHEDULE_ID = "No appointment found for Schedule Id";
+		
+		public static final String NO_APPOINTMENT_FOUND_FOR_CUSTOMER_ID = "No appointment found for Customer Id";
+		
+		
+		public static final String APPOINTMENT_EMPTY = "No appointment found";
+		
+		public static final String APPOINTMENT_CREATED = "Appointment created";
+		
+		public static final String APPOINTMENT_DELETED = "Appointment deleted";
+		
+		public static final String APPOINTMENT_EDITTED = "Appointment Edited";
+		
+		public static final String APPOINTMENT_CANCELLED = "Appointment Cancelled";
+
+		public static final String CUSTOMER_NOT_FOUND = "Customer Not Found";
 	
 
 }
