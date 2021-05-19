@@ -18,6 +18,7 @@ import com.cg.salon.exceptions.AppointmentNotFoundException;
 import com.cg.salon.exceptions.CustomerNotFoundException;
 import com.cg.salon.exceptions.PaymentNotFoundException;
 import com.cg.salon.exceptions.SalonServiceScheduleNotFoundException;
+import com.cg.util.SalonConstraints;
 
 @Service("paymentservice")
 public class PaymentServiceImpl implements IPaymentService{
@@ -35,8 +36,6 @@ public class PaymentServiceImpl implements IPaymentService{
 		payment.setPaymentId(dto.getPaymentId());
 		payment.setType(dto.getType());
 		payment.setStatus(dto.getStatus());
-		payment.setBankAccount(dto.getBankAccount());
-		
 		Payment savedpayment = paymentdao.save(payment);
 		return savedpayment.getPaymentId();
 		}
@@ -46,19 +45,15 @@ public class PaymentServiceImpl implements IPaymentService{
 		
 		List<Payment> pid= paymentdao.viewPaymentByAppointmentId(aid);
 		if (pid.isEmpty())
-			throw new PaymentNotFoundException("No Payment Details found");
+			throw new PaymentNotFoundException(SalonConstraints.PAYMENT_NOT_FOUND);
 		return pid;
 	}
-	
-	
-	
-	
 
 	@Override
 	public Payment viewPaymentByPaymentId(long pid) throws PaymentNotFoundException {
 		Optional<Payment> optservice = paymentdao.findById(pid);
 		if (!optservice.isPresent())
-			throw new PaymentNotFoundException("Payment does not exists for "+pid);
+			throw new PaymentNotFoundException(SalonConstraints.PAYMENT_NOT_EXIST+pid);
 		return optservice.get();
 	}
 
@@ -67,7 +62,7 @@ public class PaymentServiceImpl implements IPaymentService{
 	public List<Payment> viewAllPayment() throws PaymentNotFoundException {
 		List<Payment> lst=paymentdao.findAll();
 		if (lst.isEmpty())
-			throw new PaymentNotFoundException("No Payment Details found");
+			throw new PaymentNotFoundException(SalonConstraints.PAYMENT_NOT_FOUND);
 		return lst;
    
 	}

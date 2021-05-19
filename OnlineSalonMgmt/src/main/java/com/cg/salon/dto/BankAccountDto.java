@@ -27,22 +27,15 @@ public class BankAccountDto {
 	private Integer cvvNo;
 	@Pattern(regexp = "^[A-Z]{4}0[A-Z0-9]{6}$", message = "Invalid IFSC code")
 	private String ifscNo;
-
-	public BankAccountDto( String cardnumber, Double amount, String bankName, String cardName,
-			LocalDate expiryDate, Integer cvvNo, String ifscNo) {
-		super();
+    
 	
-		this.cardnumber = cardnumber;
-		this.amount = amount;
-		this.bankName = bankName;
-		this.cardName = cardName;
-		this.expiryDate = expiryDate;
-		this.cvvNo = cvvNo;
-		this.ifscNo=ifscNo;
+
+	public BankAccountDto() {
+		
+		super();
 	}
 
 	
-
 	public String getCardnumber() {
 		return cardnumber;
 	}
@@ -79,13 +72,9 @@ public class BankAccountDto {
 		return cardName;
 	}
 
-	public BankAccountDto() {
-		super();
-	}
 
 
-
-	public void setCardName(String cardName) {
+	public void setCardName(String cardName) { 
 		this.cardName = cardName;
 	}
 

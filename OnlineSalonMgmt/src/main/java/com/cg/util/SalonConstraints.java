@@ -17,4 +17,18 @@ public class SalonConstraints {
 	public static final String CANCELLED = "Cancelled";
 	
 	public static final String AVAILABLE = "Available";
+	
+	public static final String BANK_ACCOUNT_NOT_FOUND= "Bank Account not found";
+	
+	public static final String BANK_ACCOUNT_ADDED = "Bank Account Created Successfully.";
+	
+	public static final String BANK_ACCOUNT_EDITED = "Bank Account Edited Successfully .";
+	
+	public static final String PAYMENT_NOT_FOUND = " No Payment details found.";
+	
+	public static final String PAYMENT_NOT_EXIST = " Payment details does not exist.";
+	
+	public static final String PAYMENT_ADDED = "Payment Successfull.";
+	
+	
 }

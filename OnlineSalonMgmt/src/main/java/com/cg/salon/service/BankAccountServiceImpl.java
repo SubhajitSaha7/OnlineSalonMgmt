@@ -11,6 +11,7 @@ import com.cg.salon.dao.IBankAccountDao;
 import com.cg.salon.dto.BankAccountDto;
 import com.cg.salon.entity.BankAccount;
 import com.cg.salon.exceptions.BankAccountNotFoundException;
+import com.cg.util.SalonConstraints;
 
 @Service("BankAccount")
 public class BankAccountServiceImpl implements IBankAccountService{
@@ -38,11 +39,11 @@ public class BankAccountServiceImpl implements IBankAccountService{
 	}
 	
 	@Override
-	public BankAccount viewBankAccountBycvvNo(Integer cvvNo)throws BankAccountNotFoundException{
+	public BankAccount viewBankAccountBycvvNo(int cvvNo)throws BankAccountNotFoundException{
 		
 		Optional<BankAccount> optservice=bankAccountdao.findById(cvvNo);
 		if(!optservice.isPresent())
-			throw new BankAccountNotFoundException("BankAccount not found");
+			throw new BankAccountNotFoundException(SalonConstraints.BANK_ACCOUNT_NOT_FOUND);
 		return optservice.get();
 		
 	}
@@ -54,7 +55,7 @@ public class BankAccountServiceImpl implements IBankAccountService{
 		Optional<BankAccount> optservice=bankAccountdao.findById(dto.getCvvNo());
 		if(!optservice.isPresent())
 		  
-			throw new BankAccountNotFoundException("BankAccount not found");
+			throw new BankAccountNotFoundException(SalonConstraints.BANK_ACCOUNT_NOT_FOUND);
 		
         BankAccount bankacc=optservice.get();
        	bankacc.setAmount(dto.getAmount());

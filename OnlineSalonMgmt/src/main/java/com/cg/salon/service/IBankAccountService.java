@@ -6,9 +6,9 @@ import com.cg.salon.exceptions.BankAccountNotFoundException;
 
 public interface IBankAccountService{
 	
-	public Integer addBankAccount(BankAccountDto dto) ;
+	public Integer  addBankAccount(BankAccountDto dto) ;
 	
-	public BankAccount viewBankAccountBycvvNo(Integer cvvNo)throws BankAccountNotFoundException;
+	public BankAccount viewBankAccountBycvvNo(int cvvNo)throws BankAccountNotFoundException;
 	
 	public boolean editBankAccount(BankAccountDto dto)throws BankAccountNotFoundException;
 	

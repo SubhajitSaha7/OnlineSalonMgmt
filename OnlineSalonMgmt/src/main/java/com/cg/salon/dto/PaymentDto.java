@@ -20,9 +20,7 @@ public class PaymentDto {
 	
 	private String status;
 	 
-	private Appointment appointment;
-	
-	private BankAccount bankAccount;
+
 	
 	
 	public long getPaymentId() {
@@ -34,12 +32,7 @@ public class PaymentDto {
 	public String getType() {
 		return type;
 	}
-	public Appointment getAppointment() {
-		return appointment;
-	}
-	public void setAppointment(Appointment appointment) {
-		this.appointment = appointment;
-	}
+	
 	public void setType(String type) {
 		this.type = type;
 	}
@@ -50,25 +43,12 @@ public class PaymentDto {
 		this.status = status;
 	}
 	
-	public BankAccount getBankAccount() {
-		return bankAccount;
-	}
-	public void setBankAccount(BankAccount bankAccount) {
-		this.bankAccount = bankAccount;
-	}
 	
 	public PaymentDto() {
 		super();
 		
 	}
-	public PaymentDto(long paymentId, String type, String status, Appointment appointment, BankAccount bankAccount) {
-		super();
-		this.paymentId = paymentId;
-		this.type = type;
-		this.status = status;
-		this.appointment = appointment;
-		this.bankAccount = bankAccount;
-	}
+	
 	
 
 }
