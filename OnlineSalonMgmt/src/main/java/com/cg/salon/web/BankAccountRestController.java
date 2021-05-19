@@ -36,6 +36,7 @@ public class BankAccountRestController {
 		
 		return new BankAccountSuccessMessage(SalonConstraints.BANK_ACCOUNT_ADDED + bid);
 		
+		
 	}	
 	
 	@PutMapping("editbankaccount")
