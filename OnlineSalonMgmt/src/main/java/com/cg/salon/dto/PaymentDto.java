@@ -14,21 +14,40 @@ import com.cg.salon.entity.BankAccount;
 
 public class PaymentDto {
 
-	private long paymentId;
+	private Integer paymentId;
 
 	private String type;
 
 	private String status;
 
-	private Appointment appointment;
 
-	private BankAccount bankAccount;
+	private Integer appointmentId;
+	
 
-	public long getPaymentId() {
+	private Integer cvvNo;
+
+
+	public Integer getAppointmentId() {
+		return appointmentId;
+	}
+
+	public void setAppointmentId(Integer appointmentId) {
+		this.appointmentId = appointmentId;
+	}
+
+	public Integer getCvvNo() {
+		return cvvNo;
+	}
+
+	public void setCvvNo(Integer cvvNo) {
+		this.cvvNo = cvvNo;
+	}
+
+	public Integer getPaymentId() {
 		return paymentId;
 	}
 
-	public void setPaymentId(long paymentId) {
+	public void setPaymentId(Integer paymentId) {
 		this.paymentId = paymentId;
 	}
 
@@ -36,13 +55,9 @@ public class PaymentDto {
 		return type;
 	}
 
-	public Appointment getAppointment() {
-		return appointment;
-	}
 
-	public void setAppointment(Appointment appointment) {
-		this.appointment = appointment;
-	}
+	
+
 
 	public void setType(String type) {
 		this.type = type;
@@ -56,26 +71,14 @@ public class PaymentDto {
 		this.status = status;
 	}
 
-	public BankAccount getBankAccount() {
-		return bankAccount;
-	}
 
-	public void setBankAccount(BankAccount bankAccount) {
-		this.bankAccount = bankAccount;
-	}
+	
 
 	public PaymentDto() {
 		super();
 
 	}
 
-	public PaymentDto(long paymentId, String type, String status, Appointment appointment, BankAccount bankAccount) {
-		super();
-		this.paymentId = paymentId;
-		this.type = type;
-		this.status = status;
-		this.appointment = appointment;
-		this.bankAccount = bankAccount;
-	}
+	
 
 }

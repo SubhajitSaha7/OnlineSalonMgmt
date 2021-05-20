@@ -17,6 +17,7 @@ import com.cg.salon.dto.PaymentSuccessMessage;
 
 import com.cg.salon.entity.Payment;
 import com.cg.salon.exceptions.AppointmentNotFoundException;
+import com.cg.salon.exceptions.BankAccountNotFoundException;
 import com.cg.salon.exceptions.PaymentNotFoundException;
 
 import com.cg.salon.exceptions.ValidatePaymentException;
@@ -32,7 +33,8 @@ public class PaymentRestController {
 
 	@PostMapping("addpaymentservice")
 	public PaymentSuccessMessage addPayment(@Valid @RequestBody PaymentDto paymentdto, BindingResult br)
-			throws ValidatePaymentException, PaymentNotFoundException {
+			throws ValidatePaymentException, PaymentNotFoundException, AppointmentNotFoundException,
+			BankAccountNotFoundException {
 
 		if (br.hasErrors())
 			throw new ValidatePaymentException(br.getFieldErrors());
@@ -42,19 +44,12 @@ public class PaymentRestController {
 
 	}
 
-	@GetMapping("viewbyPaymentid/{Paymentid}")
-	public Payment viewPaymentByPaymentId(@PathVariable("pid") long paymentId) throws PaymentNotFoundException {
+	@GetMapping("viewbypaymentid/{pid}")
+	public Payment viewPaymentByPaymentId(@PathVariable("pid") Integer paymentId) throws PaymentNotFoundException {
 		return service.viewPaymentByPaymentId(paymentId);
 	}
 
-	/*
-	 * @GetMapping("viewbyAppointmentid/{Appointmentid}") public List<Payment>
-	 * viewPaymentByAppointmentId(@PathVariable("aid") int appointmentId) throws
-	 * PaymentNotFoundException, AppointmentNotFoundException { return
-	 * service.viewPaymentByAppointmentId(appointmentId); }
-	 */
-
-	@GetMapping("viewAllPayment")
+	@GetMapping("viewallpayment")
 	public List<Payment> viewAllPayment() throws PaymentNotFoundException, AppointmentNotFoundException {
 		return service.viewAllPayment();
 	}

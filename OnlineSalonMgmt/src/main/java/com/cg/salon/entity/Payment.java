@@ -19,7 +19,7 @@ public class Payment {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq1")
 	@SequenceGenerator(name = "seq1", sequenceName = "payment_seq1", allocationSize = 1)
 	@Column(name = "payment_id")
-	private long paymentId;
+	private Integer paymentId;
 
 	@Column(name = "payment_type", length = 25, nullable = false)
 	private String type;
@@ -39,7 +39,7 @@ public class Payment {
 		return paymentId;
 	}
 
-	public void setPaymentId(long paymentId) {
+	public void setPaymentId(Integer paymentId) {
 		this.paymentId = paymentId;
 	}
 
@@ -65,6 +65,14 @@ public class Payment {
 
 	public void setBankAccount(BankAccount bankAccount) {
 		this.bankAccount = bankAccount;
+	}
+
+	public Appointment getAppointment() {
+		return appointment;
+	}
+
+	public void setAppointment(Appointment appointment) {
+		this.appointment = appointment;
 	}
 
 	public Payment() {
