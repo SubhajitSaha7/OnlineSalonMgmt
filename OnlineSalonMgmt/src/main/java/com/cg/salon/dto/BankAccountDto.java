@@ -9,33 +9,27 @@ import javax.validation.constraints.Pattern;
 
 public class BankAccountDto {
 
-	
 	private String cardnumber;
-	
-	@Min(value = 500,message = "Bank balance must be atleast 500")
+
+	@Min(value = 500, message = "Bank balance must be atleast 500")
 	private Double amount;
-	
 
 	private String bankName;
-	
-	
+
 	private String cardName;
-	
+
 	@FutureOrPresent(message = "Expiry date must not be in the past")
 	private LocalDate expiryDate;
-	
+
 	private Integer cvvNo;
 	@Pattern(regexp = "^[A-Z]{4}0[A-Z0-9]{6}$", message = "Invalid IFSC code")
 	private String ifscNo;
-    
-	
 
 	public BankAccountDto() {
-		
+
 		super();
 	}
 
-	
 	public String getCardnumber() {
 		return cardnumber;
 	}
@@ -72,9 +66,7 @@ public class BankAccountDto {
 		return cardName;
 	}
 
-
-
-	public void setCardName(String cardName) { 
+	public void setCardName(String cardName) {
 		this.cardName = cardName;
 	}
 
@@ -93,6 +85,5 @@ public class BankAccountDto {
 	public void setCvvNo(Integer cvvNo) {
 		this.cvvNo = cvvNo;
 	}
-	
-	
+
 }

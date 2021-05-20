@@ -13,19 +13,19 @@ import com.cg.salon.dto.SalonServiceErrorMessage;
 public class GlobalAdvice {
 
 	@ExceptionHandler(MethodArgumentTypeMismatchException.class)
-	@ResponseStatus(code= HttpStatus.BAD_REQUEST)
-	public SalonServiceErrorMessage handleExceptionForDate(MethodArgumentTypeMismatchException ex)
-	{
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	public SalonServiceErrorMessage handleExceptionForDate(MethodArgumentTypeMismatchException ex) {
 		if (ex.getMessage().contains("LocalDate"))
-					return new SalonServiceErrorMessage(HttpStatus.BAD_REQUEST.toString(), "Invalid Date Pattern");
-		 return new SalonServiceErrorMessage(HttpStatus.BAD_REQUEST.toString(), "It must be numeric");
+			return new SalonServiceErrorMessage(HttpStatus.BAD_REQUEST.toString(), "Invalid Date Pattern");
+		return new SalonServiceErrorMessage(HttpStatus.BAD_REQUEST.toString(), "It must be numeric");
 	}
-	
+
 	@ExceptionHandler(HttpMessageConversionException.class)
-    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-    public SalonServiceErrorMessage handleException3(HttpMessageConversionException ex) {
-        if(ex.getMessage().contains("LocalDate"))
-           return new SalonServiceErrorMessage(HttpStatus.BAD_REQUEST.toString(), "Invalid Date Pattern , follow yyyy-M-d");
-        return new SalonServiceErrorMessage(HttpStatus.BAD_REQUEST.toString(), ex.getMessage());
-    }
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	public SalonServiceErrorMessage handleException3(HttpMessageConversionException ex) {
+		if (ex.getMessage().contains("LocalDate"))
+			return new SalonServiceErrorMessage(HttpStatus.BAD_REQUEST.toString(),
+					"Invalid Date Pattern , follow yyyy-M-d");
+		return new SalonServiceErrorMessage(HttpStatus.BAD_REQUEST.toString(), ex.getMessage());
+	}
 }

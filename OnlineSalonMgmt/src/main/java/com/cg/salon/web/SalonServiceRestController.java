@@ -25,34 +25,31 @@ import com.cg.salon.exceptions.ValidateSalonServiceException;
 import com.cg.salon.service.ISalonService;
 import com.cg.util.SalonConstraints;
 
-
 @RestController
 public class SalonServiceRestController {
-	
+
 	@Autowired
 	private ISalonService service;
-	
-	Logger logger= LoggerFactory.getLogger(SalonServiceRestController.class);
-	
+
+	Logger logger = LoggerFactory.getLogger(SalonServiceRestController.class);
+
 	@PostMapping("addsalonservice")
-	public SalonServiceSuccessMessage addSalonService(@Valid @RequestBody SalonServiceDto salondto, BindingResult br) throws ValidateSalonServiceException
-	{
+	public SalonServiceSuccessMessage addSalonService(@Valid @RequestBody SalonServiceDto salondto, BindingResult br)
+			throws ValidateSalonServiceException {
 		logger.info("I am in add salon service");
-		
-	
+
 		if (br.hasErrors())
 			throw new ValidateSalonServiceException(br.getFieldErrors());
-		int sid= service.addSalonService(salondto);
-		
-		return new SalonServiceSuccessMessage(SalonConstraints.SALON_SERVICE_ADDED+ sid);
-		
-	}	
-	
+		int sid = service.addSalonService(salondto);
+
+		return new SalonServiceSuccessMessage(SalonConstraints.SALON_SERVICE_ADDED + sid);
+
+	}
+
 	@PutMapping("editsalonservice")
-	public SalonServiceSuccessMessage editSalonService(@Valid @RequestBody 	SalonServiceDto salondto, BindingResult br) throws ValidateSalonServiceException, SalonServiceNotFoundException
-	{
-		if (br.hasErrors())
-		{
+	public SalonServiceSuccessMessage editSalonService(@Valid @RequestBody SalonServiceDto salondto, BindingResult br)
+			throws ValidateSalonServiceException, SalonServiceNotFoundException {
+		if (br.hasErrors()) {
 			throw new ValidateSalonServiceException(br.getFieldErrors());
 		}
 		service.editSalonService(salondto);
@@ -60,20 +57,20 @@ public class SalonServiceRestController {
 	}
 
 	@GetMapping("viewbysalonservice/{salonservicename}")
-	public List<SalonService> viewSalonServiceByName(@PathVariable("salonservicename") String salonServiceName) throws SalonServiceNotFoundException
-	{
-	return service.viewSalonServiceByName(salonServiceName);
+	public List<SalonService> viewSalonServiceByName(@PathVariable("salonservicename") String salonServiceName)
+			throws SalonServiceNotFoundException {
+		return service.viewSalonServiceByName(salonServiceName);
 	}
-	
+
 	@GetMapping("viewbysalonserviceid/{salonserviceid}")
-	public SalonService viewSalonServiceById(@PathVariable("salonserviceid") int salonServiceId) throws SalonServiceNotFoundException
-	{
+	public SalonService viewSalonServiceById(@PathVariable("salonserviceid") int salonServiceId)
+			throws SalonServiceNotFoundException {
 		return service.viewSalonServiceById(salonServiceId);
 	}
-	
+
 	@GetMapping("viewbysalonservicelocation/{salonservicelocation}")
-	public List<SalonService> viewSalonServiceByLocation(@PathVariable("salonservicelocation") String salonServiceLocation) throws SalonServiceNotFoundException
-	{
-	return service.viewSalonServiceByLocation(salonServiceLocation);
+	public List<SalonService> viewSalonServiceByLocation(
+			@PathVariable("salonservicelocation") String salonServiceLocation) throws SalonServiceNotFoundException {
+		return service.viewSalonServiceByLocation(salonServiceLocation);
 	}
 }

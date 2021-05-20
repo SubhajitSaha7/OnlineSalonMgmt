@@ -7,6 +7,5 @@ import com.cg.salon.entity.BankAccount;
 
 @Repository("bankaccountdao")
 public interface IBankAccountDao extends JpaRepository<BankAccount, Integer> {
-	
 
 }

@@ -1,7 +1,7 @@
 package com.cg.salon.dto;
 
 public class AppointmentSuccessMessage {
-	
+
 	private String message;
 
 	public String getMessage() {

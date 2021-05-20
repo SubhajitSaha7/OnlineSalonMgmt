@@ -8,39 +8,38 @@ import javax.validation.constraints.Pattern;
 public class CustomerDto {
 
 	private Integer userId;
-	
+
 	@NotBlank(message = "Customer name must not be blank")
 	@Pattern(regexp = "([a-zA-Z]+)|([a-zA-Z]+[\\s][a-zA-Z]+)", message = "customer name must contain only alphabets")
 	private String name;
-	
+
 	@NotBlank(message = "Customer email must not be blank")
 	private String email;
-	
+
 	@NotBlank(message = "Customer contact no. must not be blank")
 	private String contactNo;
-	
+
 	private LocalDate dob;
-	
+
 	@NotBlank(message = "Customer door no. must not be blank")
 	private String doorNo;
-	
+
 	@NotBlank(message = "Customer street must not be blank")
 	private String street;
-	
+
 	@NotBlank(message = "Customer area must not be blank")
 	private String area;
-	
+
 	@NotBlank(message = "Customer city must not be blank")
 	private String city;
-	
+
 	@NotBlank(message = "Customer state must not be blank")
 	private String state;
-	
 
 	private Integer pincode;
-	
+
 	public CustomerDto() {
-		
+
 	}
 
 	public Integer getUserId() {
@@ -130,7 +129,5 @@ public class CustomerDto {
 	public void setPincode(Integer pincode) {
 		this.pincode = pincode;
 	}
-	
-	
-	
+
 }

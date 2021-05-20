@@ -1,5 +1,6 @@
 package com.cg.salon.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +17,7 @@ import com.cg.salon.dto.SalonServiceScheduleDto;
 import com.cg.salon.entity.Appointment;
 import com.cg.salon.entity.Customer;
 import com.cg.salon.entity.SalonServiceSchedule;
+import com.cg.salon.exceptions.AppointmentCancelException;
 import com.cg.salon.exceptions.AppointmentNotFoundException;
 import com.cg.salon.exceptions.CustomerNotFoundException;
 import com.cg.salon.exceptions.SalonServiceNotFoundException;
@@ -65,7 +67,8 @@ public class AppointmentServiceImpl implements IAppointmentService {
 
 	@Override
 	public Integer addAppointment(AppointmentDto appdto)
-			throws SalonServiceNotFoundException, CustomerNotFoundException, SalonServiceScheduleNotFoundException {
+			throws SalonServiceNotFoundException, CustomerNotFoundException, SalonServiceScheduleNotFoundException,
+			AppointmentNotFoundException, AppointmentCancelException {
 
 		Optional<Customer> optcust = customerdao.findById(appdto.getCustId());
 		if (!optcust.isPresent())
@@ -75,11 +78,11 @@ public class AppointmentServiceImpl implements IAppointmentService {
 		if (!optschedule.isPresent())
 			throw new SalonServiceScheduleNotFoundException(SalonConstraints.SALON_SCHEDULE_NOT_EXIST);
 
-		/*
-		 * SalonServiceSchedule schedule = null; schedule =
-		 * scheduledao.findByNoofappointments(appdto.getScheduleId())
-		 * if(optschedule.filter(null))
-		 */
+		SalonServiceSchedule schedule = optschedule.get();
+		if (schedule.getScheduleStatus().equals(SalonConstraints.CANCELLED))
+			throw new AppointmentCancelException(SalonConstraints.SCHEDULE_CANCELLED);
+		if (schedule.getNoofappointments() <= SalonConstraints.ZERO)
+			throw new AppointmentNotFoundException(SalonConstraints.SCHEDULE_SLOT_FULL);
 
 		Appointment appointment = new Appointment();
 		appointment.setAppointmentStatus(SalonConstraints.AVAILABLE);
@@ -87,41 +90,28 @@ public class AppointmentServiceImpl implements IAppointmentService {
 		appointment.setCustomer(optcust.get());
 		appointment.setSalonServiceSchedule(optschedule.get());
 		Appointment savedAppointment = appointmentdao.save(appointment);
+		schedule.setNoofappointments(schedule.getNoofappointments() - SalonConstraints.ONE);
+		scheduledao.save(schedule);
 		return savedAppointment.getAppointmentId();
 
 	}
 
 	@Override
 	@Transactional
-	public boolean editAppointment(AppointmentDto appdto) throws SalonServiceNotFoundException,
-			AppointmentNotFoundException, CustomerNotFoundException, SalonServiceScheduleNotFoundException {
+	public boolean cancelAppointment(int appid) throws SalonServiceNotFoundException, AppointmentNotFoundException,
+			CustomerNotFoundException, SalonServiceScheduleNotFoundException, AppointmentCancelException {
 
-		Optional<Appointment> optapp = appointmentdao.findById(appdto.getAppointmentId());
+		Optional<Appointment> optapp = appointmentdao.findById(appid);
 		if (!optapp.isPresent())
 			throw new AppointmentNotFoundException(SalonConstraints.APPOINTMENT_NOT_FOUND);
 
-		Optional<Customer> optcust = customerdao.findById(appdto.getCustId());
-		if (!optcust.isPresent())
-			throw new CustomerNotFoundException(SalonConstraints.CUSTOMER_NOT_FOUND);
-
-		Optional<SalonServiceSchedule> optschedule = scheduledao.findById(appdto.getScheduleId());
-		if (!optschedule.isPresent())
-			throw new SalonServiceScheduleNotFoundException(SalonConstraints.SALON_SCHEDULE_NOT_EXIST);
-
 		Appointment appointment = optapp.get();
-		appointment.setAppointmentStatus(appdto.getAppointmentStatus());
-		appointment.setPreferredDate(appdto.getPreferredDate());
+		if (appointment.getPreferredDate().isBefore(LocalDate.now())
+				|| appointment.getPreferredDate().isEqual(LocalDate.now()))
+			throw new AppointmentCancelException(SalonConstraints.APPOINTMENT_NOT_CANCELLED);
+		appointment.setAppointmentStatus(SalonConstraints.APPOINTMENT_CANCELLED);
 
-		Appointment persistedappointment = appointmentdao.save(appointment);
-		return true;
-	}
-
-	@Override
-	public boolean removeAppointment(int appointmentId) throws AppointmentNotFoundException {
-		Appointment appointment = viewAppointmentById(appointmentId);
-		if (appointment == null)
-			throw new AppointmentNotFoundException(SalonConstraints.APPOINTMENT_DELETED);
-		appointmentdao.delete(appointment);
+		appointmentdao.save(appointment);
 		return true;
 	}
 

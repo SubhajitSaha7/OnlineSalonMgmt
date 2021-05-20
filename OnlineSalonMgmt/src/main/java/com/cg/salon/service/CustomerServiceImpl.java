@@ -19,13 +19,13 @@ public class CustomerServiceImpl implements ICustomerService {
 
 	@Autowired
 	private ICustomerDao customerdao;
-	
+
 	@Transactional
 	@Override
 	public Integer addCustomer(CustomerDto dto) {
-		
+
 		Customer customer = new Customer();
-		
+
 		customer.setName(dto.getName());
 		customer.setContactNo(dto.getContactNo());
 		customer.setEmail(dto.getEmail());
@@ -36,19 +36,19 @@ public class CustomerServiceImpl implements ICustomerService {
 		customer.setPincode(dto.getPincode());
 		customer.setState(dto.getState());
 		customer.setStreet(dto.getStreet());
-		
+
 		Customer savedcustomer = customerdao.save(customer);
 		return savedcustomer.getUserId();
 	}
-	
+
 	@Override
-	public Customer viewCustomerById(int cid)throws CustomerNotFoundException {
+	public Customer viewCustomerById(int cid) throws CustomerNotFoundException {
 		Optional<Customer> optservice = customerdao.findById(cid);
 		if (!optservice.isPresent())
 			throw new CustomerNotFoundException(SalonConstraints.CUSTOMER_NOT_EXIST + cid);
 		return optservice.get();
 	}
-	
+
 	@Override
 	public List<Customer> viewCustomerByName(String name) throws CustomerNotFoundException {
 		List<Customer> lst = customerdao.findByName(name);
@@ -56,33 +56,33 @@ public class CustomerServiceImpl implements ICustomerService {
 			throw new CustomerNotFoundException(SalonConstraints.CUSTOMER_NOT_EXIST);
 		return lst;
 	}
-	
+
 	@Override
-	public List<Customer> viewCustomerByCity(String city)throws CustomerNotFoundException {
+	public List<Customer> viewCustomerByCity(String city) throws CustomerNotFoundException {
 		List<Customer> lst = customerdao.findByCity(city);
 		if (lst.isEmpty())
 			throw new CustomerNotFoundException(SalonConstraints.CUSTOMER_NOT_EXIST);
 		return lst;
 	}
-	
+
 	@Override
-	public List<Customer> viewCustomerByContactNo(String contactNo)throws CustomerNotFoundException {
+	public List<Customer> viewCustomerByContactNo(String contactNo) throws CustomerNotFoundException {
 		List<Customer> lst = customerdao.findByContactNo(contactNo);
 		if (lst.isEmpty())
 			throw new CustomerNotFoundException(SalonConstraints.CUSTOMER_NOT_EXIST);
 		return lst;
 	}
-	
+
 	@Transactional
 	@Override
-	public boolean editCustomerDetails(CustomerDto dto)throws CustomerNotFoundException {
-		
+	public boolean editCustomerDetails(CustomerDto dto) throws CustomerNotFoundException {
+
 		Optional<Customer> optservice = customerdao.findById(dto.getUserId());
 		if (!optservice.isPresent())
 			throw new CustomerNotFoundException(SalonConstraints.CUSTOMER_NOT_EXIST);
-		
+
 		Customer customer = optservice.get();
-		
+
 		customer.setName(dto.getName());
 		customer.setContactNo(dto.getContactNo());
 		customer.setEmail(dto.getEmail());
@@ -93,7 +93,7 @@ public class CustomerServiceImpl implements ICustomerService {
 		customer.setPincode(dto.getPincode());
 		customer.setState(dto.getState());
 		customer.setStreet(dto.getStreet());
-		
+
 		Customer persistedCustomer = customerdao.save(customer);
 		return true;
 	}

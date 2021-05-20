@@ -24,35 +24,32 @@ public class BankAccountRestController {
 
 	@Autowired
 	private IBankAccountService service;
-	
+
 	@PostMapping("addbankaccountservice")
-	public BankAccountSuccessMessage addBankAcc(@Valid @RequestBody BankAccountDto bankdto, BindingResult br) 
-			throws ValidateBankAccountException
-	{
-	
+	public BankAccountSuccessMessage addBankAcc(@Valid @RequestBody BankAccountDto bankdto, BindingResult br)
+			throws ValidateBankAccountException {
+
 		if (br.hasErrors())
 			throw new ValidateBankAccountException(br.getFieldErrors());
-		int bid= service.addBankAccount(bankdto);
-		
+		int bid = service.addBankAccount(bankdto);
+
 		return new BankAccountSuccessMessage(SalonConstraints.BANK_ACCOUNT_ADDED + bid);
-		
-		
-	}	
-	
+
+	}
+
 	@PutMapping("editbankaccount")
-	public BankAccountSuccessMessage editBankAcc(@Valid @RequestBody BankAccountDto bankdto, BindingResult br) throws ValidateBankAccountException, BankAccountNotFoundException
-	{
-		if (br.hasErrors())
-		{
+	public BankAccountSuccessMessage editBankAcc(@Valid @RequestBody BankAccountDto bankdto, BindingResult br)
+			throws ValidateBankAccountException, BankAccountNotFoundException {
+		if (br.hasErrors()) {
 			throw new ValidateBankAccountException(br.getFieldErrors());
 		}
 		service.editBankAccount(bankdto);
 		return new BankAccountSuccessMessage(SalonConstraints.BANK_ACCOUNT_EDITED);
 	}
-	
+
 	@GetMapping("viewbybankaccountid/{cvvno}")
-	public BankAccount viewBankAccountByCvvNo(@PathVariable("cvvno") int BankAccountCvvNo) throws BankAccountNotFoundException
-	{
+	public BankAccount viewBankAccountByCvvNo(@PathVariable("cvvno") int BankAccountCvvNo)
+			throws BankAccountNotFoundException {
 		return service.viewBankAccountBycvvNo(BankAccountCvvNo);
 	}
 }

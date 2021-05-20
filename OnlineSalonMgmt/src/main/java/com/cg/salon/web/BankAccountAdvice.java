@@ -14,21 +14,19 @@ import com.cg.salon.exceptions.BankAccountNotFoundException;
 import com.cg.salon.exceptions.ValidateBankAccountException;
 
 @RestControllerAdvice
-public class BankAccountAdvice extends GlobalAdvice{
+public class BankAccountAdvice extends GlobalAdvice {
 
-@ExceptionHandler(BankAccountNotFoundException.class)
-@ResponseStatus(code=HttpStatus.NOT_FOUND)
-public BankAccountErrorMessage handleExceptionEmpNotFound(BankAccountNotFoundException ex)
-{
-	return new BankAccountErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
-}
+	@ExceptionHandler(BankAccountNotFoundException.class)
+	@ResponseStatus(code = HttpStatus.NOT_FOUND)
+	public BankAccountErrorMessage handleExceptionEmpNotFound(BankAccountNotFoundException ex) {
+		return new BankAccountErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
+	}
 
-@ExceptionHandler(ValidateBankAccountException.class)
-@ResponseStatus(code = HttpStatus.BAD_REQUEST)
-public BankAccountErrorMessage handleException2(ValidateBankAccountException ex) {
-    List<String> errors = ex.getErrors().stream()
-            .map(err->err.getDefaultMessage()).collect(Collectors.toList());
-    return new BankAccountErrorMessage(HttpStatus.BAD_REQUEST.toString(), errors);
-}
+	@ExceptionHandler(ValidateBankAccountException.class)
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	public BankAccountErrorMessage handleException2(ValidateBankAccountException ex) {
+		List<String> errors = ex.getErrors().stream().map(err -> err.getDefaultMessage()).collect(Collectors.toList());
+		return new BankAccountErrorMessage(HttpStatus.BAD_REQUEST.toString(), errors);
+	}
 
 }

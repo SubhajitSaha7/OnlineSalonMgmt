@@ -12,23 +12,20 @@ import com.cg.salon.dto.SalonServiceScheduleErrorMessage;
 import com.cg.salon.exceptions.SalonServiceScheduleNotFoundException;
 import com.cg.salon.exceptions.ValidateSalonServiceScheduleException;
 
-
 @RestControllerAdvice
-public class SalonServiceScheduleAdvice extends GlobalAdvice{
-	
+public class SalonServiceScheduleAdvice extends GlobalAdvice {
+
 	@ExceptionHandler(SalonServiceScheduleNotFoundException.class)
-	@ResponseStatus(code =HttpStatus.NOT_FOUND)
-	public SalonServiceScheduleErrorMessage handleExceptionEmpNotFound(SalonServiceScheduleNotFoundException ex)
-	{
+	@ResponseStatus(code = HttpStatus.NOT_FOUND)
+	public SalonServiceScheduleErrorMessage handleExceptionEmpNotFound(SalonServiceScheduleNotFoundException ex) {
 		return new SalonServiceScheduleErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
 	}
 
 	@ExceptionHandler(ValidateSalonServiceScheduleException.class)
-    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-    public SalonServiceScheduleErrorMessage handleException2(ValidateSalonServiceScheduleException ex) {
-        List<String> errors = ex.getErrors().stream()
-                .map(err->err.getDefaultMessage()).collect(Collectors.toList());
-        return new SalonServiceScheduleErrorMessage(HttpStatus.BAD_REQUEST.toString(), errors);
-    }
-	
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	public SalonServiceScheduleErrorMessage handleException2(ValidateSalonServiceScheduleException ex) {
+		List<String> errors = ex.getErrors().stream().map(err -> err.getDefaultMessage()).collect(Collectors.toList());
+		return new SalonServiceScheduleErrorMessage(HttpStatus.BAD_REQUEST.toString(), errors);
+	}
+
 }

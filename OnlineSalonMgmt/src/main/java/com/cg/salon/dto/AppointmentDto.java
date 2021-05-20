@@ -8,7 +8,7 @@ import com.cg.salon.entity.Customer;
 import com.cg.salon.entity.SalonServiceSchedule;
 
 public class AppointmentDto {
-	
+
 	private Integer appointmentId;
 
 	public Integer getAppointmentId() {

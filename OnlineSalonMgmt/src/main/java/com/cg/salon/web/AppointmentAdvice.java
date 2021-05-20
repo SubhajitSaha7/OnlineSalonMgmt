@@ -15,29 +15,25 @@ import com.cg.salon.exceptions.AppointmentNotFoundException;
 import com.cg.salon.exceptions.ValidateAppointmentException;
 
 @RestControllerAdvice
-public class AppointmentAdvice extends GlobalAdvice{
-	
+public class AppointmentAdvice extends GlobalAdvice {
+
 	@ExceptionHandler(AppointmentNotFoundException.class)
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
-	public AppointmentErrorMessage handleExceptionAppointmentNotFound(AppointmentNotFoundException ex)
-	{
+	public AppointmentErrorMessage handleExceptionAppointmentNotFound(AppointmentNotFoundException ex) {
 		return new AppointmentErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
 	}
-	
+
 	@ExceptionHandler(ValidateAppointmentException.class)
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
-	public AppointmentErrorMessage handleException2(ValidateAppointmentException ex)
-	{
+	public AppointmentErrorMessage handleException2(ValidateAppointmentException ex) {
 		List<String> errors = ex.getErrors().stream().map(err -> err.getDefaultMessage()).collect(Collectors.toList());
 		return new AppointmentErrorMessage(HttpStatus.BAD_REQUEST.toString(), errors);
 	}
-	
 
 	@ExceptionHandler(ServiceNotFoundException.class)
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
-	public AppointmentErrorMessage handleExceptionServiceNotFound(ServiceNotFoundException ex)
-	{
+	public AppointmentErrorMessage handleExceptionServiceNotFound(ServiceNotFoundException ex) {
 		return new AppointmentErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
 	}
-	
+
 }

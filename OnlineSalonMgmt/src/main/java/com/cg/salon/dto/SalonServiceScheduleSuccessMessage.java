@@ -16,5 +16,5 @@ public class SalonServiceScheduleSuccessMessage {
 		super();
 		this.message = message;
 	}
-	
+
 }

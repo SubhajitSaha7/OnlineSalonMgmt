@@ -11,9 +11,9 @@ public class CustomerSuccessMessage {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
+
 	public CustomerSuccessMessage(String message) {
 		super();
 		this.message = message;
-	} 
+	}
 }

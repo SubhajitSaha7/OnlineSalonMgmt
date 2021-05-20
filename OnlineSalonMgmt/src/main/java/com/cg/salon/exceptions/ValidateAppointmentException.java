@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.springframework.validation.FieldError;
 
-public class ValidateAppointmentException extends Exception{
+public class ValidateAppointmentException extends Exception {
 	private List<FieldError> errors;
 
 	public ValidateAppointmentException() {
 		super();
 	}
-	
+
 	public ValidateAppointmentException(String message) {
 		super(message);
 	}
@@ -19,9 +19,9 @@ public class ValidateAppointmentException extends Exception{
 		super();
 		this.errors = errors;
 	}
-	
+
 	public List<FieldError> getErrors() {
 		return errors;
 	}
-	
+
 }

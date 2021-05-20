@@ -10,10 +10,9 @@ import org.springframework.stereotype.Repository;
 import com.cg.salon.entity.SalonService;
 
 @Repository("salonservicedao")
-public interface ISalonServiceDao extends JpaRepository<SalonService, Integer>{
-
+public interface ISalonServiceDao extends JpaRepository<SalonService, Integer> {
 
 	public List<SalonService> findByServiceName(String serviceName);
-	
+
 	public List<SalonService> findBySalonLocation(String salonLocation);
 }

@@ -14,17 +14,16 @@ import com.cg.salon.exceptions.ValidateCustomerException;
 public class CustomerAdvice extends GlobalAdvice {
 
 	@ExceptionHandler(CustomerNotFoundException.class)
-	@ResponseStatus(code =HttpStatus.NOT_FOUND)
+	@ResponseStatus(code = HttpStatus.NOT_FOUND)
 	public CustomerErrorMessage handleExceptionCustNotFound(CustomerNotFoundException ex) {
 		return new CustomerErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
 	}
-	
+
 	@ExceptionHandler(ValidateCustomerException.class)
-	@ResponseStatus(code =HttpStatus.BAD_REQUEST)
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	public CustomerErrorMessage handleExceptionNext(ValidateCustomerException ex) {
-		List<String> errors = ex.getErrors().stream()
-				.map(err->err.getDefaultMessage()).collect(Collectors.toList());
-		
+		List<String> errors = ex.getErrors().stream().map(err -> err.getDefaultMessage()).collect(Collectors.toList());
+
 		return new CustomerErrorMessage(HttpStatus.BAD_REQUEST.toString(), errors);
 	}
 }

@@ -26,40 +26,37 @@ import com.cg.util.SalonConstraints;
 
 @RestController
 public class PaymentRestController {
-	
+
 	@Autowired
 	private IPaymentService service;
-	
+
 	@PostMapping("addpaymentservice")
-	public PaymentSuccessMessage addPayment(@Valid @RequestBody PaymentDto paymentdto, BindingResult br) throws ValidatePaymentException, PaymentNotFoundException
-	{
-	
+	public PaymentSuccessMessage addPayment(@Valid @RequestBody PaymentDto paymentdto, BindingResult br)
+			throws ValidatePaymentException, PaymentNotFoundException {
+
 		if (br.hasErrors())
 			throw new ValidatePaymentException(br.getFieldErrors());
-		Long bid= service.addPayment(paymentdto);
-		
+		Long bid = service.addPayment(paymentdto);
+
 		return new PaymentSuccessMessage(SalonConstraints.PAYMENT_ADDED);
-		
+
 	}
+
 	@GetMapping("viewbyPaymentid/{Paymentid}")
-	public Payment viewPaymentByPaymentId(@PathVariable("pid") long paymentId) throws PaymentNotFoundException
-	{
+	public Payment viewPaymentByPaymentId(@PathVariable("pid") long paymentId) throws PaymentNotFoundException {
 		return service.viewPaymentByPaymentId(paymentId);
 	}
-	
-	/*@GetMapping("viewbyAppointmentid/{Appointmentid}")
-	public List<Payment> viewPaymentByAppointmentId(@PathVariable("aid") int appointmentId) throws PaymentNotFoundException, AppointmentNotFoundException
-	{
-		return service.viewPaymentByAppointmentId(appointmentId);
-	}*/
-	
+
+	/*
+	 * @GetMapping("viewbyAppointmentid/{Appointmentid}") public List<Payment>
+	 * viewPaymentByAppointmentId(@PathVariable("aid") int appointmentId) throws
+	 * PaymentNotFoundException, AppointmentNotFoundException { return
+	 * service.viewPaymentByAppointmentId(appointmentId); }
+	 */
+
 	@GetMapping("viewAllPayment")
-	public List<Payment> viewAllPayment() throws PaymentNotFoundException, AppointmentNotFoundException
-	{
+	public List<Payment> viewAllPayment() throws PaymentNotFoundException, AppointmentNotFoundException {
 		return service.viewAllPayment();
 	}
-	
 
-	
-	
 }

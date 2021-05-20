@@ -6,45 +6,38 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 public class SalonServiceDto {
-	
+
 	private Integer serviceId;
-	
-    @NotBlank(message = "Service name must not be blank")
+
+	@NotBlank(message = "Service name must not be blank")
 	@Pattern(regexp = "([a-zA-Z]+)|([a-zA-Z]+[\\s][a-zA-Z]+)", message = "service name must contain alphabets")
 	private String serviceName;
-	
-    @Min(value= 150, message = "Service price must be minimum 150.0")
+
+	@Min(value = 150, message = "Service price must be minimum 150.0")
 	private Integer servicePrice;
-	
+
 	private String serviceDuration;
-	
-	@Max(value= 20, message = "discount can be upto 20")
+
+	@Max(value = 20, message = "discount can be upto 20")
 	private Integer discount;
-	
+
 	private String salonAddress;
-	
+
 	private String salonLocation;
-	
+
 	private String salonCentreName;
-	
-	public SalonServiceDto()
-	{
-		
+
+	public SalonServiceDto() {
+
 	}
-	
-	
 
 	public Integer getServiceId() {
 		return serviceId;
 	}
 
-
-
 	public void setServiceId(Integer serviceId) {
 		this.serviceId = serviceId;
 	}
-
-
 
 	public String getServiceName() {
 		return serviceName;
@@ -101,6 +94,5 @@ public class SalonServiceDto {
 	public void setSalonCentreName(String salonCentreName) {
 		this.salonCentreName = salonCentreName;
 	}
-	
-	
+
 }

@@ -14,27 +14,24 @@ import com.cg.salon.exceptions.BankAccountNotFoundException;
 import com.cg.salon.exceptions.ValidatePaymentException;
 
 @RestControllerAdvice
-public class PaymentAdvice extends GlobalAdvice{
+public class PaymentAdvice extends GlobalAdvice {
 	@ExceptionHandler(BankAccountNotFoundException.class)
-	@ResponseStatus(code=HttpStatus.NOT_FOUND)
-	public PaymentErrorMessage handleExceptionEmpNotFound(BankAccountNotFoundException ex)
-	{
+	@ResponseStatus(code = HttpStatus.NOT_FOUND)
+	public PaymentErrorMessage handleExceptionEmpNotFound(BankAccountNotFoundException ex) {
 		return new PaymentErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
-		
+
 	}
 
 	@ExceptionHandler(ValidatePaymentException.class)
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	public PaymentErrorMessage handleException2(ValidatePaymentException ex) {
-	    List<String> errors = ex.getErrors().stream()
-	            .map(err->err.getDefaultMessage()).collect(Collectors.toList());
-	    return new PaymentErrorMessage(HttpStatus.BAD_REQUEST.toString(), errors);
+		List<String> errors = ex.getErrors().stream().map(err -> err.getDefaultMessage()).collect(Collectors.toList());
+		return new PaymentErrorMessage(HttpStatus.BAD_REQUEST.toString(), errors);
 	}
 
 	@ExceptionHandler(AppointmentNotFoundException.class)
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
-	public PaymentErrorMessage handleExceptionAppointmentNotFound(AppointmentNotFoundException ex)
-	{
+	public PaymentErrorMessage handleExceptionAppointmentNotFound(AppointmentNotFoundException ex) {
 		return new PaymentErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
 	}
 }

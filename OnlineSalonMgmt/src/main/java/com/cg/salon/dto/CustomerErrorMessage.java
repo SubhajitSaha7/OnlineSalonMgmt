@@ -6,10 +6,9 @@ public class CustomerErrorMessage {
 
 	public String status;
 	public String message;
-	
 
 	private List<String> messages;
-	
+
 	public CustomerErrorMessage(String status, List<String> messages) {
 		super();
 		this.status = status;
@@ -23,7 +22,7 @@ public class CustomerErrorMessage {
 	public void setMessages(List<String> messages) {
 		this.messages = messages;
 	}
-	
+
 	public String getStatus() {
 		return status;
 	}
@@ -39,7 +38,7 @@ public class CustomerErrorMessage {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
+
 	public CustomerErrorMessage(String status, String message) {
 		super();
 		this.status = status;

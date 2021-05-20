@@ -13,21 +13,19 @@ import com.cg.salon.exceptions.SalonServiceNotFoundException;
 import com.cg.salon.exceptions.ValidateSalonServiceException;
 
 @RestControllerAdvice
-public class SalonAdvice extends GlobalAdvice{
-	
+public class SalonAdvice extends GlobalAdvice {
+
 	@ExceptionHandler(SalonServiceNotFoundException.class)
-	@ResponseStatus(code =HttpStatus.NOT_FOUND)
-	public SalonServiceErrorMessage handleExceptionEmpNotFound(SalonServiceNotFoundException ex)
-	{
+	@ResponseStatus(code = HttpStatus.NOT_FOUND)
+	public SalonServiceErrorMessage handleExceptionEmpNotFound(SalonServiceNotFoundException ex) {
 		return new SalonServiceErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
 	}
 
 	@ExceptionHandler(ValidateSalonServiceException.class)
-    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-    public SalonServiceErrorMessage handleException2(ValidateSalonServiceException ex) {
-        List<String> errors = ex.getErrors().stream()
-                .map(err->err.getDefaultMessage()).collect(Collectors.toList());
-        return new SalonServiceErrorMessage(HttpStatus.BAD_REQUEST.toString(), errors);
-    }
-	
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	public SalonServiceErrorMessage handleException2(ValidateSalonServiceException ex) {
+		List<String> errors = ex.getErrors().stream().map(err -> err.getDefaultMessage()).collect(Collectors.toList());
+		return new SalonServiceErrorMessage(HttpStatus.BAD_REQUEST.toString(), errors);
+	}
+
 }

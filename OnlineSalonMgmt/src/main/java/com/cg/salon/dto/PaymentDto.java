@@ -20,11 +20,9 @@ public class PaymentDto {
 
 	private String status;
 
-
 	private Appointment appointment;
 
 	private BankAccount bankAccount;
-
 
 	public long getPaymentId() {
 		return paymentId;
@@ -38,7 +36,6 @@ public class PaymentDto {
 		return type;
 	}
 
-
 	public Appointment getAppointment() {
 		return appointment;
 	}
@@ -46,7 +43,6 @@ public class PaymentDto {
 	public void setAppointment(Appointment appointment) {
 		this.appointment = appointment;
 	}
-
 
 	public void setType(String type) {
 		this.type = type;
@@ -59,7 +55,6 @@ public class PaymentDto {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
 
 	public BankAccount getBankAccount() {
 		return bankAccount;
@@ -82,6 +77,5 @@ public class PaymentDto {
 		this.appointment = appointment;
 		this.bankAccount = bankAccount;
 	}
-
 
 }

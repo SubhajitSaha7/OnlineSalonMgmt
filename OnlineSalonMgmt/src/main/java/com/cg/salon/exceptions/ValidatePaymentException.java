@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.springframework.validation.FieldError;
 
-public class ValidatePaymentException extends Exception{
-	
+public class ValidatePaymentException extends Exception {
+
 	private List<FieldError> errors;
 
 	public ValidatePaymentException() {
@@ -21,11 +21,9 @@ public class ValidatePaymentException extends Exception{
 		super();
 		this.errors = errors;
 	}
-	
-	public List<FieldError> getErrors(){
+
+	public List<FieldError> getErrors() {
 		return errors;
 	}
-	
-	
-	
+
 }

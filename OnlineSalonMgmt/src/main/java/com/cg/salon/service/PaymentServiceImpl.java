@@ -21,42 +21,39 @@ import com.cg.salon.exceptions.SalonServiceScheduleNotFoundException;
 import com.cg.util.SalonConstraints;
 
 @Service("paymentservice")
-public class PaymentServiceImpl implements IPaymentService{
-	
+public class PaymentServiceImpl implements IPaymentService {
+
 	@Autowired
 	private IPaymentDao paymentdao;
-	
-	
+
 	@Override
 	@Transactional
-	public Long addPayment(PaymentDto dto) throws PaymentNotFoundException{
-		
+	public Long addPayment(PaymentDto dto) throws PaymentNotFoundException {
+
 		Payment payment = new Payment();
-		
+
 		payment.setPaymentId(dto.getPaymentId());
 		payment.setType(dto.getType());
 		payment.setStatus(dto.getStatus());
 		Payment savedpayment = paymentdao.save(payment);
 		return savedpayment.getPaymentId();
-		}
-	
+	}
 
 	@Override
 	public Payment viewPaymentByPaymentId(long pid) throws PaymentNotFoundException {
 		Optional<Payment> optservice = paymentdao.findById(pid);
 		if (!optservice.isPresent())
-			throw new PaymentNotFoundException(SalonConstraints.PAYMENT_NOT_EXIST+pid);
+			throw new PaymentNotFoundException(SalonConstraints.PAYMENT_NOT_EXIST + pid);
 		return optservice.get();
 	}
 
-
 	@Override
 	public List<Payment> viewAllPayment() throws PaymentNotFoundException {
-		List<Payment> lst=paymentdao.findAll();
+		List<Payment> lst = paymentdao.findAll();
 		if (lst.isEmpty())
 			throw new PaymentNotFoundException(SalonConstraints.PAYMENT_NOT_FOUND);
 		return lst;
-   
+
 	}
 
 	@Override
@@ -64,9 +61,5 @@ public class PaymentServiceImpl implements IPaymentService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
-	
-	
 
 }

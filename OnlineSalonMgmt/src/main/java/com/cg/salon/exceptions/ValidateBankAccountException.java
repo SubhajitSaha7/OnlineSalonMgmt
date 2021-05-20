@@ -5,16 +5,14 @@ import java.util.List;
 import org.springframework.validation.FieldError;
 
 public class ValidateBankAccountException extends Exception {
-	
-	private List<FieldError> errors;
 
-	
+	private List<FieldError> errors;
 
 	public ValidateBankAccountException() {
 		super();
-		
+
 	}
-	
+
 	public ValidateBankAccountException(String msg) {
 		super(msg);
 	}
@@ -26,6 +24,6 @@ public class ValidateBankAccountException extends Exception {
 
 	public List<FieldError> getErrors() {
 		return errors;
-	}	
+	}
 
 }

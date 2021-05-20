@@ -1,7 +1,6 @@
 package com.cg.salon.dto;
 
 public class BankAccountSuccessMessage {
-	
 
 	private String message;
 
@@ -17,6 +16,5 @@ public class BankAccountSuccessMessage {
 		super();
 		this.message = message;
 	}
-	
 
 }
