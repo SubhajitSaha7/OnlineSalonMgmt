@@ -21,7 +21,7 @@ import com.cg.salon.entity.Customer;
 import com.cg.salon.exceptions.CustomerNotFoundException;
 import com.cg.salon.exceptions.ValidateCustomerException;
 import com.cg.salon.service.ICustomerService;
-import com.cg.util.SalonConstraints;
+import com.cg.util.SalonConstants;
 
 @RestController
 public class CustomerRestController {
@@ -40,7 +40,7 @@ public class CustomerRestController {
 			throw new ValidateCustomerException(br.getFieldErrors());
 		int cid = service.addCustomer(custdto);
 
-		return new CustomerSuccessMessage(SalonConstraints.CUSTOMER_DETAILS_ADDED + cid);
+		return new CustomerSuccessMessage(SalonConstants.CUSTOMER_DETAILS_ADDED + cid);
 	}
 
 	@PutMapping("editcustomer")
@@ -51,7 +51,7 @@ public class CustomerRestController {
 			throw new ValidateCustomerException(br.getFieldErrors());
 
 		service.editCustomerDetails(custdto);
-		return new CustomerSuccessMessage(SalonConstraints.CUSTOMER_DETAILS_EDITED);
+		return new CustomerSuccessMessage(SalonConstants.CUSTOMER_DETAILS_EDITED);
 	}
 
 	@GetMapping("viewcustomerbyid/{customerid}")

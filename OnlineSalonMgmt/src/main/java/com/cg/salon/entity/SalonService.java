@@ -107,6 +107,21 @@ public class SalonService {
 	public SalonService() {
 		super();
 	}
+	
+	
+
+	public SalonService(Integer serviceId, String serviceName, Integer servicePrice, String serviceDuration,
+			Integer discount, String salonAddress, String salonLocation, String salonCentreName) {
+		super();
+		this.serviceId = serviceId;
+		this.serviceName = serviceName;
+		this.servicePrice = servicePrice;
+		this.serviceDuration = serviceDuration;
+		this.discount = discount;
+		this.salonAddress = salonAddress;
+		this.salonLocation = salonLocation;
+		this.salonCentreName = salonCentreName;
+	}
 
 	@Override
 	public String toString() {

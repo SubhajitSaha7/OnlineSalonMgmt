@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,7 @@ import com.cg.salon.entity.SalonServiceSchedule;
 import com.cg.salon.exceptions.SalonServiceNotFoundException;
 import com.cg.salon.exceptions.SalonServiceScheduleNotFoundException;
 import com.cg.salon.exceptions.ScheduleCancelException;
-import com.cg.util.SalonConstraints;
+import com.cg.util.SalonConstants;
 
 @Service("salonserviceschedule")
 public class SalonServiceScheduleImpl implements ISalonServiceSchedule {
@@ -28,12 +30,17 @@ public class SalonServiceScheduleImpl implements ISalonServiceSchedule {
 	@Autowired
 	private ISalonServiceDao salonservicedao;
 
+	Logger logger = LoggerFactory.getLogger(SalonServiceScheduleImpl.class);
+
 	@Transactional
 	@Override
 	public Integer createSchedule(SalonServiceScheduleDto dto) throws SalonServiceNotFoundException {
 		Optional<SalonService> optsalon = salonservicedao.findById(dto.getSalonServiceId());
-		if (!optsalon.isPresent())
-			throw new SalonServiceNotFoundException(SalonConstraints.SALON_SERVICE_NOT_FOUND);
+
+		if (!optsalon.isPresent()) {
+			logger.error(SalonConstants.SALON_SERVICE_NOT_FOUND);
+			throw new SalonServiceNotFoundException(SalonConstants.SALON_SERVICE_NOT_FOUND);
+		}
 
 		SalonServiceSchedule schedule = new SalonServiceSchedule();
 
@@ -41,9 +48,10 @@ public class SalonServiceScheduleImpl implements ISalonServiceSchedule {
 		schedule.setSlot(dto.getSlot());
 		schedule.setSalonService(optsalon.get());
 		schedule.setNoofappointments(dto.getNoofappointments());
-		schedule.setScheduleStatus(SalonConstraints.AVAILABLE);
+		schedule.setScheduleStatus(SalonConstants.AVAILABLE);
 
 		SalonServiceSchedule savedschedule = salonservicescheduledao.save(schedule);
+		logger.info(SalonConstants.SCHEDULE_ADDED);
 		return savedschedule.getServiceScheduleId();
 	}
 
@@ -52,7 +60,7 @@ public class SalonServiceScheduleImpl implements ISalonServiceSchedule {
 
 		Optional<SalonServiceSchedule> optschedule = salonservicescheduledao.findById(sid);
 		if (!optschedule.isPresent())
-			throw new SalonServiceScheduleNotFoundException(SalonConstraints.SALON_SCHEDULE_NOT_EXIST + sid);
+			throw new SalonServiceScheduleNotFoundException(SalonConstants.SALON_SCHEDULE_NOT_EXIST + sid);
 		return optschedule.get();
 	}
 
@@ -62,7 +70,7 @@ public class SalonServiceScheduleImpl implements ISalonServiceSchedule {
 
 		List<SalonServiceSchedule> lstschedules = salonservicescheduledao.findByScheduleDate(scheduleDate);
 		if (lstschedules.isEmpty())
-			throw new SalonServiceScheduleNotFoundException(SalonConstraints.SALON_SCHEDULE_EMPTY);
+			throw new SalonServiceScheduleNotFoundException(SalonConstants.SALON_SCHEDULE_EMPTY);
 		return lstschedules;
 	}
 
@@ -72,7 +80,7 @@ public class SalonServiceScheduleImpl implements ISalonServiceSchedule {
 
 		List<SalonServiceSchedule> id = salonservicescheduledao.viewSalonServiceScheduleByServiceId(serid);
 		if (id.isEmpty())
-			throw new SalonServiceScheduleNotFoundException(SalonConstraints.SALON_SCHEDULE_NOT_EXIST);
+			throw new SalonServiceScheduleNotFoundException(SalonConstants.SALON_SCHEDULE_NOT_EXIST);
 		return id;
 
 	}
@@ -84,15 +92,16 @@ public class SalonServiceScheduleImpl implements ISalonServiceSchedule {
 
 		Optional<SalonServiceSchedule> optservice = salonservicescheduledao.findById(scheduleId);
 		if (!optservice.isPresent())
-			throw new SalonServiceScheduleNotFoundException(SalonConstraints.SALON_SCHEDULE_NOT_EXIST);
+			throw new SalonServiceScheduleNotFoundException(SalonConstants.SALON_SCHEDULE_NOT_EXIST);
 
 		SalonServiceSchedule schedule = optservice.get();
 		if (schedule.getScheduleDate().isBefore(LocalDate.now()) || schedule.getScheduleDate().isEqual(LocalDate.now()))
-			throw new ScheduleCancelException(SalonConstraints.SCHEDULE_NOT_CANCEL);
-		schedule.setScheduleStatus(SalonConstraints.CANCELLED);
+			throw new ScheduleCancelException(SalonConstants.SCHEDULE_NOT_CANCEL);
+		schedule.setScheduleStatus(SalonConstants.CANCELLED);
 
 		salonservicescheduledao.save(schedule);
 
 		return true;
 	}
+	
 }

@@ -24,7 +24,7 @@ import com.cg.salon.exceptions.CustomerNotFoundException;
 import com.cg.salon.exceptions.PaymentNotFoundException;
 import com.cg.salon.exceptions.SalonServiceNotFoundException;
 import com.cg.salon.exceptions.SalonServiceScheduleNotFoundException;
-import com.cg.util.SalonConstraints;
+import com.cg.util.SalonConstants;
 
 @Service("paymentservice")
 public class PaymentServiceImpl implements IPaymentService {
@@ -44,17 +44,17 @@ public class PaymentServiceImpl implements IPaymentService {
 
 		Optional<Appointment> optsalon = appdao.findById(dto.getAppointmentId());
 		if (!optsalon.isPresent())
-			throw new AppointmentNotFoundException(SalonConstraints.APPOINTMENT_NOT_FOUND);
+			throw new AppointmentNotFoundException(SalonConstants.APPOINTMENT_NOT_FOUND);
 
 		Optional<BankAccount> optbank = bankaccdao.findById(dto.getCvvNo());
 		if (!optbank.isPresent())
-			throw new BankAccountNotFoundException(SalonConstraints.BANK_ACCOUNT_NOT_FOUND);
+			throw new BankAccountNotFoundException(SalonConstants.BANK_ACCOUNT_NOT_FOUND);
 
 		Payment payment = new Payment();
 
 		payment.setPaymentId(dto.getPaymentId());
 		payment.setType(dto.getType());
-		payment.setStatus(SalonConstraints.PAYMENT_ADDED);
+		payment.setStatus(SalonConstants.PAYMENT_ADDED);
 		payment.setAppointment(optsalon.get());
 		payment.setBankAccount(optbank.get());
 		Payment savedpayment = paymentdao.save(payment);
@@ -65,7 +65,7 @@ public class PaymentServiceImpl implements IPaymentService {
 	public Payment viewPaymentByPaymentId(Integer pid) throws PaymentNotFoundException {
 		Optional<Payment> optservice = paymentdao.findById(pid);
 		if (!optservice.isPresent())
-			throw new PaymentNotFoundException(SalonConstraints.PAYMENT_NOT_EXIST + pid);
+			throw new PaymentNotFoundException(SalonConstants.PAYMENT_NOT_EXIST + pid);
 		return optservice.get();
 	}
 
@@ -73,7 +73,7 @@ public class PaymentServiceImpl implements IPaymentService {
 	public List<Payment> viewAllPayment() throws PaymentNotFoundException {
 		List<Payment> lst = paymentdao.findAll();
 		if (lst.isEmpty())
-			throw new PaymentNotFoundException(SalonConstraints.PAYMENT_NOT_FOUND);
+			throw new PaymentNotFoundException(SalonConstants.PAYMENT_NOT_FOUND);
 		return lst;
 
 	}

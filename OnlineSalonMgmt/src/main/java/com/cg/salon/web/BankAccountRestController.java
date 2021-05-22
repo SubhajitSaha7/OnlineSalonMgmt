@@ -17,7 +17,7 @@ import com.cg.salon.entity.BankAccount;
 import com.cg.salon.exceptions.BankAccountNotFoundException;
 import com.cg.salon.exceptions.ValidateBankAccountException;
 import com.cg.salon.service.IBankAccountService;
-import com.cg.util.SalonConstraints;
+import com.cg.util.SalonConstants;
 
 @RestController
 public class BankAccountRestController {
@@ -33,7 +33,7 @@ public class BankAccountRestController {
 			throw new ValidateBankAccountException(br.getFieldErrors());
 		int bid = service.addBankAccount(bankdto);
 
-		return new BankAccountSuccessMessage(SalonConstraints.BANK_ACCOUNT_ADDED + bid);
+		return new BankAccountSuccessMessage(SalonConstants.BANK_ACCOUNT_ADDED + bid);
 
 	}
 
@@ -44,7 +44,7 @@ public class BankAccountRestController {
 			throw new ValidateBankAccountException(br.getFieldErrors());
 		}
 		service.editBankAccount(bankdto);
-		return new BankAccountSuccessMessage(SalonConstraints.BANK_ACCOUNT_EDITED);
+		return new BankAccountSuccessMessage(SalonConstants.BANK_ACCOUNT_EDITED);
 	}
 
 	@GetMapping("viewbybankaccountid/{cvvno}")

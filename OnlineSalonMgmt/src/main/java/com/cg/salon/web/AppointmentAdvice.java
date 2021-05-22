@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.cg.salon.dto.AppointmentErrorMessage;
+import com.cg.salon.exceptions.AppointmentCancelException;
 import com.cg.salon.exceptions.AppointmentNotFoundException;
 import com.cg.salon.exceptions.ValidateAppointmentException;
 
@@ -20,6 +21,12 @@ public class AppointmentAdvice extends GlobalAdvice {
 	@ExceptionHandler(AppointmentNotFoundException.class)
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
 	public AppointmentErrorMessage handleExceptionAppointmentNotFound(AppointmentNotFoundException ex) {
+		return new AppointmentErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
+	}
+	
+	@ExceptionHandler(AppointmentCancelException.class)
+	@ResponseStatus(code = HttpStatus.NOT_FOUND)
+	public AppointmentErrorMessage handleExceptionAppointmentCancel(AppointmentCancelException ex) {
 		return new AppointmentErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
 	}
 

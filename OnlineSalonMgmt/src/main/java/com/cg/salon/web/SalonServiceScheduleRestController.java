@@ -26,7 +26,7 @@ import com.cg.salon.exceptions.SalonServiceScheduleNotFoundException;
 import com.cg.salon.exceptions.ScheduleCancelException;
 import com.cg.salon.exceptions.ValidateSalonServiceScheduleException;
 import com.cg.salon.service.ISalonServiceSchedule;
-import com.cg.util.SalonConstraints;
+import com.cg.util.SalonConstants;
 
 @RestController
 public class SalonServiceScheduleRestController {
@@ -45,7 +45,7 @@ public class SalonServiceScheduleRestController {
 			throw new ValidateSalonServiceScheduleException(br.getFieldErrors());
 		int sid = schedule.createSchedule(scheduledto);
 
-		return new SalonServiceScheduleSuccessMessage(SalonConstraints.SCHEDULE_ADDED + sid);
+		return new SalonServiceScheduleSuccessMessage(SalonConstants.SCHEDULE_ADDED + sid);
 
 	}
 
@@ -56,7 +56,7 @@ public class SalonServiceScheduleRestController {
 
 		schedule.cancelSchedule(scheduleId);
 
-		return new SalonServiceScheduleSuccessMessage(SalonConstraints.SCHEDULE_CANCELLED);
+		return new SalonServiceScheduleSuccessMessage(SalonConstants.SCHEDULE_CANCELLED);
 	}
 
 	@GetMapping("viewbysalonservicescheduleid/{salonservicescheduleid}")

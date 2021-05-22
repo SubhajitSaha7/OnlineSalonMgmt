@@ -2,8 +2,6 @@ package com.cg.salon.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.cg.salon.dto.AppointmentDto;
 import com.cg.salon.entity.Appointment;
 import com.cg.salon.exceptions.AppointmentCancelException;
@@ -18,14 +16,14 @@ public interface IAppointmentService {
 
 	public List<Appointment> viewAppointmentByCustomerId(int custId) throws AppointmentNotFoundException;
 
-	public Appointment viewAppointmentByScheduleId(int serviceScheduleId) throws AppointmentNotFoundException;
+	public List<Appointment> viewAppointmentByScheduleId(int serviceScheduleId) throws AppointmentNotFoundException;
 
 	public Integer addAppointment(AppointmentDto appdto)
-			throws SalonServiceNotFoundException, CustomerNotFoundException, SalonServiceScheduleNotFoundException,
+			throws CustomerNotFoundException, SalonServiceScheduleNotFoundException,
 			AppointmentNotFoundException, AppointmentCancelException;
 
-	public boolean cancelAppointment(int appid) throws SalonServiceNotFoundException, AppointmentNotFoundException,
-			CustomerNotFoundException, SalonServiceScheduleNotFoundException, AppointmentCancelException;
+	public boolean cancelAppointment(int appid) throws AppointmentNotFoundException,
+	AppointmentCancelException;
 
 	public List<Appointment> viewAllAppointment() throws AppointmentNotFoundException;
 

@@ -35,6 +35,22 @@ public class Appointment {
 	@Column(name = "appointment_status", length = 25, nullable = false)
 	private String appointmentStatus;
 
+	// Constructors of Appointment
+
+	public Appointment(Integer appointmentId, LocalDate preferredDate, Customer customer,
+			SalonServiceSchedule salonServiceSchedule, String appointmentStatus) {
+		super();
+		this.appointmentId = appointmentId;
+		this.preferredDate = preferredDate;
+		this.customer = customer;
+		this.salonServiceSchedule = salonServiceSchedule;
+		this.appointmentStatus = appointmentStatus;
+	}
+
+	public Appointment() {
+		super();
+	}
+
 	public Integer getAppointmentId() {
 		return appointmentId;
 	}
@@ -73,10 +89,6 @@ public class Appointment {
 
 	public void setAppointmentStatus(String appointmentStatus) {
 		this.appointmentStatus = appointmentStatus;
-	}
-
-	public Appointment() {
-		super();
 	}
 
 	@Override

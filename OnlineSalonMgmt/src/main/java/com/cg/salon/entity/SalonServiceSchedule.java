@@ -94,4 +94,17 @@ public class SalonServiceSchedule {
 		super();
 	}
 
+	public SalonServiceSchedule(Integer serviceScheduleId, Integer noofappointments, LocalDate scheduleDate,
+			String scheduleStatus, String slot, SalonService salonService) {
+		super();
+		this.serviceScheduleId = serviceScheduleId;
+		this.noofappointments = noofappointments;
+		this.scheduleDate = scheduleDate;
+		this.scheduleStatus = scheduleStatus;
+		this.slot = slot;
+		this.salonService = salonService;
+	}
+	
+	
+
 }

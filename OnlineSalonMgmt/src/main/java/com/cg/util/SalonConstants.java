@@ -1,6 +1,6 @@
 package com.cg.util;
 
-public class SalonConstraints {
+public class SalonConstants {
 
 	public static final String SALON_SERVICE_NOT_FOUND = "Salon Service not found.";
 
@@ -70,4 +70,5 @@ public class SalonConstraints {
 
 	public static final String SCHEDULE_SLOT_FULL = "Slot full";
 
+	public static final String SCHEDULE_CANCELLED_PREVIOUSLY = "Schedule has previously been cancelled";
 }

@@ -23,7 +23,7 @@ import com.cg.salon.exceptions.PaymentNotFoundException;
 import com.cg.salon.exceptions.ValidatePaymentException;
 
 import com.cg.salon.service.IPaymentService;
-import com.cg.util.SalonConstraints;
+import com.cg.util.SalonConstants;
 
 @RestController
 public class PaymentRestController {
@@ -40,7 +40,7 @@ public class PaymentRestController {
 			throw new ValidatePaymentException(br.getFieldErrors());
 		Long bid = service.addPayment(paymentdto);
 
-		return new PaymentSuccessMessage(SalonConstraints.PAYMENT_ADDED);
+		return new PaymentSuccessMessage(SalonConstants.PAYMENT_ADDED);
 
 	}
 

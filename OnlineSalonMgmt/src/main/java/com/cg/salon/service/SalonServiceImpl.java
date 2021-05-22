@@ -12,7 +12,7 @@ import com.cg.salon.dao.ISalonServiceDao;
 import com.cg.salon.dto.SalonServiceDto;
 import com.cg.salon.entity.SalonService;
 import com.cg.salon.exceptions.SalonServiceNotFoundException;
-import com.cg.util.SalonConstraints;
+import com.cg.util.SalonConstants;
 
 @Service("salonservice")
 public class SalonServiceImpl implements ISalonService {
@@ -42,7 +42,7 @@ public class SalonServiceImpl implements ISalonService {
 
 		Optional<SalonService> optservice = salonservicedao.findById(sid);
 		if (!optservice.isPresent())
-			throw new SalonServiceNotFoundException(SalonConstraints.SALON_SERVICE_NOT_EXIST + sid);
+			throw new SalonServiceNotFoundException(SalonConstants.SALON_SERVICE_NOT_EXIST + sid);
 		return optservice.get();
 	}
 
@@ -51,7 +51,7 @@ public class SalonServiceImpl implements ISalonService {
 
 		List<SalonService> lst = salonservicedao.findByServiceName(serviceName);
 		if (lst.isEmpty())
-			throw new SalonServiceNotFoundException(SalonConstraints.SALON_SERVICE_NOT_EXIST);
+			throw new SalonServiceNotFoundException(SalonConstants.SALON_SERVICE_NOT_EXIST);
 		return lst;
 	}
 
@@ -60,7 +60,7 @@ public class SalonServiceImpl implements ISalonService {
 
 		List<SalonService> lst = salonservicedao.findBySalonLocation(serviceLocation);
 		if (lst.isEmpty())
-			throw new SalonServiceNotFoundException(SalonConstraints.SALON_SERVICE_NOT_EXIST);
+			throw new SalonServiceNotFoundException(SalonConstants.SALON_SERVICE_NOT_EXIST);
 		return lst;
 
 	}
@@ -71,7 +71,7 @@ public class SalonServiceImpl implements ISalonService {
 
 		Optional<SalonService> optservice = salonservicedao.findById(dto.getServiceId());
 		if (!optservice.isPresent())
-			throw new SalonServiceNotFoundException(SalonConstraints.SALON_SERVICE_NOT_EXIST);
+			throw new SalonServiceNotFoundException(SalonConstants.SALON_SERVICE_NOT_EXIST);
 
 		SalonService service = optservice.get();
 		service.setServiceName(dto.getServiceName());

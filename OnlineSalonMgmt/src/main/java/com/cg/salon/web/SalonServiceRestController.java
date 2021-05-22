@@ -23,7 +23,7 @@ import com.cg.salon.entity.SalonService;
 import com.cg.salon.exceptions.SalonServiceNotFoundException;
 import com.cg.salon.exceptions.ValidateSalonServiceException;
 import com.cg.salon.service.ISalonService;
-import com.cg.util.SalonConstraints;
+import com.cg.util.SalonConstants;
 
 @RestController
 public class SalonServiceRestController {
@@ -42,7 +42,7 @@ public class SalonServiceRestController {
 			throw new ValidateSalonServiceException(br.getFieldErrors());
 		int sid = service.addSalonService(salondto);
 
-		return new SalonServiceSuccessMessage(SalonConstraints.SALON_SERVICE_ADDED + sid);
+		return new SalonServiceSuccessMessage(SalonConstants.SALON_SERVICE_ADDED + sid);
 
 	}
 
@@ -53,7 +53,7 @@ public class SalonServiceRestController {
 			throw new ValidateSalonServiceException(br.getFieldErrors());
 		}
 		service.editSalonService(salondto);
-		return new SalonServiceSuccessMessage(SalonConstraints.SALON_SERVICE_EDITED);
+		return new SalonServiceSuccessMessage(SalonConstants.SALON_SERVICE_EDITED);
 	}
 
 	@GetMapping("viewbysalonservice/{salonservicename}")

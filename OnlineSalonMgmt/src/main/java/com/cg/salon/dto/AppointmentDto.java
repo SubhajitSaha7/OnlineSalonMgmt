@@ -4,20 +4,9 @@ import java.time.LocalDate;
 
 import javax.validation.constraints.FutureOrPresent;
 
-import com.cg.salon.entity.Customer;
-import com.cg.salon.entity.SalonServiceSchedule;
-
 public class AppointmentDto {
 
 	private Integer appointmentId;
-
-	public Integer getAppointmentId() {
-		return appointmentId;
-	}
-
-	public void setAppointmentId(Integer appointmentId) {
-		this.appointmentId = appointmentId;
-	}
 
 	@FutureOrPresent(message = "Preferred Date must not be in the past")
 	private LocalDate preferredDate;
@@ -28,6 +17,20 @@ public class AppointmentDto {
 
 	private String appointmentStatus;
 
+	public AppointmentDto() {
+		super();
+	}
+
+	public AppointmentDto(Integer appointmentId, LocalDate preferredDate, Integer custId, Integer scheduleId,
+			String appointmentStatus) {
+		super();
+		this.appointmentId = appointmentId;
+		this.preferredDate = preferredDate;
+		this.custId = custId;
+		this.scheduleId = scheduleId;
+		this.appointmentStatus = appointmentStatus;
+	}
+
 	public Integer getScheduleId() {
 		return scheduleId;
 	}
@@ -36,8 +39,12 @@ public class AppointmentDto {
 		this.scheduleId = scheduleId;
 	}
 
-	public AppointmentDto() {
-		super();
+	public Integer getAppointmentId() {
+		return appointmentId;
+	}
+
+	public void setAppointmentId(Integer appointmentId) {
+		this.appointmentId = appointmentId;
 	}
 
 	public LocalDate getPreferredDate() {

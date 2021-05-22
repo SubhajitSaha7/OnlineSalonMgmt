@@ -12,7 +12,7 @@ import com.cg.salon.dao.ICustomerDao;
 import com.cg.salon.dto.CustomerDto;
 import com.cg.salon.entity.Customer;
 import com.cg.salon.exceptions.CustomerNotFoundException;
-import com.cg.util.SalonConstraints;
+import com.cg.util.SalonConstants;
 
 @Service("customerservice")
 public class CustomerServiceImpl implements ICustomerService {
@@ -45,7 +45,7 @@ public class CustomerServiceImpl implements ICustomerService {
 	public Customer viewCustomerById(int cid) throws CustomerNotFoundException {
 		Optional<Customer> optservice = customerdao.findById(cid);
 		if (!optservice.isPresent())
-			throw new CustomerNotFoundException(SalonConstraints.CUSTOMER_NOT_EXIST + cid);
+			throw new CustomerNotFoundException(SalonConstants.CUSTOMER_NOT_EXIST + cid);
 		return optservice.get();
 	}
 
@@ -53,7 +53,7 @@ public class CustomerServiceImpl implements ICustomerService {
 	public List<Customer> viewCustomerByName(String name) throws CustomerNotFoundException {
 		List<Customer> lst = customerdao.findByName(name);
 		if (lst.isEmpty())
-			throw new CustomerNotFoundException(SalonConstraints.CUSTOMER_NOT_EXIST);
+			throw new CustomerNotFoundException(SalonConstants.CUSTOMER_NOT_EXIST);
 		return lst;
 	}
 
@@ -61,7 +61,7 @@ public class CustomerServiceImpl implements ICustomerService {
 	public List<Customer> viewCustomerByCity(String city) throws CustomerNotFoundException {
 		List<Customer> lst = customerdao.findByCity(city);
 		if (lst.isEmpty())
-			throw new CustomerNotFoundException(SalonConstraints.CUSTOMER_NOT_EXIST);
+			throw new CustomerNotFoundException(SalonConstants.CUSTOMER_NOT_EXIST);
 		return lst;
 	}
 
@@ -69,7 +69,7 @@ public class CustomerServiceImpl implements ICustomerService {
 	public List<Customer> viewCustomerByContactNo(String contactNo) throws CustomerNotFoundException {
 		List<Customer> lst = customerdao.findByContactNo(contactNo);
 		if (lst.isEmpty())
-			throw new CustomerNotFoundException(SalonConstraints.CUSTOMER_NOT_EXIST);
+			throw new CustomerNotFoundException(SalonConstants.CUSTOMER_NOT_EXIST);
 		return lst;
 	}
 
@@ -79,7 +79,7 @@ public class CustomerServiceImpl implements ICustomerService {
 
 		Optional<Customer> optservice = customerdao.findById(dto.getUserId());
 		if (!optservice.isPresent())
-			throw new CustomerNotFoundException(SalonConstraints.CUSTOMER_NOT_EXIST);
+			throw new CustomerNotFoundException(SalonConstants.CUSTOMER_NOT_EXIST);
 
 		Customer customer = optservice.get();
 
