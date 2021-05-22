@@ -85,4 +85,14 @@ public class Payment {
 		return " " + paymentId + " " + type + " " + status + " ";
 	}
 
+	public Payment(Integer paymentId, String type, String status, Appointment appointment, BankAccount bankAccount) {
+		super();
+		this.paymentId = paymentId;
+		this.type = type;
+		this.status = status;
+		this.appointment = appointment;
+		this.bankAccount = bankAccount;
+	}
+	
+
 }

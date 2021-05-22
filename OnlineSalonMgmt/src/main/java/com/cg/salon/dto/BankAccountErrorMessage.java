@@ -3,8 +3,8 @@ package com.cg.salon.dto;
 import java.util.List;
 
 public class BankAccountErrorMessage {
-	public String status;
-	public String message;
+	private String status;
+	private String message;
 
 	private List<String> messages;
 

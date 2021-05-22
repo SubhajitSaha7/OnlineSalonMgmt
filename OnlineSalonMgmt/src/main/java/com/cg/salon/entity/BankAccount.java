@@ -56,6 +56,20 @@ public class BankAccount {
 
 	}
 
+	public BankAccount(String cardNumber, Double amount, String bankName, String cardName, LocalDate expiryDate,
+			Integer cvvNo, String ifscNo) {
+		super();
+		this.cardNumber = cardNumber;
+		this.amount = amount;
+		this.bankName = bankName;
+		this.cardName = cardName;
+		this.expiryDate = expiryDate;
+		this.cvvNo = cvvNo;
+		this.ifscNo = ifscNo;
+	}
+
+
+
 	public void setCardName(String cardName) {
 		this.cardName = cardName;
 	}

@@ -1,17 +1,5 @@
 package com.cg.salon.dto;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-
-import com.cg.salon.entity.Appointment;
-import com.cg.salon.entity.BankAccount;
-
 public class PaymentDto {
 
 	private Integer paymentId;
@@ -20,12 +8,9 @@ public class PaymentDto {
 
 	private String status;
 
-
 	private Integer appointmentId;
-	
 
 	private Integer cvvNo;
-
 
 	public Integer getAppointmentId() {
 		return appointmentId;
@@ -55,10 +40,6 @@ public class PaymentDto {
 		return type;
 	}
 
-
-	
-
-
 	public void setType(String type) {
 		this.type = type;
 	}
@@ -71,14 +52,18 @@ public class PaymentDto {
 		this.status = status;
 	}
 
-
-	
-
 	public PaymentDto() {
 		super();
 
 	}
 
-	
+	public PaymentDto(Integer paymentId, String type, String status, Integer appointmentId, Integer cvvNo) {
+		super();
+		this.paymentId = paymentId;
+		this.type = type;
+		this.status = status;
+		this.appointmentId = appointmentId;
+		this.cvvNo = cvvNo;
+	}
 
 }

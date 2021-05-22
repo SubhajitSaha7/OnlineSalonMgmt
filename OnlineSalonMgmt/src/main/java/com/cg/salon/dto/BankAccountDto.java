@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.PastOrPresent;
+
 import javax.validation.constraints.Pattern;
 
 public class BankAccountDto {
@@ -32,6 +32,18 @@ public class BankAccountDto {
 
 	public String getCardnumber() {
 		return cardnumber;
+	}
+
+	public BankAccountDto(String cardnumber, Double amount, String bankName, String cardName, LocalDate expiryDate,
+			Integer cvvNo, String ifscNo) {
+		super();
+		this.cardnumber = cardnumber;
+		this.amount = amount;
+		this.bankName = bankName;
+		this.cardName = cardName;
+		this.expiryDate = expiryDate;
+		this.cvvNo = cvvNo;
+		this.ifscNo = ifscNo;
 	}
 
 	public String getIfscNo() {

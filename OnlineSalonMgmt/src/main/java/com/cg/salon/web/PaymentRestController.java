@@ -25,11 +25,23 @@ import com.cg.salon.exceptions.ValidatePaymentException;
 import com.cg.salon.service.IPaymentService;
 import com.cg.util.SalonConstants;
 
+/*
+ * @Author - Ankush Mukherjee
+ * Description - This service class contains the service implementations regarding Payment Management
+ */
 @RestController
 public class PaymentRestController {
 
 	@Autowired
 	private IPaymentService service;
+
+	
+	/*
+	 * Method Name - addPayment
+	 *  Return Type - Integer 
+	 *  Parameter - Instance of PaymentDto
+	 *  Description - Add a new Payment Details
+	 */  
 
 	@PostMapping("addpaymentservice")
 	public PaymentSuccessMessage addPayment(@Valid @RequestBody PaymentDto paymentdto, BindingResult br)
@@ -38,19 +50,34 @@ public class PaymentRestController {
 
 		if (br.hasErrors())
 			throw new ValidatePaymentException(br.getFieldErrors());
-		Long bid = service.addPayment(paymentdto);
+		service.addPayment(paymentdto);
 
 		return new PaymentSuccessMessage(SalonConstants.PAYMENT_ADDED);
 
 	}
 
+	/*
+	 * Method Name - viewPaymentByPaymentId 
+	 * Return Type -  Payment
+	 * Parameter - Payment Id 
+	 * Description - returns the instance for the Payment corresponding to the given Payment Id 
+	 * Throws - PaymentNotFoundException, if the Payment id does not exist
+	 */
 	@GetMapping("viewbypaymentid/{pid}")
 	public Payment viewPaymentByPaymentId(@PathVariable("pid") Integer paymentId) throws PaymentNotFoundException {
 		return service.viewPaymentByPaymentId(paymentId);
 	}
 
+	
+	/*
+	 * Method Name - viewAllPayment 
+	 * Return Type -  List
+	 * Parameter - no parameter
+	 * Description - returns all the payment details 
+	 * Throws - PaymentNotFoundException, if the Payment List does not contain any values
+	 */
 	@GetMapping("viewallpayment")
-	public List<Payment> viewAllPayment() throws PaymentNotFoundException, AppointmentNotFoundException {
+	public List<Payment> viewAllPayment() throws PaymentNotFoundException {
 		return service.viewAllPayment();
 	}
 

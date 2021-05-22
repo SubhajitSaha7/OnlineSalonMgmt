@@ -19,12 +19,24 @@ import com.cg.salon.exceptions.ValidateBankAccountException;
 import com.cg.salon.service.IBankAccountService;
 import com.cg.util.SalonConstants;
 
+
+/*
+ * @Author - Ankush Mukherjee
+ * Description - This rest controller class contains the service implementations regarding Bank Account Management
+ */
 @RestController
 public class BankAccountRestController {
 
 	@Autowired
 	private IBankAccountService service;
 
+	
+	/*
+	 * Method Name - addBankAccount 
+	 * Return Type - Integer 
+	 * Parameter - Instance of BankAccountDto 
+	 * Description - Adds a new Bank Account
+	 */
 	@PostMapping("addbankaccountservice")
 	public BankAccountSuccessMessage addBankAcc(@Valid @RequestBody BankAccountDto bankdto, BindingResult br)
 			throws ValidateBankAccountException {
@@ -37,6 +49,13 @@ public class BankAccountRestController {
 
 	}
 
+	
+	/*
+	 * Method Name - editBankAccount Return Type - Boolean Parameter -
+	 * BankAccountDto dto Description - updates the details of the required Bank
+	 * Account Throws - BankAccountNotFoundException, if the Bank Account id does
+	 * not exist
+	 */
 	@PutMapping("editbankaccount")
 	public BankAccountSuccessMessage editBankAcc(@Valid @RequestBody BankAccountDto bankdto, BindingResult br)
 			throws ValidateBankAccountException, BankAccountNotFoundException {
@@ -47,9 +66,15 @@ public class BankAccountRestController {
 		return new BankAccountSuccessMessage(SalonConstants.BANK_ACCOUNT_EDITED);
 	}
 
+	
+	/*
+	 * Method Name - viewBankAccountBycvvNo Return Type - BankAccount Parameter -
+	 * cvvNo Description - returns the instance for the BankAccount corresponding to the given BankAccount cvvNo 
+	 * Throws - BankAccountNotFoundException, if the
+	 * Bank Account id does not exist
+	 */
 	@GetMapping("viewbybankaccountid/{cvvno}")
-	public BankAccount viewBankAccountByCvvNo(@PathVariable("cvvno") int BankAccountCvvNo)
-			throws BankAccountNotFoundException {
-		return service.viewBankAccountBycvvNo(BankAccountCvvNo);
+	public BankAccount viewBankAccountByCvvNo(@PathVariable("cvvno") int cvvNo) throws BankAccountNotFoundException {
+		return service.viewBankAccountBycvvNo(cvvNo);
 	}
 }

@@ -13,11 +13,22 @@ import com.cg.salon.entity.BankAccount;
 import com.cg.salon.exceptions.BankAccountNotFoundException;
 import com.cg.util.SalonConstants;
 
+/*
+ * @Author - Ankush Mukherjee
+ * Description - This service class contains the service implementations regarding Bank Account Management
+ */
 @Service("BankAccount")
 public class BankAccountServiceImpl implements IBankAccountService {
 
 	@Autowired
 	private IBankAccountDao bankAccountdao;
+
+	/*
+	 * Method Name - addBankAccount 
+	 * Return Type - Integer 
+	 * Parameter - Instance of BankAccountDto 
+	 * Description - Adds a new Bank Account
+	 */
 
 	@Override
 	@Transactional
@@ -38,6 +49,13 @@ public class BankAccountServiceImpl implements IBankAccountService {
 
 	}
 
+	/*
+	 * Method Name - viewBankAccountBycvvNo Return Type - BankAccount Parameter -
+	 * cvvNo Description - returns the instance for the BankAccount corresponding to the given BankAccount cvvNo 
+	 * Throws - BankAccountNotFoundException, if the
+	 * Bank Account id does not exist
+	 */
+
 	@Override
 	public BankAccount viewBankAccountBycvvNo(int cvvNo) throws BankAccountNotFoundException {
 
@@ -48,6 +66,12 @@ public class BankAccountServiceImpl implements IBankAccountService {
 
 	}
 
+	/*
+	 * Method Name - editBankAccount Return Type - Boolean Parameter -
+	 * BankAccountDto dto Description - updates the details of the required Bank
+	 * Account Throws - BankAccountNotFoundException, if the Bank Account id does
+	 * not exist
+	 */
 	@Override
 	@Transactional
 	public boolean editBankAccount(BankAccountDto dto) throws BankAccountNotFoundException {
@@ -65,7 +89,7 @@ public class BankAccountServiceImpl implements IBankAccountService {
 		bankacc.setCvvNo(dto.getCvvNo());
 		bankacc.setIfscNo(dto.getIfscNo());
 		bankacc.setExpiryDate(dto.getExpiryDate());
-		BankAccount persistedService = bankAccountdao.save(bankacc);
+		bankAccountdao.save(bankacc);
 		return true;
 	}
 

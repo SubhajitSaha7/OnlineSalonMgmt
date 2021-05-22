@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.cg.salon.dto.BankAccountErrorMessage;
-import com.cg.salon.dto.SalonServiceErrorMessage;
 import com.cg.salon.exceptions.BankAccountNotFoundException;
 import com.cg.salon.exceptions.ValidateBankAccountException;
 

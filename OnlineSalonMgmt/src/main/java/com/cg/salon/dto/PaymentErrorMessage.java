@@ -4,8 +4,8 @@ import java.util.List;
 
 public class PaymentErrorMessage {
 
-	public String status;
-	public String message;
+	private String status;
+	private String message;
 
 	private List<String> messages;
 
