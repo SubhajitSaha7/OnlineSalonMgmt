@@ -5,20 +5,22 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import com.cg.util.SalonConstants;
+
 public class SalonServiceDto {
 
 	private Integer serviceId;
 
-	@NotBlank(message = "Service name must not be blank")
-	@Pattern(regexp = "([a-zA-Z]+)|([a-zA-Z]+[\\s][a-zA-Z]+)", message = "service name must contain alphabets")
+	@NotBlank(message = SalonConstants.SERVICE_NAME_NOT_BLANK)
+	@Pattern(regexp = SalonConstants.SERVICE_NAME_REGULAR_EXPRESSION, message = SalonConstants.SERVICE_NAME_MESSAGE)
 	private String serviceName;
 
-	@Min(value = 150, message = "Service price must be minimum 150.0")
+	@Min(value= SalonConstants.MIN_SERVICE_PRICE, message= SalonConstants.SERVICE_PRICE_MESSAGE)
 	private Integer servicePrice;
 
 	private String serviceDuration;
 
-	@Max(value = 20, message = "discount can be upto 20")
+	@Max(value = SalonConstants.MAX_SERVICE_DISCOUNT, message = SalonConstants.SERVICE_DISCOUNT_MESSAGE)
 	private Integer discount;
 
 	private String salonAddress;
@@ -28,8 +30,41 @@ public class SalonServiceDto {
 	private String salonCentreName;
 
 	public SalonServiceDto() {
-
+		
+		super();
 	}
+	
+	
+
+	public SalonServiceDto(Integer serviceId,String serviceName,Integer servicePrice,String serviceDuration,Integer discount,
+			String salonAddress, String salonLocation, String salonCentreName) {
+		super();
+		this.serviceId = serviceId;
+		this.serviceName = serviceName;
+		this.servicePrice = servicePrice;
+		this.serviceDuration = serviceDuration;
+		this.discount = discount;
+		this.salonAddress = salonAddress;
+		this.salonLocation = salonLocation;
+		this.salonCentreName = salonCentreName;
+	}
+
+	
+
+
+	public SalonServiceDto(String serviceName,Integer servicePrice,String serviceDuration,Integer discount,
+			String salonAddress, String salonLocation, String salonCentreName) {
+		super();
+		this.serviceName = serviceName;
+		this.servicePrice = servicePrice;
+		this.serviceDuration = serviceDuration;
+		this.discount = discount;
+		this.salonAddress = salonAddress;
+		this.salonLocation = salonLocation;
+		this.salonCentreName = salonCentreName;
+	}
+
+
 
 	public Integer getServiceId() {
 		return serviceId;

@@ -71,4 +71,18 @@ public class SalonConstants {
 	public static final String SCHEDULE_SLOT_FULL = "Slot full";
 
 	public static final String SCHEDULE_CANCELLED_PREVIOUSLY = "Schedule has previously been cancelled";
+	
+	public static final long MIN_SERVICE_PRICE = 150;
+
+	public static final String SERVICE_PRICE_MESSAGE = "Service price must be minimum 150.0";
+
+	public static final long MAX_SERVICE_DISCOUNT = 20;
+
+	public static final String SERVICE_DISCOUNT_MESSAGE = "discount can be upto 20";
+
+	public static final String SERVICE_NAME_NOT_BLANK = "Service name must not be blank";
+
+	public static final String SERVICE_NAME_MESSAGE = "service name must contain alphabets";
+
+	public static final String SERVICE_NAME_REGULAR_EXPRESSION = "([a-zA-Z]+)|([a-zA-Z]+[\\\\s][a-zA-Z]+)";
 }

@@ -19,13 +19,12 @@ import com.cg.salon.entity.SalonServiceSchedule;
 import com.cg.salon.exceptions.AppointmentCancelException;
 import com.cg.salon.exceptions.AppointmentNotFoundException;
 import com.cg.salon.exceptions.CustomerNotFoundException;
-import com.cg.salon.exceptions.SalonServiceNotFoundException;
 import com.cg.salon.exceptions.SalonServiceScheduleNotFoundException;
 import com.cg.util.SalonConstants;
 
 /*
  * @Author - Sreyashi Biswas, Subhajit Saha
- * Description - This service class contains the services regarding Appointment Booking Management
+ * Description - This service class contains the service implementations regarding Appointment Booking Management
  */
 
 @Service("appointment")
