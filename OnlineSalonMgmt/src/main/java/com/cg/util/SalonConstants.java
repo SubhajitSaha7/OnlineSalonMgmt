@@ -1,6 +1,10 @@
 package com.cg.util;
 
 public class SalonConstants {
+	
+	private SalonConstants() {
+		
+	}
 
 	public static final String SALON_SERVICE_NOT_FOUND = "Salon Service not found.";
 

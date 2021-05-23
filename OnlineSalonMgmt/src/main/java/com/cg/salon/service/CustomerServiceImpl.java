@@ -14,11 +14,23 @@ import com.cg.salon.entity.Customer;
 import com.cg.salon.exceptions.CustomerNotFoundException;
 import com.cg.util.SalonConstants;
 
+/*
+ * @Author - Madhurima Mallick
+ * Description - This service class contains the service implementations regarding Customer Management
+ */
+
 @Service("customerservice")
 public class CustomerServiceImpl implements ICustomerService {
 
 	@Autowired
 	private ICustomerDao customerdao;
+
+	/*
+	 * Method Name - addCustomer 
+	 * Return Type - Integer 
+	 * Parameter - Instance of CustomerDto 
+	 * Description - Adds a new Customer
+	 */
 
 	@Transactional
 	@Override
@@ -41,6 +53,14 @@ public class CustomerServiceImpl implements ICustomerService {
 		return savedcustomer.getUserId();
 	}
 
+	/*
+	 * Method Name - viewCustomerById 
+	 * Return Type - Customer 
+	 * Parameter - customerId
+	 * Description - returns the instance for the Customer corresponding to the given customer id 
+	 * Throws - CustomerNotFoundException, if the Customer id does not exist
+	 */
+
 	@Override
 	public Customer viewCustomerById(int cid) throws CustomerNotFoundException {
 		Optional<Customer> optservice = customerdao.findById(cid);
@@ -48,6 +68,14 @@ public class CustomerServiceImpl implements ICustomerService {
 			throw new CustomerNotFoundException(SalonConstants.CUSTOMER_NOT_EXIST + cid);
 		return optservice.get();
 	}
+
+	/*
+	 * Method Name - viewCustomerByName 
+	 * Return Type - List 
+	 * Parameter - Customer Name
+	 * Description - returns the list of Customer corresponding to the given Customer name 
+	 * Throws - CustomerNotFoundException, if the Customer id does not exist
+	 */
 
 	@Override
 	public List<Customer> viewCustomerByName(String name) throws CustomerNotFoundException {
@@ -57,6 +85,13 @@ public class CustomerServiceImpl implements ICustomerService {
 		return lst;
 	}
 
+	/*
+	 * Method Name - viewSalonServiceByCity 
+	 * Return Type - List Parameter - Customer
+	 * City Description - returns the list of Customer corresponding to the given Customer city 
+	 * Throws - CustomerNotFoundException, if the Customer id does not exist
+	 */
+
 	@Override
 	public List<Customer> viewCustomerByCity(String city) throws CustomerNotFoundException {
 		List<Customer> lst = customerdao.findByCity(city);
@@ -65,6 +100,14 @@ public class CustomerServiceImpl implements ICustomerService {
 		return lst;
 	}
 
+	/*
+	 * Method Name - viewSalonServiceByContactNo 
+	 * Return Type - List 
+	 * Parameter -Customer Contact No. 
+	 * Description - returns the list of Customer corresponding to the given Customer Contact no. 
+	 * Throws - CustomerNotFoundException, if the Customer id does not exist
+	 */
+
 	@Override
 	public List<Customer> viewCustomerByContactNo(String contactNo) throws CustomerNotFoundException {
 		List<Customer> lst = customerdao.findByContactNo(contactNo);
@@ -72,6 +115,14 @@ public class CustomerServiceImpl implements ICustomerService {
 			throw new CustomerNotFoundException(SalonConstants.CUSTOMER_NOT_EXIST);
 		return lst;
 	}
+
+	/*
+	 * Method Name - editCustomerDetails 
+	 * Return Type - boolean 
+	 * Parameter - Instance of CustomerDto 
+	 * Description - edits the required fields of an existing Customer 
+	 * Throws - CustomerNotFoundException, if the Customer id does not exist
+	 */
 
 	@Transactional
 	@Override
@@ -94,7 +145,6 @@ public class CustomerServiceImpl implements ICustomerService {
 		customer.setState(dto.getState());
 		customer.setStreet(dto.getStreet());
 
-		Customer persistedCustomer = customerdao.save(customer);
 		return true;
 	}
 }
