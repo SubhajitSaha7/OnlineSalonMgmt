@@ -78,7 +78,7 @@ public class CustomerRestController {
 	 * Return Type - Customer 
 	 * Parameter - customerId
 	 * Description - returns the instance for the Customer corresponding to the given customer id 
-	 * Throws - CustomerNotFoundException, if the Customer id does not exist
+	 * Throws - CustomerNotFoundException, if the Customer id does not exist.
 	 */
 
 	@GetMapping("viewcustomerbyid/{customerid}")
@@ -92,7 +92,7 @@ public class CustomerRestController {
 	 * Return Type - List 
 	 * Parameter - Customer Name
 	 * Description - returns the list of Customer corresponding to the given Customer name 
-	 * Throws - CustomerNotFoundException, if the Customer id does not exist
+	 * Throws - CustomerNotFoundException, if the Customer does not exist for given name.
 	 */
 
 	@GetMapping("viewcustomerbyname/{customername}")
@@ -102,11 +102,11 @@ public class CustomerRestController {
 	}
 
 	/*
-	 * Method Name - viewSalonServiceByContactNo 
+	 * Method Name - viewCustomerByContactNo 
 	 * Return Type - List 
 	 * Parameter - Customer Contact No. 
 	 * Description - returns the list of Customer corresponding to the given Customer Contact no. 
-	 * Throws - CustomerNotFoundException, if the Customer id does not exist
+	 * Throws - CustomerNotFoundException, if the Customer does not exists for given contact no.
 	 */
 
 	@GetMapping("viewcustomerbycontactno/{customercontactno}")
@@ -116,11 +116,11 @@ public class CustomerRestController {
 	}
 
 	/*
-	 * Method Name - viewSalonServiceByCity 
+	 * Method Name - viewCustomerByCity 
 	 * Return Type - List 
 	 * Parameter - Customer City 
 	 * Description - returns the list of Customer corresponding to the given Customer city 
-	 * Throws - CustomerNotFoundException, if the Customer id does not exist
+	 * Throws - CustomerNotFoundException, if the Customer does not exists for given city.
 	 */
 
 	@GetMapping("viewcustomerbycity/{customercity}")

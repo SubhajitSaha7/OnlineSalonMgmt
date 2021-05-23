@@ -86,8 +86,9 @@ public class CustomerServiceImpl implements ICustomerService {
 	}
 
 	/*
-	 * Method Name - viewSalonServiceByCity 
-	 * Return Type - List Parameter - Customer
+	 * Method Name - viewCustomerByCity 
+	 * Return Type - List 
+	 * Parameter - Customer
 	 * City Description - returns the list of Customer corresponding to the given Customer city 
 	 * Throws - CustomerNotFoundException, if the Customer id does not exist
 	 */
@@ -101,7 +102,7 @@ public class CustomerServiceImpl implements ICustomerService {
 	}
 
 	/*
-	 * Method Name - viewSalonServiceByContactNo 
+	 * Method Name - viewCustomerByContactNo 
 	 * Return Type - List 
 	 * Parameter -Customer Contact No. 
 	 * Description - returns the list of Customer corresponding to the given Customer Contact no. 
