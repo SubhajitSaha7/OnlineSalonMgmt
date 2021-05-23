@@ -70,7 +70,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 			throw new AppointmentNotFoundException(SalonConstants.SCHEDULE_SLOT_FULL);
 
 		Appointment appointment = new Appointment();
-		appointment.setAppointmentStatus(SalonConstants.AVAILABLE);
+		appointment.setAppointmentStatus(SalonConstants.APPOINTMENT_CREATED);
 		appointment.setPreferredDate(appdto.getPreferredDate());
 		appointment.setCustomer(optcust.get());
 		appointment.setSalonServiceSchedule(optschedule.get());
