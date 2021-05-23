@@ -28,6 +28,12 @@ import com.cg.salon.exceptions.ValidateSalonServiceScheduleException;
 import com.cg.salon.service.ISalonServiceSchedule;
 import com.cg.util.SalonConstants;
 
+/*
+ * @Author - Ritobina Sinha
+ * Description - This service class contains the service implementations regarding Salon Service Schedule
+ * Management
+ */
+
 @RestController
 public class SalonServiceScheduleRestController {
 
@@ -35,6 +41,15 @@ public class SalonServiceScheduleRestController {
 	private ISalonServiceSchedule schedule;
 
 	Logger logger = LoggerFactory.getLogger(SalonServiceScheduleRestController.class);
+	
+	/*
+	 * Method Name - createSchedule
+	 *  Return Type - Integer 
+	 *  Parameter - instance of SalonServiceScheduleDto
+	 *  Description - Creates a schedule according to the
+	 *                SalonServiceScheduleId provided by the admin 
+	 *  Throws - SalonServiceNotFoundException,if no salon service exists     
+	 */  
 
 	@PostMapping("createschedule")
 	public SalonServiceScheduleSuccessMessage addSchedule(@Valid @RequestBody SalonServiceScheduleDto scheduledto,
@@ -49,6 +64,15 @@ public class SalonServiceScheduleRestController {
 
 	}
 
+	/*
+	 * Method Name - cancelSchedule
+	 * Return Type - boolean
+	 * Parameter - scheduleId, integer , Schedule id
+	 * Description - sets the schedule status as cancelled 
+	 * Throws - SalonServiceScheduleNotFoundException, if no salon service schedule id is found
+	 *          ScheduleCancelException , if Schedule cannot be cancelled as it must be a future date
+	 */
+	
 	@PutMapping("editsalonservicescheule/{scheduleid}")
 	public SalonServiceScheduleSuccessMessage cancelSchedule(@PathVariable("scheduleid") int scheduleId)
 			throws ValidateSalonServiceScheduleException, SalonServiceScheduleNotFoundException,
@@ -59,6 +83,14 @@ public class SalonServiceScheduleRestController {
 		return new SalonServiceScheduleSuccessMessage(SalonConstants.SCHEDULE_CANCELLED);
 	}
 
+	/*
+	 * Method Name - viewSalonServiceScheduleById
+	 * Return Type - SalonServiceSchedule
+	 * Parameter - sid,integer,salon service schedule id
+	 * Description - returns instance for the schedule corresponding to the schedule id
+	 * Throws - SalonServiceScheduleNotFoundException, if no salon service schedule id is found
+	 */
+	
 	@GetMapping("viewbysalonservicescheduleid/{salonservicescheduleid}")
 	public SalonServiceSchedule viewSalonServiceScheduleById(
 			@PathVariable("salonservicescheduleid") int salonServiceScheduleId)
@@ -66,6 +98,14 @@ public class SalonServiceScheduleRestController {
 		return schedule.viewSalonServiceScheduleById(salonServiceScheduleId);
 	}
 
+	/*
+	 * Method Name - viewSalonServiceScheduleByDate
+	 * Return Type - List<SalonServiceSchedule>
+	 * Parameter - scheduleDate, LocalDate , Schedule date
+	 * Description -  returns schedule by date
+	 * Throws - SalonServiceScheduleNotFoundException, if no salon service schedule id is found
+	 */
+	
 	@GetMapping("viewbysalonservicescheduledate/{salonservicescheduledate}")
 	public List<SalonServiceSchedule> viewSalonServiceScheduleByDate(
 			@DateTimeFormat(pattern = "yyyy-MM-dd") @PathVariable("salonservicescheduledate") LocalDate salonServiceScheduleDate)
@@ -73,6 +113,14 @@ public class SalonServiceScheduleRestController {
 		return schedule.viewSalonServiceScheduleByDate(salonServiceScheduleDate);
 	}
 
+	/*
+	 * Method Name - viewSalonServiceScheduleByServiceId
+	 * Return Type - List<SalonServiceSchedule>
+	 * Parameter - serid, integer , Service id
+	 * Description - returns schedule by service id
+	 * Throws - SalonServiceScheduleNotFoundException, if no salon service schedule id is found
+	 */
+	
 	@GetMapping("viewbysalonservicescheduleserviceid/{salonservicescheduleserviceid}")
 	public SalonServiceSchedule viewSalonServiceScheduleByServiceId(
 			@PathVariable("salonservicescheduleserviceid") int salonServiceScheduleServiceId)
