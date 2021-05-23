@@ -59,7 +59,6 @@ public class TestViewAppointmentByCustomerId {
 
 		List<Appointment> list1 = new ArrayList<>();
 		List<Appointment> list2 = new ArrayList<>();
-		List<Appointment> list3 = new ArrayList<>();
 		list1.add(new Appointment(1, LocalDate.of(2021, 05, 26), optcustomer1.get(), optschedule1.get(),
 				"Booking Successfull"));
 		list2.add(new Appointment(1, LocalDate.of(2021, 05, 26), optcustomer1.get(), optschedule1.get(),

@@ -3,7 +3,6 @@ package com.cg.salon.service;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.cg.salon.dto.SalonServiceDto;
 import com.cg.salon.dto.SalonServiceScheduleDto;
 import com.cg.salon.entity.SalonServiceSchedule;
 import com.cg.salon.exceptions.SalonServiceNotFoundException;

@@ -1,6 +1,5 @@
 package com.cg.salon.testAppointment;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
@@ -21,7 +20,6 @@ import com.cg.salon.dao.IAppointmentDao;
 import com.cg.salon.dao.ICustomerDao;
 import com.cg.salon.dao.ISalonServiceDao;
 import com.cg.salon.dao.ISalonServiceScheduleDao;
-import com.cg.salon.dto.AppointmentDto;
 import com.cg.salon.entity.Appointment;
 import com.cg.salon.entity.Customer;
 import com.cg.salon.entity.SalonService;
@@ -56,16 +54,12 @@ public class TestViewAppointmentByScheduleId {
 
 		Optional<SalonService> optservice1 = Optional
 				.of(new SalonService(2, "Haircut", 250, "1 hour", 5, "CD Street", "Nagerbajar", "Jawed Habib"));
-		Optional<SalonService> optservice2 = Optional.empty();
 
 		Optional<SalonServiceSchedule> optschedule1 = Optional.of(new SalonServiceSchedule(2, 20,
 				LocalDate.of(2021, 05, 26), "Available", "10am-2pm", optservice1.get()));
-		Optional<SalonServiceSchedule> optschedule2 = Optional.of(
-				new SalonServiceSchedule(3, 20, LocalDate.of(2021, 05, 26), "Available", "4pm-8pm", optservice1.get()));
 
 		List<Appointment> list1 = new ArrayList<>();
 		List<Appointment> list2 = new ArrayList<>();
-		List<Appointment> list3 = new ArrayList<>();
 		list1.add(new Appointment(1, LocalDate.of(2021, 05, 26), optcustomer1.get(), optschedule1.get(),
 				"Booking Successfull"));
 		list2.add(new Appointment(1, LocalDate.of(2021, 05, 26), optcustomer1.get(), optschedule1.get(),

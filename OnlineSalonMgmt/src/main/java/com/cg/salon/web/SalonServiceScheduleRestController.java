@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.cg.salon.dto.SalonServiceScheduleDto;
 import com.cg.salon.dto.SalonServiceScheduleSuccessMessage;
@@ -73,10 +71,9 @@ public class SalonServiceScheduleRestController {
 	 *          ScheduleCancelException , if Schedule cannot be cancelled as it must be a future date
 	 */
 	
-	@PutMapping("editsalonservicescheule/{scheduleid}")
+	@PutMapping("cancelsalonserviceschedule/{scheduleid}")
 	public SalonServiceScheduleSuccessMessage cancelSchedule(@PathVariable("scheduleid") int scheduleId)
-			throws ValidateSalonServiceScheduleException, SalonServiceScheduleNotFoundException,
-			ScheduleCancelException {
+			throws  SalonServiceScheduleNotFoundException, ScheduleCancelException {
 
 		schedule.cancelSchedule(scheduleId);
 

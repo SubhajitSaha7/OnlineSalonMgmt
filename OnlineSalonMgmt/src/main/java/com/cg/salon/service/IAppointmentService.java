@@ -7,7 +7,6 @@ import com.cg.salon.entity.Appointment;
 import com.cg.salon.exceptions.AppointmentCancelException;
 import com.cg.salon.exceptions.AppointmentNotFoundException;
 import com.cg.salon.exceptions.CustomerNotFoundException;
-import com.cg.salon.exceptions.SalonServiceNotFoundException;
 import com.cg.salon.exceptions.SalonServiceScheduleNotFoundException;
 
 public interface IAppointmentService {

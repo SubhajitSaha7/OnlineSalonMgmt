@@ -2,7 +2,6 @@ package com.cg.salon.dto;
 
 import java.time.LocalDate;
 
-import com.cg.salon.entity.SalonService;
 
 public class SalonServiceScheduleDto {
 
@@ -21,7 +20,7 @@ public class SalonServiceScheduleDto {
 	}
 
 	public SalonServiceScheduleDto() {
-
+		super();
 	}
 
 	public Integer getSalonServiceId() {

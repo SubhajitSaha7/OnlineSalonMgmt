@@ -3,7 +3,6 @@ package com.cg.salon.testAppointment;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.options;
 
 import java.util.Optional;
 
