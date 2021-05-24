@@ -28,7 +28,7 @@ import com.cg.salon.service.AppointmentServiceImpl;
 import com.cg.salon.service.IAppointmentService;
 
 @SpringBootTest
-public class TestViewAllAppointment {
+class TestViewAllAppointment {
 
 	@Mock
 	private IAppointmentDao appointmentdao;
@@ -69,7 +69,7 @@ public class TestViewAllAppointment {
 
 	@Test
 	@DisplayName(value = "testviewallappointment")
-	public void testViewAllAppointment() throws AppointmentNotFoundException {
+	void testViewAllAppointment() throws AppointmentNotFoundException {
 
 		assertNotNull(service.viewAllAppointment());
 	}

@@ -31,7 +31,7 @@ import com.cg.salon.service.AppointmentServiceImpl;
 import com.cg.salon.service.IAppointmentService;
 
 @SpringBootTest
-public class TestAddAppointment {
+class TestAddAppointment {
 
 	@Mock
 	private IAppointmentDao appointmentdao;
@@ -67,7 +67,7 @@ public class TestAddAppointment {
 
 	@Test
 	@DisplayName(value = "testaddappointment1")
-	public void testAddAppointment1() throws CustomerNotFoundException, SalonServiceScheduleNotFoundException,
+	void testAddAppointment1() throws CustomerNotFoundException, SalonServiceScheduleNotFoundException,
 			AppointmentNotFoundException, AppointmentCancelException {
 		AppointmentDto appdto = new AppointmentDto(4, LocalDate.of(2021, 05, 26), 1, 1, "Available");
 		assertNotNull(service.addAppointment(appdto));
@@ -75,7 +75,7 @@ public class TestAddAppointment {
 
 	@Test
 	@DisplayName(value = "testaddappointment2")
-	public void testAddAppointment2() throws CustomerNotFoundException, SalonServiceScheduleNotFoundException,
+	void testAddAppointment2() throws CustomerNotFoundException, SalonServiceScheduleNotFoundException,
 			AppointmentNotFoundException, AppointmentCancelException {
 		AppointmentDto appdto = new AppointmentDto(2, LocalDate.of(2021, 05, 26), 2, 2, "Available");
 		assertThrows(CustomerNotFoundException.class, () -> service.addAppointment(appdto));
@@ -83,7 +83,7 @@ public class TestAddAppointment {
 
 	@Test
 	@DisplayName(value = "testaddappointment3")
-	public void testAddAppointment3() throws CustomerNotFoundException, SalonServiceScheduleNotFoundException,
+	void testAddAppointment3() throws CustomerNotFoundException, SalonServiceScheduleNotFoundException,
 			AppointmentNotFoundException, AppointmentCancelException {
 		AppointmentDto appdto = new AppointmentDto(2, LocalDate.of(2021, 05, 26), 1, 2, "Available");
 		assertThrows(SalonServiceScheduleNotFoundException.class, () -> service.addAppointment(appdto));

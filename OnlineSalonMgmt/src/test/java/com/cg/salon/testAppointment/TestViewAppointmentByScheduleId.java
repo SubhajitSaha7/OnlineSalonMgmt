@@ -29,7 +29,7 @@ import com.cg.salon.service.AppointmentServiceImpl;
 import com.cg.salon.service.IAppointmentService;
 
 @SpringBootTest
-public class TestViewAppointmentByScheduleId {
+class TestViewAppointmentByScheduleId {
 
 	@Mock
 	private IAppointmentDao appointmentdao;
@@ -71,19 +71,19 @@ public class TestViewAppointmentByScheduleId {
 
 	@Test
 	@DisplayName(value = "testViewAppointmentByScheduleId for 2")
-	public void testViewAppointmentByScheduleId1() throws AppointmentNotFoundException {
+	void testViewAppointmentByScheduleId1() throws AppointmentNotFoundException {
 		assertTrue(service.viewAppointmentByScheduleId(2).size() > 0);
 	}
 
 	@Test
 	@DisplayName(value = "testViewAppointmentByScheduleId for 9")
-	public void testViewAppointmentByScheduleId2() throws AppointmentNotFoundException {
+	void testViewAppointmentByScheduleId2() throws AppointmentNotFoundException {
 		assertThrows(AppointmentNotFoundException.class, () -> service.viewAppointmentByScheduleId(9));
 	}
 
 	@Test
 	@DisplayName(value = "testViewAppointmentByScheduleId for 51")
-	public void testViewAppointmentByScheduleId3() throws AppointmentNotFoundException {
+	void testViewAppointmentByScheduleId3() throws AppointmentNotFoundException {
 		assertThrows(AppointmentNotFoundException.class, () -> service.viewAppointmentByScheduleId(51));
 	}
 
