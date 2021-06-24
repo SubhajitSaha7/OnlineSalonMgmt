@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +38,7 @@ public class BankAccountRestController {
 	 * Parameter - Instance of BankAccountDto 
 	 * Description - Adds a new Bank Account
 	 */
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("addbankaccountservice")
 	public BankAccountSuccessMessage addBankAcc(@Valid @RequestBody BankAccountDto bankdto, BindingResult br)
 			throws ValidateBankAccountException {
@@ -56,6 +58,7 @@ public class BankAccountRestController {
 	 * Account Throws - BankAccountNotFoundException, if the Bank Account id does
 	 * not exist
 	 */
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("editbankaccount")
 	public BankAccountSuccessMessage editBankAcc(@Valid @RequestBody BankAccountDto bankdto, BindingResult br)
 			throws ValidateBankAccountException, BankAccountNotFoundException {
@@ -73,6 +76,7 @@ public class BankAccountRestController {
 	 * Throws - BankAccountNotFoundException, if the
 	 * Bank Account id does not exist
 	 */
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewbybankaccountid/{cvvno}")
 	public BankAccount viewBankAccountByCvvNo(@PathVariable("cvvno") int cvvNo) throws BankAccountNotFoundException {
 		return service.viewBankAccountBycvvNo(cvvNo);

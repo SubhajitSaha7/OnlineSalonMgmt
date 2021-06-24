@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,6 +46,7 @@ public class AppointmentRestController {
 	 * Throws - AppointmentNotFoundException, if the Appointment id does not exist
 	 */
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewappointmentbyid/{appId}")
 	public Appointment viewAppointmentById(@PathVariable("appId") int appId) throws AppointmentNotFoundException {
 		return service.viewAppointmentById(appId);
@@ -58,6 +60,7 @@ public class AppointmentRestController {
 	 * Throws - AppointmentNotFoundException, if no appointments exist for that customer id
 	 */
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewappointmentbycustomerid/{custid}")
 	public List<Appointment> viewAppointmentByCustomerId(@PathVariable("custid") int custId)
 			throws AppointmentNotFoundException {
@@ -72,6 +75,7 @@ public class AppointmentRestController {
 	 * Throws - AppointmentNotFoundException, if no appointments exist for that schedule id
 	 */
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewappointmentbyscheduleid/{sid}")
 	public List<Appointment> viewAppointmentByScheduleId(@PathVariable("sid") int serviceScheduleId)
 			throws AppointmentNotFoundException {
@@ -90,6 +94,7 @@ public class AppointmentRestController {
 	 * 			AppointmentCancelException, if the Schedule id has already been Cancelled previously
 	 */
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("addappointment")
 	public AppointmentSuccessMessage addAppointment(@Valid @RequestBody AppointmentDto appdto, BindingResult br)
 			throws ValidateAppointmentException, CustomerNotFoundException, SalonServiceScheduleNotFoundException,
@@ -112,6 +117,7 @@ public class AppointmentRestController {
 	 * 			AppointmentCancelException, if the Preferred Date is in the past or same as the system date
 	 */
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("cancelappointment/{appid}")
 	public AppointmentSuccessMessage cancelAppointment(@PathVariable("appid") int appointmentId)
 			throws AppointmentNotFoundException, AppointmentCancelException {
@@ -127,6 +133,7 @@ public class AppointmentRestController {
 	 * Throws - AppointmentNotFoundException, if the appointment table is empty 
 	 */
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewallappointment")
 	public ResponseEntity<List<Appointment>> viewAllAppointments() throws AppointmentNotFoundException {
 		List<Appointment> list = service.viewAllAppointment();

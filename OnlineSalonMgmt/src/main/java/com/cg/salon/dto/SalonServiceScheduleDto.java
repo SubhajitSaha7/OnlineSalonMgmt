@@ -2,8 +2,9 @@ package com.cg.salon.dto;
 
 import java.time.LocalDate;
 
-
 public class SalonServiceScheduleDto {
+
+	private Integer serviceScheduleId;
 
 	private Integer noofappointments;
 	private LocalDate scheduleDate;
@@ -53,6 +54,14 @@ public class SalonServiceScheduleDto {
 
 	public void setSlot(String slot) {
 		this.slot = slot;
+	}
+
+	public Integer getServiceScheduleId() {
+		return serviceScheduleId;
+	}
+
+	public void setServiceScheduleId(Integer serviceScheduleId) {
+		this.serviceScheduleId = serviceScheduleId;
 	}
 
 }

@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,6 +44,7 @@ public class PaymentRestController {
 	 *  Description - Add a new Payment Details
 	 */  
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("addpaymentservice")
 	public PaymentSuccessMessage addPayment(@Valid @RequestBody PaymentDto paymentdto, BindingResult br)
 			throws ValidatePaymentException, PaymentNotFoundException, AppointmentNotFoundException,
@@ -63,6 +65,7 @@ public class PaymentRestController {
 	 * Description - returns the instance for the Payment corresponding to the given Payment Id 
 	 * Throws - PaymentNotFoundException, if the Payment id does not exist
 	 */
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewbypaymentid/{pid}")
 	public Payment viewPaymentByPaymentId(@PathVariable("pid") Integer paymentId) throws PaymentNotFoundException {
 		return service.viewPaymentByPaymentId(paymentId);
@@ -76,6 +79,7 @@ public class PaymentRestController {
 	 * Description - returns all the payment details 
 	 * Throws - PaymentNotFoundException, if the Payment List does not contain any values
 	 */
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewallpayment")
 	public List<Payment> viewAllPayment() throws PaymentNotFoundException {
 		return service.viewAllPayment();

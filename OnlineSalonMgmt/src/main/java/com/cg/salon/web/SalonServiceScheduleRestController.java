@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,6 +50,7 @@ public class SalonServiceScheduleRestController {
 	 *  Throws - SalonServiceNotFoundException,if no salon service exists     
 	 */  
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("createschedule")
 	public SalonServiceScheduleSuccessMessage addSchedule(@Valid @RequestBody SalonServiceScheduleDto scheduledto,
 			BindingResult br) throws ValidateSalonServiceScheduleException, SalonServiceNotFoundException {
@@ -71,6 +73,7 @@ public class SalonServiceScheduleRestController {
 	 *          ScheduleCancelException , if Schedule cannot be cancelled as it must be a future date
 	 */
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("cancelsalonserviceschedule/{scheduleid}")
 	public SalonServiceScheduleSuccessMessage cancelSchedule(@PathVariable("scheduleid") int scheduleId)
 			throws  SalonServiceScheduleNotFoundException, ScheduleCancelException {
@@ -88,6 +91,7 @@ public class SalonServiceScheduleRestController {
 	 * Throws - SalonServiceScheduleNotFoundException, if no salon service schedule id is found
 	 */
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewbysalonservicescheduleid/{salonservicescheduleid}")
 	public SalonServiceSchedule viewSalonServiceScheduleById(
 			@PathVariable("salonservicescheduleid") int salonServiceScheduleId)
@@ -103,6 +107,7 @@ public class SalonServiceScheduleRestController {
 	 * Throws - SalonServiceScheduleNotFoundException, if no salon service schedule id is found
 	 */
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewbysalonservicescheduledate/{salonservicescheduledate}")
 	public List<SalonServiceSchedule> viewSalonServiceScheduleByDate(
 			@DateTimeFormat(pattern = "yyyy-MM-dd") @PathVariable("salonservicescheduledate") LocalDate salonServiceScheduleDate)
@@ -118,10 +123,11 @@ public class SalonServiceScheduleRestController {
 	 * Throws - SalonServiceScheduleNotFoundException, if no salon service schedule id is found
 	 */
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewbysalonservicescheduleserviceid/{salonservicescheduleserviceid}")
-	public SalonServiceSchedule viewSalonServiceScheduleByServiceId(
+	public List<SalonServiceSchedule> viewSalonServiceScheduleByServiceId(
 			@PathVariable("salonservicescheduleserviceid") int salonServiceScheduleServiceId)
 			throws SalonServiceScheduleNotFoundException {
-		return schedule.viewSalonServiceScheduleById(salonServiceScheduleServiceId);
+		return schedule.viewSalonServiceScheduleByServiceId(salonServiceScheduleServiceId);
 	}
 }

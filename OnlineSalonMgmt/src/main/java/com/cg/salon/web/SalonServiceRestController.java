@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,6 +45,7 @@ public class SalonServiceRestController {
 	 * Description - Adds a new Salon Service 
 	 */
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("addsalonservice")
 	public SalonServiceSuccessMessage addSalonService(@Valid @RequestBody SalonServiceDto salondto, BindingResult br)
 			throws ValidateSalonServiceException {
@@ -65,6 +67,7 @@ public class SalonServiceRestController {
 	 * Throws - SalonServiceNotFoundException, if the SalonService id does not exist
 	 */
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("editsalonservice")
 	public SalonServiceSuccessMessage editSalonService(@Valid @RequestBody SalonServiceDto salondto, BindingResult br)
 			throws ValidateSalonServiceException, SalonServiceNotFoundException {
@@ -83,6 +86,7 @@ public class SalonServiceRestController {
 	 * Throws - SalonServiceNotFoundException, if the SalonService id does not exist
 	 */
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewbysalonservice/{salonservicename}")
 	public List<SalonService> viewSalonServiceByName(@PathVariable("salonservicename") String salonServiceName)
 			throws SalonServiceNotFoundException {
@@ -97,6 +101,7 @@ public class SalonServiceRestController {
 	 * Throws - SalonServiceNotFoundException, if the Salon Service id does not exist
 	 */
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewbysalonserviceid/{salonserviceid}")
 	public SalonService viewSalonServiceById(@PathVariable("salonserviceid") int salonServiceId)
 			throws SalonServiceNotFoundException {
@@ -111,6 +116,7 @@ public class SalonServiceRestController {
 	 * Throws - SalonServiceNotFoundException, if the SalonService id does not exist
 	 */
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewbysalonservicelocation/{salonservicelocation}")
 	public List<SalonService> viewSalonServiceByLocation(
 			@PathVariable("salonservicelocation") String salonServiceLocation) throws SalonServiceNotFoundException {

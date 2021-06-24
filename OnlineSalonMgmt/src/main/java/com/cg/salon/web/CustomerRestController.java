@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,6 +44,7 @@ public class CustomerRestController {
 	 * Description - Adds a new Customer
 	 */
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("addcustomer")
 	public CustomerSuccessMessage addCustomer(@Valid @RequestBody CustomerDto custdto, BindingResult br)
 			throws ValidateCustomerException {
@@ -62,6 +64,7 @@ public class CustomerRestController {
 	 * Description - edits the required fields of an existing Customer
 	 */
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("editcustomer")
 	public CustomerSuccessMessage editCustomerDetails(@Valid @RequestBody CustomerDto custdto, BindingResult br)
 			throws ValidateCustomerException, CustomerNotFoundException {
@@ -81,6 +84,7 @@ public class CustomerRestController {
 	 * Throws - CustomerNotFoundException, if the Customer id does not exist.
 	 */
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewcustomerbyid/{customerid}")
 	public Customer viewCustomerById(@PathVariable("customerid") int userId) throws CustomerNotFoundException {
 		return service.viewCustomerById(userId);
@@ -95,6 +99,7 @@ public class CustomerRestController {
 	 * Throws - CustomerNotFoundException, if the Customer does not exist for given name.
 	 */
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewcustomerbyname/{customername}")
 	public List<Customer> viewCustomerByName(@PathVariable("customername") String name)
 			throws CustomerNotFoundException {
@@ -109,6 +114,7 @@ public class CustomerRestController {
 	 * Throws - CustomerNotFoundException, if the Customer does not exists for given contact no.
 	 */
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewcustomerbycontactno/{customercontactno}")
 	public List<Customer> viewCustomerByContactNo(@PathVariable("customercontactno") String contactNo)
 			throws CustomerNotFoundException {
@@ -123,6 +129,7 @@ public class CustomerRestController {
 	 * Throws - CustomerNotFoundException, if the Customer does not exists for given city.
 	 */
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewcustomerbycity/{customercity}")
 	public List<Customer> viewCustomerByCity(@PathVariable("customercity") String city)
 			throws CustomerNotFoundException {
