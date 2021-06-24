@@ -22,4 +22,7 @@ public interface ISalonServiceSchedule {
 			throws SalonServiceScheduleNotFoundException;
 
 	public boolean cancelSchedule(int scheduleId) throws SalonServiceScheduleNotFoundException, ScheduleCancelException;
+
+    public List<SalonServiceSchedule> viewAllSalonServiceSchedule() throws SalonServiceScheduleNotFoundException;
+    
 }

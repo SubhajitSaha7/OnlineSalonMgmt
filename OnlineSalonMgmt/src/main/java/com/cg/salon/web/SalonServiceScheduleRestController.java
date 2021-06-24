@@ -130,4 +130,17 @@ public class SalonServiceScheduleRestController {
 			throws SalonServiceScheduleNotFoundException {
 		return schedule.viewSalonServiceScheduleByServiceId(salonServiceScheduleServiceId);
 	}
+	
+	/*
+	 * Method Name - viewAllSalonServiceSchedule
+	 * Return Type -  List
+	 * Parameter - no parameter
+	 * Description - returns all the payment details 
+	 * Throws - SalonServiceScheduleNotFoundException, if the salon service schedule List does not contain any values
+	 */
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("viewallsalonserviceschedule")
+	public List<SalonServiceSchedule> viewAllSalonServiceSchedule() throws SalonServiceScheduleNotFoundException {
+		return schedule.viewAllSalonServiceSchedule();
+	}
 }

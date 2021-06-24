@@ -14,8 +14,10 @@ import org.springframework.stereotype.Service;
 import com.cg.salon.dao.ISalonServiceDao;
 import com.cg.salon.dao.ISalonServiceScheduleDao;
 import com.cg.salon.dto.SalonServiceScheduleDto;
+import com.cg.salon.entity.Payment;
 import com.cg.salon.entity.SalonService;
 import com.cg.salon.entity.SalonServiceSchedule;
+import com.cg.salon.exceptions.PaymentNotFoundException;
 import com.cg.salon.exceptions.SalonServiceNotFoundException;
 import com.cg.salon.exceptions.SalonServiceScheduleNotFoundException;
 import com.cg.salon.exceptions.ScheduleCancelException;
@@ -150,6 +152,22 @@ public class SalonServiceScheduleImpl implements ISalonServiceSchedule {
 		salonservicescheduledao.save(schedule);
 
 		return true;
+	}
+	
+	/*
+	 * Method Name - viewAllSalonServiceSchedule 
+	 * Return Type -  List
+	 * Parameter - no parameter
+	 * Description - returns all the salon service schedule details 
+	 * Throws - SalonServiceScheduleNotFoundException, if the salon service schedules list does not contain any values
+	 */
+	@Override
+	public List<SalonServiceSchedule> viewAllSalonServiceSchedule() throws SalonServiceScheduleNotFoundException{
+		List<SalonServiceSchedule> lst = salonservicescheduledao.findAll();
+		if (lst.isEmpty())
+			throw new SalonServiceScheduleNotFoundException(SalonConstants.SALON_SCHEDULE_EMPTY);
+		return lst;
+
 	}
 	
 }
