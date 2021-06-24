@@ -12,7 +12,7 @@ public class SalonServiceDto {
 	private Integer serviceId;
 
 	@NotBlank(message = SalonConstants.SERVICE_NAME_NOT_BLANK)
-	@Pattern(regexp = SalonConstants.SERVICE_NAME_REGULAR_EXPRESSION, message = SalonConstants.SERVICE_NAME_MESSAGE)
+	//@Pattern(regexp = SalonConstants.SERVICE_NAME_REGULAR_EXPRESSION, message = SalonConstants.SERVICE_NAME_MESSAGE)
 	private String serviceName;
 
 	@Min(value= SalonConstants.MIN_SERVICE_PRICE, message= SalonConstants.SERVICE_PRICE_MESSAGE)

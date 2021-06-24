@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.cg.salon.dao.ISalonServiceDao;
 import com.cg.salon.dto.SalonServiceDto;
+import com.cg.salon.entity.Appointment;
 import com.cg.salon.entity.SalonService;
+import com.cg.salon.exceptions.AppointmentNotFoundException;
 import com.cg.salon.exceptions.SalonServiceNotFoundException;
 import com.cg.util.SalonConstants;
 
@@ -127,5 +129,22 @@ public class SalonServiceImpl implements ISalonService {
 		service.setServiceDuration(dto.getServiceDuration());
 
 		return true;
+	}
+
+	
+	/*
+	 * Method Name - viewAllSalonService
+	 * Return Type - List<SalonService>
+	 * Description - returns all the data in cg_salon_service table
+	 * Throws - SalonServiceNotFoundException, if the salon service table is empty 
+	 */
+	@Override
+	public List<SalonService> viewAllSalonService() throws SalonServiceNotFoundException {
+		List<SalonService> lst = salonservicedao.findAll();
+		if (lst.isEmpty()) {
+			throw new SalonServiceNotFoundException(SalonConstants.APPOINTMENT_NOT_FOUND);
+		}
+		return lst;
+	
 	}
 }

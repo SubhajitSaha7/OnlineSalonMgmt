@@ -3,7 +3,9 @@ package com.cg.salon.service;
 import java.util.List;
 
 import com.cg.salon.dto.SalonServiceDto;
+import com.cg.salon.entity.Appointment;
 import com.cg.salon.entity.SalonService;
+import com.cg.salon.exceptions.AppointmentNotFoundException;
 import com.cg.salon.exceptions.SalonServiceNotFoundException;
 
 public interface ISalonService {
@@ -17,4 +19,6 @@ public interface ISalonService {
 	public List<SalonService> viewSalonServiceByLocation(String salonLocation) throws SalonServiceNotFoundException;
 
 	public boolean editSalonService(SalonServiceDto dto) throws SalonServiceNotFoundException;
+	
+	public List<SalonService> viewAllSalonService() throws SalonServiceNotFoundException;
 }

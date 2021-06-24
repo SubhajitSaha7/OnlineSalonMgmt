@@ -7,6 +7,8 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -122,4 +124,25 @@ public class SalonServiceRestController {
 			@PathVariable("salonservicelocation") String salonServiceLocation) throws SalonServiceNotFoundException {
 		return service.viewSalonServiceByLocation(salonServiceLocation);
 	}
+	
+	/*
+	 * Method Name - viewAllSalonService
+	 * Return Type - List<SalonService>
+	 * Description - returns all the data in cg_salon_service table
+	 * Throws - SalonServiceNotFoundException, if the Salon Service table is empty 
+	 */
+
+	@CrossOrigin(origins="http://localhost:4200")
+	@GetMapping("viewallsalonservice")
+	public ResponseEntity<List<SalonService>> viewAllSalonService() throws SalonServiceNotFoundException {
+		List<SalonService> list = service.viewAllSalonService();
+		if (list.size() <= 0) {
+			ResponseEntity<List<SalonService>> resp = new ResponseEntity<List<SalonService>>(list, HttpStatus.NOT_FOUND);
+			return resp;
+		} else {
+			ResponseEntity<List<SalonService>> resp = new ResponseEntity<List<SalonService>>(list, HttpStatus.OK);
+			return resp;
+		}
+	}
+
 }
