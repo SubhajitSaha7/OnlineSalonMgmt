@@ -36,13 +36,14 @@ public class BankAccountServiceImpl implements IBankAccountService {
 
 		BankAccount bankacc = new BankAccount();
 
+		bankacc.setCardNumber(dto.getCardNumber());
 		bankacc.setAmount(dto.getAmount());
 		bankacc.setBankName(dto.getBankName());
 		bankacc.setCardName(dto.getCardName());
-		bankacc.setCardNumber(dto.getCardnumber());
+		bankacc.setExpiryDate(dto.getExpiryDate());
 		bankacc.setCvvNo(dto.getCvvNo());
 		bankacc.setIfscNo(dto.getIfscNo());
-		bankacc.setExpiryDate(dto.getExpiryDate());
+		
 
 		BankAccount savedbankacc = bankAccountdao.save(bankacc);
 		return savedbankacc.getCvvNo();
@@ -85,7 +86,7 @@ public class BankAccountServiceImpl implements IBankAccountService {
 		bankacc.setAmount(dto.getAmount());
 		bankacc.setBankName(dto.getBankName());
 		bankacc.setCardName(dto.getCardName());
-		bankacc.setCardNumber(dto.getCardnumber());
+		bankacc.setCardNumber(dto.getCardNumber());
 		bankacc.setCvvNo(dto.getCvvNo());
 		bankacc.setIfscNo(dto.getIfscNo());
 		bankacc.setExpiryDate(dto.getExpiryDate());

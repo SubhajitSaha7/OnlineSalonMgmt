@@ -35,7 +35,7 @@ public class Payment {
 	@JoinColumn(name = "bank_cvv", referencedColumnName = "bank_cvv_no")
 	private BankAccount bankAccount;
 
-	public long getPaymentId() {
+	public Integer getPaymentId() {
 		return paymentId;
 	}
 

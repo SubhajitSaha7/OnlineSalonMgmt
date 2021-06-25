@@ -39,7 +39,7 @@ class TestAddBankAccount {
 		bankaccdto.setAmount(1000.0);
 		bankaccdto.setBankName("SBI");
 		bankaccdto.setCardName("Anirban Mukherjee");
-		bankaccdto.setCardnumber("2341567432459875");
+		bankaccdto.setCardNumber("2341567432459875");
 		bankaccdto.setCvvNo(789);
 		bankaccdto.setExpiryDate(LocalDate.of(2021, 07, 20));
 		bankaccdto.setIfscNo("SBI0123456789");

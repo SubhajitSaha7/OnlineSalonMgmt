@@ -10,7 +10,7 @@ import com.cg.salon.exceptions.PaymentNotFoundException;
 
 public interface IPaymentService {
 
-	public Long addPayment(PaymentDto dto)
+	public Integer addPayment(PaymentDto dto)
 			throws PaymentNotFoundException, AppointmentNotFoundException, BankAccountNotFoundException;
 
 	public Payment viewPaymentByPaymentId(Integer pid) throws PaymentNotFoundException;

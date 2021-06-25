@@ -47,7 +47,7 @@ public class PaymentServiceImpl implements IPaymentService {
 	 */  
 	@Override
 	@Transactional
-	public Long addPayment(PaymentDto dto)
+	public Integer addPayment(PaymentDto dto)
 			throws PaymentNotFoundException, AppointmentNotFoundException, BankAccountNotFoundException {
 
 		Optional<Appointment> optsalon = appdao.findById(dto.getAppointmentId());
@@ -60,7 +60,7 @@ public class PaymentServiceImpl implements IPaymentService {
 
 		Payment payment = new Payment();
 
-		payment.setPaymentId(dto.getPaymentId());
+		//payment.setPaymentId(dto.getPaymentId());
 		payment.setType(dto.getType());
 		payment.setStatus(SalonConstants.PAYMENT_ADDED);
 		payment.setAppointment(optsalon.get());
