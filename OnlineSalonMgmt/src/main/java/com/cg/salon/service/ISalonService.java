@@ -3,9 +3,7 @@ package com.cg.salon.service;
 import java.util.List;
 
 import com.cg.salon.dto.SalonServiceDto;
-import com.cg.salon.entity.Appointment;
 import com.cg.salon.entity.SalonService;
-import com.cg.salon.exceptions.AppointmentNotFoundException;
 import com.cg.salon.exceptions.SalonServiceNotFoundException;
 
 public interface ISalonService {

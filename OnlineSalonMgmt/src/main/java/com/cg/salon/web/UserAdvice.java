@@ -4,17 +4,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
+import com.cg.salon.dto.ErrorMessage;
 import com.cg.salon.exceptions.LoginException;
 import com.cg.salon.exceptions.ValidateUserException;
-import com.cg.salon.dto.ErrorMessage;
-import com.cg.salon.exceptions.*;
 import com.cg.util.LoginConstants;
 
 @RestControllerAdvice

@@ -5,8 +5,6 @@ import java.time.LocalDate;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.Min;
 
-import javax.validation.constraints.Pattern;
-
 public class BankAccountDto {
     
 	private String cardNumber;

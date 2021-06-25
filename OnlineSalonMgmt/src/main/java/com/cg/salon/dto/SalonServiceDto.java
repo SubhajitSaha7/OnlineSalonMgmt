@@ -3,7 +3,6 @@ package com.cg.salon.dto;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 
 import com.cg.util.SalonConstants;
 
@@ -12,7 +11,6 @@ public class SalonServiceDto {
 	private Integer serviceId;
 
 	@NotBlank(message = SalonConstants.SERVICE_NAME_NOT_BLANK)
-	//@Pattern(regexp = SalonConstants.SERVICE_NAME_REGULAR_EXPRESSION, message = SalonConstants.SERVICE_NAME_MESSAGE)
 	private String serviceName;
 
 	@Min(value= SalonConstants.MIN_SERVICE_PRICE, message= SalonConstants.SERVICE_PRICE_MESSAGE)

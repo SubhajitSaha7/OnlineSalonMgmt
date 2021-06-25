@@ -10,9 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.cg.salon.dao.ISalonServiceDao;
 import com.cg.salon.dto.SalonServiceDto;
-import com.cg.salon.entity.Appointment;
 import com.cg.salon.entity.SalonService;
-import com.cg.salon.exceptions.AppointmentNotFoundException;
 import com.cg.salon.exceptions.SalonServiceNotFoundException;
 import com.cg.util.SalonConstants;
 
@@ -28,12 +26,10 @@ public class SalonServiceImpl implements ISalonService {
 	private ISalonServiceDao salonservicedao;
 
 	/*
-	 * Method Name - addSalonService 
-	 * Return Type - Integer
-	 * Parameter - Instance of SalonServiceDto
-	 * Description - Adds a new Salon Service 
+	 * Method Name - addSalonService Return Type - Integer Parameter - Instance of
+	 * SalonServiceDto Description - Adds a new Salon Service
 	 */
-	
+
 	@Transactional
 	@Override
 	public Integer addSalonService(SalonServiceDto dto) {
@@ -52,13 +48,12 @@ public class SalonServiceImpl implements ISalonService {
 	}
 
 	/*
-	 * Method Name - viewSalonServiceById
-	 * Return Type - SalonService
-	 * Parameter - salonServiceId
-	 * Description - returns the instance for the SalonService corresponding to the given salonService id
-	 * Throws - SalonServiceNotFoundException, if the SalonService id does not exist
+	 * Method Name - viewSalonServiceById Return Type - SalonService Parameter -
+	 * salonServiceId Description - returns the instance for the SalonService
+	 * corresponding to the given salonService id Throws -
+	 * SalonServiceNotFoundException, if the SalonService id does not exist
 	 */
-	
+
 	@Override
 	public SalonService viewSalonServiceById(int sid) throws SalonServiceNotFoundException {
 
@@ -69,13 +64,12 @@ public class SalonServiceImpl implements ISalonService {
 	}
 
 	/*
-	 * Method Name - viewSalonServiceByName
-	 * Return Type - List of SalonService
-	 * Parameter - SalonService Name
-	 * Description - returns the list of SalonService corresponding to the given SalonService name
-	 * Throws - SalonServiceNotFoundException, if the SalonService id does not exist
+	 * Method Name - viewSalonServiceByName Return Type - List of SalonService
+	 * Parameter - SalonService Name Description - returns the list of SalonService
+	 * corresponding to the given SalonService name Throws -
+	 * SalonServiceNotFoundException, if the SalonService id does not exist
 	 */
-	
+
 	@Override
 	public List<SalonService> viewSalonServiceByName(String serviceName) throws SalonServiceNotFoundException {
 
@@ -84,13 +78,12 @@ public class SalonServiceImpl implements ISalonService {
 			throw new SalonServiceNotFoundException(SalonConstants.SALON_SERVICE_NOT_EXIST);
 		return lst;
 	}
-	
+
 	/*
-	 * Method Name - viewSalonServiceByLocation
-	 * Return Type - List of SalonService
-	 * Parameter - SalonService Location
-	 * Description - returns the list of SalonService corresponding to the given SalonService location
-	 * Throws - SalonServiceNotFoundException, if the SalonService id does not exist
+	 * Method Name - viewSalonServiceByLocation Return Type - List of SalonService
+	 * Parameter - SalonService Location Description - returns the list of
+	 * SalonService corresponding to the given SalonService location Throws -
+	 * SalonServiceNotFoundException, if the SalonService id does not exist
 	 */
 
 	@Override
@@ -104,13 +97,12 @@ public class SalonServiceImpl implements ISalonService {
 	}
 
 	/*
-	 * Method Name - editSalonService
-	 * Return Type - boolean
-	 * Parameter - Instance of SalonServiceDto
-	 * Description - edits the required fields of an existing salon Service 
-	 * Throws - SalonServiceNotFoundException, if the SalonService id does not exist
+	 * Method Name - editSalonService Return Type - boolean Parameter - Instance of
+	 * SalonServiceDto Description - edits the required fields of an existing salon
+	 * Service Throws - SalonServiceNotFoundException, if the SalonService id does
+	 * not exist
 	 */
-	
+
 	@Transactional
 	@Override
 	public boolean editSalonService(SalonServiceDto dto) throws SalonServiceNotFoundException {
@@ -131,12 +123,10 @@ public class SalonServiceImpl implements ISalonService {
 		return true;
 	}
 
-	
 	/*
-	 * Method Name - viewAllSalonService
-	 * Return Type - List<SalonService>
-	 * Description - returns all the data in cg_salon_service table
-	 * Throws - SalonServiceNotFoundException, if the salon service table is empty 
+	 * Method Name - viewAllSalonService Return Type - List<SalonService>
+	 * Description - returns all the data in cg_salon_service table Throws -
+	 * SalonServiceNotFoundException, if the salon service table is empty
 	 */
 	@Override
 	public List<SalonService> viewAllSalonService() throws SalonServiceNotFoundException {
@@ -145,6 +135,6 @@ public class SalonServiceImpl implements ISalonService {
 			throw new SalonServiceNotFoundException(SalonConstants.APPOINTMENT_NOT_FOUND);
 		}
 		return lst;
-	
+
 	}
 }

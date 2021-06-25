@@ -14,10 +14,8 @@ import org.springframework.stereotype.Service;
 import com.cg.salon.dao.ISalonServiceDao;
 import com.cg.salon.dao.ISalonServiceScheduleDao;
 import com.cg.salon.dto.SalonServiceScheduleDto;
-import com.cg.salon.entity.Payment;
 import com.cg.salon.entity.SalonService;
 import com.cg.salon.entity.SalonServiceSchedule;
-import com.cg.salon.exceptions.PaymentNotFoundException;
 import com.cg.salon.exceptions.SalonServiceNotFoundException;
 import com.cg.salon.exceptions.SalonServiceScheduleNotFoundException;
 import com.cg.salon.exceptions.ScheduleCancelException;
@@ -39,15 +37,13 @@ public class SalonServiceScheduleImpl implements ISalonServiceSchedule {
 	private ISalonServiceDao salonservicedao;
 
 	Logger logger = LoggerFactory.getLogger(SalonServiceScheduleImpl.class);
-	
+
 	/*
-	 * Method Name - createSchedule
-	 *  Return Type - Integer 
-	 *  Parameter - instance of SalonServiceScheduleDto
-	 *  Description - Creates a schedule according to the
-	 *                SalonServiceScheduleId provided by the admin 
-	 *  Throws - SalonServiceNotFoundException,if no salon service exists     
-	 */  
+	 * Method Name - createSchedule Return Type - Integer Parameter - instance of
+	 * SalonServiceScheduleDto Description - Creates a schedule according to the
+	 * SalonServiceScheduleId provided by the admin Throws -
+	 * SalonServiceNotFoundException,if no salon service exists
+	 */
 
 	@Transactional
 	@Override
@@ -73,11 +69,11 @@ public class SalonServiceScheduleImpl implements ISalonServiceSchedule {
 	}
 
 	/*
-	 * Method Name - viewSalonServiceScheduleById
-	 * Return Type - SalonServiceSchedule
-	 * Parameter - sid,integer,salon service schedule id
-	 * Description - returns instance for the schedule corresponding to the schedule id
-	 * Throws - SalonServiceScheduleNotFoundException, if no salon service schedule id is found
+	 * Method Name - viewSalonServiceScheduleById Return Type - SalonServiceSchedule
+	 * Parameter - sid,integer,salon service schedule id Description - returns
+	 * instance for the schedule corresponding to the schedule id Throws -
+	 * SalonServiceScheduleNotFoundException, if no salon service schedule id is
+	 * found
 	 */
 
 	@Override
@@ -88,13 +84,13 @@ public class SalonServiceScheduleImpl implements ISalonServiceSchedule {
 			throw new SalonServiceScheduleNotFoundException(SalonConstants.SALON_SCHEDULE_NOT_EXIST + sid);
 		return optschedule.get();
 	}
-	
+
 	/*
-	 * Method Name - viewSalonServiceScheduleByDate
-	 * Return Type - List<SalonServiceSchedule>
-	 * Parameter - scheduleDate, LocalDate , Schedule date
-	 * Description -  returns schedule by date
-	 * Throws - SalonServiceScheduleNotFoundException, if no salon service schedule id is found
+	 * Method Name - viewSalonServiceScheduleByDate Return Type -
+	 * List<SalonServiceSchedule> Parameter - scheduleDate, LocalDate , Schedule
+	 * date Description - returns schedule by date Throws -
+	 * SalonServiceScheduleNotFoundException, if no salon service schedule id is
+	 * found
 	 */
 
 	@Override
@@ -106,13 +102,13 @@ public class SalonServiceScheduleImpl implements ISalonServiceSchedule {
 			throw new SalonServiceScheduleNotFoundException(SalonConstants.SALON_SCHEDULE_EMPTY);
 		return lstschedules;
 	}
-	
+
 	/*
-	 * Method Name - viewSalonServiceScheduleByServiceId
-	 * Return Type - List<SalonServiceSchedule>
-	 * Parameter - serid, integer , Service id
-	 * Description - returns schedule by service id
-	 * Throws - SalonServiceScheduleNotFoundException, if no salon service schedule id is found
+	 * Method Name - viewSalonServiceScheduleByServiceId Return Type -
+	 * List<SalonServiceSchedule> Parameter - serid, integer , Service id
+	 * Description - returns schedule by service id Throws -
+	 * SalonServiceScheduleNotFoundException, if no salon service schedule id is
+	 * found
 	 */
 
 	@Override
@@ -127,14 +123,13 @@ public class SalonServiceScheduleImpl implements ISalonServiceSchedule {
 	}
 
 	/*
-	 * Method Name - cancelSchedule
-	 * Return Type - boolean
-	 * Parameter - scheduleId, integer , Schedule id
-	 * Description - sets the schedule status as cancelled 
-	 * Throws - SalonServiceScheduleNotFoundException, if no salon service schedule id is found
-	 *          ScheduleCancelException , if Schedule cannot be cancelled as it must be a future date
+	 * Method Name - cancelSchedule Return Type - boolean Parameter - scheduleId,
+	 * integer , Schedule id Description - sets the schedule status as cancelled
+	 * Throws - SalonServiceScheduleNotFoundException, if no salon service schedule
+	 * id is found ScheduleCancelException , if Schedule cannot be cancelled as it
+	 * must be a future date
 	 */
-	
+
 	@Transactional
 	@Override
 	public boolean cancelSchedule(int scheduleId)
@@ -153,21 +148,20 @@ public class SalonServiceScheduleImpl implements ISalonServiceSchedule {
 
 		return true;
 	}
-	
+
 	/*
-	 * Method Name - viewAllSalonServiceSchedule 
-	 * Return Type -  List
-	 * Parameter - no parameter
-	 * Description - returns all the salon service schedule details 
-	 * Throws - SalonServiceScheduleNotFoundException, if the salon service schedules list does not contain any values
+	 * Method Name - viewAllSalonServiceSchedule Return Type - List Parameter - no
+	 * parameter Description - returns all the salon service schedule details Throws
+	 * - SalonServiceScheduleNotFoundException, if the salon service schedules list
+	 * does not contain any values
 	 */
 	@Override
-	public List<SalonServiceSchedule> viewAllSalonServiceSchedule() throws SalonServiceScheduleNotFoundException{
+	public List<SalonServiceSchedule> viewAllSalonServiceSchedule() throws SalonServiceScheduleNotFoundException {
 		List<SalonServiceSchedule> lst = salonservicescheduledao.findAll();
 		if (lst.isEmpty())
 			throw new SalonServiceScheduleNotFoundException(SalonConstants.SALON_SCHEDULE_EMPTY);
 		return lst;
 
 	}
-	
+
 }
