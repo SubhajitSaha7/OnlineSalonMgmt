@@ -81,7 +81,7 @@ public class PaymentServiceImpl implements IPaymentService {
 	public Payment viewPaymentByPaymentId(Integer pid) throws PaymentNotFoundException {
 		Optional<Payment> optservice = paymentdao.findById(pid);
 		if (!optservice.isPresent())
-			throw new PaymentNotFoundException(SalonConstants.PAYMENT_NOT_EXIST + pid);
+			throw new PaymentNotFoundException(SalonConstants.PAYMENT_NOT_EXIST);
 		return optservice.get();
 	}
 

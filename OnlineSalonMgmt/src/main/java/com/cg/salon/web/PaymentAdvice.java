@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.cg.salon.dto.PaymentErrorMessage;
 import com.cg.salon.exceptions.AppointmentNotFoundException;
 import com.cg.salon.exceptions.BankAccountNotFoundException;
+import com.cg.salon.exceptions.PaymentNotFoundException;
 import com.cg.salon.exceptions.ValidatePaymentException;
 
 @RestControllerAdvice
 public class PaymentAdvice extends GlobalAdvice {
-	@ExceptionHandler(BankAccountNotFoundException.class)
+	@ExceptionHandler(PaymentNotFoundException.class)
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
-	public PaymentErrorMessage handleExceptionEmpNotFound(BankAccountNotFoundException ex) {
+	public PaymentErrorMessage handleExceptionEmpNotFound(PaymentNotFoundException ex) {
 		return new PaymentErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
 
 	}
