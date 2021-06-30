@@ -15,7 +15,7 @@ import com.cg.salon.exceptions.SalonServiceScheduleNotFoundException;
 public interface ISalonServiceScheduleDao extends JpaRepository<SalonServiceSchedule, Integer> {
 
 	@Query("from SalonServiceSchedule s inner join fetch s.salonService t where t.serviceId=:sid")
-	public List<SalonServiceSchedule> viewSalonServiceScheduleByServiceId(@Param("sid") int serid)
+	public List<SalonServiceSchedule> getSalonServiceScheduleByServiceId(@Param("sid") int serid)
 			throws SalonServiceScheduleNotFoundException;
 
 	public List<SalonServiceSchedule> findByScheduleDate(LocalDate scheduleDate);

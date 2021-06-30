@@ -8,7 +8,7 @@ public interface IBankAccountService {
 
 	public Integer addBankAccount(BankAccountDto dto);
 
-	public BankAccount viewBankAccountBycvvNo(int cvvNo) throws BankAccountNotFoundException;
+	public BankAccount getBankAccountBycvvNo(int cvvNo) throws BankAccountNotFoundException;
 
 	public boolean editBankAccount(BankAccountDto dto) throws BankAccountNotFoundException;
 

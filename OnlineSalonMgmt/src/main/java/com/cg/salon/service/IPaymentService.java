@@ -13,8 +13,8 @@ public interface IPaymentService {
 	public Integer addPayment(PaymentDto dto)
 			throws PaymentNotFoundException, AppointmentNotFoundException, BankAccountNotFoundException;
 
-	public Payment viewPaymentByPaymentId(Integer pid) throws PaymentNotFoundException;
+	public Payment getPaymentByPaymentId(Integer pid) throws PaymentNotFoundException;
 
-	public List<Payment> viewAllPayment() throws PaymentNotFoundException;
+	public List<Payment> getAllPayment() throws PaymentNotFoundException;
 
 }

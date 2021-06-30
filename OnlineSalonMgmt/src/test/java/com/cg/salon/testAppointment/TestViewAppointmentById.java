@@ -40,19 +40,19 @@ class TestViewAppointmentById {
 	@Test
 	@DisplayName(value = "TestViewAppointmentById for 1")
 	void testViewAppointmentById1() throws AppointmentNotFoundException {
-		assertNotNull(service.viewAppointmentById(1));
+		assertNotNull(service.getAppointmentById(1));
 	}
 
 	@Test
 	@DisplayName(value = "TestViewAppointmentById for 100")
 	void testViewAppointmentById2() {
-		assertThrows(AppointmentNotFoundException.class, () -> service.viewAppointmentById(100));
+		assertThrows(AppointmentNotFoundException.class, () -> service.getAppointmentById(100));
 	}
 	
 	@Test
 	@DisplayName(value = "TestViewAppointmentById for 200")
 	void testViewAppointmentById3() {
-		assertThrows(AppointmentNotFoundException.class, () -> service.viewAppointmentById(200));
+		assertThrows(AppointmentNotFoundException.class, () -> service.getAppointmentById(200));
 	}
 
 }

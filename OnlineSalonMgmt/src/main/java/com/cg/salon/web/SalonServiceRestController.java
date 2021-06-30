@@ -90,9 +90,9 @@ public class SalonServiceRestController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewbysalonservice/{salonservicename}")
-	public List<SalonService> viewSalonServiceByName(@PathVariable("salonservicename") String salonServiceName)
+	public List<SalonService> getSalonServiceByName(@PathVariable("salonservicename") String salonServiceName)
 			throws SalonServiceNotFoundException {
-		return service.viewSalonServiceByName(salonServiceName);
+		return service.getSalonServiceByName(salonServiceName);
 	}
 
 	/*
@@ -105,9 +105,9 @@ public class SalonServiceRestController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewbysalonserviceid/{salonserviceid}")
-	public SalonService viewSalonServiceById(@PathVariable("salonserviceid") int salonServiceId)
+	public SalonService getSalonServiceById(@PathVariable("salonserviceid") int salonServiceId)
 			throws SalonServiceNotFoundException {
-		return service.viewSalonServiceById(salonServiceId);
+		return service.getSalonServiceById(salonServiceId);
 	}
 	
 	/*
@@ -120,9 +120,9 @@ public class SalonServiceRestController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewbysalonservicelocation/{salonservicelocation}")
-	public List<SalonService> viewSalonServiceByLocation(
+	public List<SalonService> getSalonServiceByLocation(
 			@PathVariable("salonservicelocation") String salonServiceLocation) throws SalonServiceNotFoundException {
-		return service.viewSalonServiceByLocation(salonServiceLocation);
+		return service.getSalonServiceByLocation(salonServiceLocation);
 	}
 	
 	/*
@@ -134,8 +134,8 @@ public class SalonServiceRestController {
 
 	@CrossOrigin(origins="http://localhost:4200")
 	@GetMapping("viewallsalonservice")
-	public ResponseEntity<List<SalonService>> viewAllSalonService() throws SalonServiceNotFoundException {
-		List<SalonService> list = service.viewAllSalonService();
+	public ResponseEntity<List<SalonService>> getAllSalonService() throws SalonServiceNotFoundException {
+		List<SalonService> list = service.getAllSalonService();
 		if (list.size() <= 0) {
 			ResponseEntity<List<SalonService>> resp = new ResponseEntity<List<SalonService>>(list, HttpStatus.NOT_FOUND);
 			return resp;

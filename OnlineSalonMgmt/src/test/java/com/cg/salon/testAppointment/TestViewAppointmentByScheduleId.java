@@ -72,19 +72,19 @@ class TestViewAppointmentByScheduleId {
 	@Test
 	@DisplayName(value = "testViewAppointmentByScheduleId for 2")
 	void testViewAppointmentByScheduleId1() throws AppointmentNotFoundException {
-		assertTrue(service.viewAppointmentByScheduleId(2).size() > 0);
+		assertTrue(service.getAppointmentByScheduleId(2).size() > 0);
 	}
 
 	@Test
 	@DisplayName(value = "testViewAppointmentByScheduleId for 9")
 	void testViewAppointmentByScheduleId2() throws AppointmentNotFoundException {
-		assertThrows(AppointmentNotFoundException.class, () -> service.viewAppointmentByScheduleId(9));
+		assertThrows(AppointmentNotFoundException.class, () -> service.getAppointmentByScheduleId(9));
 	}
 
 	@Test
 	@DisplayName(value = "testViewAppointmentByScheduleId for 51")
 	void testViewAppointmentByScheduleId3() throws AppointmentNotFoundException {
-		assertThrows(AppointmentNotFoundException.class, () -> service.viewAppointmentByScheduleId(51));
+		assertThrows(AppointmentNotFoundException.class, () -> service.getAppointmentByScheduleId(51));
 	}
 
 }

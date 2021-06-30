@@ -43,21 +43,21 @@ class TestViewPaymentByPaymentId {
 	@Test
 	@DisplayName(value = "testviewbypaymentid for 1")
 	void testviewbyPaymentId1() throws PaymentNotFoundException {
-		assertNotNull(service.viewPaymentByPaymentId(1));
+		assertNotNull(service.getPaymentByPaymentId(1));
 
 	}
 
 	@Test
 	@DisplayName(value = "testviewbypaymentid for 4")
 	void testviewbyPaymentId2() throws PaymentNotFoundException {
-		assertThrows(PaymentNotFoundException.class, () -> service.viewPaymentByPaymentId(4));
+		assertThrows(PaymentNotFoundException.class, () -> service.getPaymentByPaymentId(4));
 
 	}
 
 	@Test
 	@DisplayName(value = "testviewbypaymentid for -9")
 	void testviewbyPaymentId3() throws PaymentNotFoundException {
-		assertThrows(PaymentNotFoundException.class, () -> service.viewPaymentByPaymentId(-9));
+		assertThrows(PaymentNotFoundException.class, () -> service.getPaymentByPaymentId(-9));
 
 	}
 

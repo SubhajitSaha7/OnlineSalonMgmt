@@ -48,20 +48,20 @@ class TestViewSalonServiceByName {
 	@DisplayName(value= "testViewSalonServiceByName for Haircut")
 	void testViewSalonServiceByName1() throws SalonServiceNotFoundException
 	{
-		assertTrue(salonservice.viewSalonServiceByName("Haircut").size()>0);
+		assertTrue(salonservice.getSalonServiceByName("Haircut").size()>0);
 	}
 	
 	@Test
 	@DisplayName(value="testViewSalonServiceByName for repair")
 	void testViewSalonServiceByName2()
 	{
-		assertThrows(SalonServiceNotFoundException.class, ()-> salonservice.viewSalonServiceByName("repair"));
+		assertThrows(SalonServiceNotFoundException.class, ()-> salonservice.getSalonServiceByName("repair"));
 	}
 	
 	@Test
 	@DisplayName(value="testViewSalonServiceByName for call")
 	void testViewSalonServiceByName3()
 	{
-		assertThrows(SalonServiceNotFoundException.class, ()-> salonservice.viewSalonServiceByName("call"));
+		assertThrows(SalonServiceNotFoundException.class, ()-> salonservice.getSalonServiceByName("call"));
 	}
 }

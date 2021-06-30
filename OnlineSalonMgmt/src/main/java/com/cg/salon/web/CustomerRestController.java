@@ -86,8 +86,8 @@ public class CustomerRestController {
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewcustomerbyid/{customerid}")
-	public Customer viewCustomerById(@PathVariable("customerid") int userId) throws CustomerNotFoundException {
-		return service.viewCustomerById(userId);
+	public Customer getCustomerById(@PathVariable("customerid") int userId) throws CustomerNotFoundException {
+		return service.getCustomerById(userId);
 
 	}
 
@@ -101,9 +101,9 @@ public class CustomerRestController {
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewcustomerbyname/{customername}")
-	public List<Customer> viewCustomerByName(@PathVariable("customername") String name)
+	public List<Customer> getCustomerByName(@PathVariable("customername") String name)
 			throws CustomerNotFoundException {
-		return service.viewCustomerByName(name);
+		return service.getCustomerByName(name);
 	}
 
 	/*
@@ -116,9 +116,9 @@ public class CustomerRestController {
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewcustomerbycontactno/{customercontactno}")
-	public List<Customer> viewCustomerByContactNo(@PathVariable("customercontactno") String contactNo)
+	public List<Customer> getCustomerByContactNo(@PathVariable("customercontactno") String contactNo)
 			throws CustomerNotFoundException {
-		return service.viewCustomerByContactNo(contactNo);
+		return service.getCustomerByContactNo(contactNo);
 	}
 
 	/*
@@ -131,8 +131,8 @@ public class CustomerRestController {
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewcustomerbycity/{customercity}")
-	public List<Customer> viewCustomerByCity(@PathVariable("customercity") String city)
+	public List<Customer> getCustomerByCity(@PathVariable("customercity") String city)
 			throws CustomerNotFoundException {
-		return service.viewCustomerByCity(city);
+		return service.getCustomerByCity(city);
 	}
 }

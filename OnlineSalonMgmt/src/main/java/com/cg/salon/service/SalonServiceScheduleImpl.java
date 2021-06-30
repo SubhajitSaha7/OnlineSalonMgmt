@@ -77,7 +77,7 @@ public class SalonServiceScheduleImpl implements ISalonServiceSchedule {
 	 */
 
 	@Override
-	public SalonServiceSchedule viewSalonServiceScheduleById(int sid) throws SalonServiceScheduleNotFoundException {
+	public SalonServiceSchedule getSalonServiceScheduleById(int sid) throws SalonServiceScheduleNotFoundException {
 
 		Optional<SalonServiceSchedule> optschedule = salonservicescheduledao.findById(sid);
 		if (!optschedule.isPresent())
@@ -94,7 +94,7 @@ public class SalonServiceScheduleImpl implements ISalonServiceSchedule {
 	 */
 
 	@Override
-	public List<SalonServiceSchedule> viewSalonServiceScheduleByDate(LocalDate scheduleDate)
+	public List<SalonServiceSchedule> getSalonServiceScheduleByDate(LocalDate scheduleDate)
 			throws SalonServiceScheduleNotFoundException {
 
 		List<SalonServiceSchedule> lstschedules = salonservicescheduledao.findByScheduleDate(scheduleDate);
@@ -112,10 +112,10 @@ public class SalonServiceScheduleImpl implements ISalonServiceSchedule {
 	 */
 
 	@Override
-	public List<SalonServiceSchedule> viewSalonServiceScheduleByServiceId(int serid)
+	public List<SalonServiceSchedule> getSalonServiceScheduleByServiceId(int serid)
 			throws SalonServiceScheduleNotFoundException {
 
-		List<SalonServiceSchedule> id = salonservicescheduledao.viewSalonServiceScheduleByServiceId(serid);
+		List<SalonServiceSchedule> id = salonservicescheduledao.getSalonServiceScheduleByServiceId(serid);
 		if (id.isEmpty())
 			throw new SalonServiceScheduleNotFoundException(SalonConstants.SALON_SCHEDULE_NOT_EXIST);
 		return id;
@@ -156,7 +156,7 @@ public class SalonServiceScheduleImpl implements ISalonServiceSchedule {
 	 * does not contain any values
 	 */
 	@Override
-	public List<SalonServiceSchedule> viewAllSalonServiceSchedule() throws SalonServiceScheduleNotFoundException {
+	public List<SalonServiceSchedule> getAllSalonServiceSchedule() throws SalonServiceScheduleNotFoundException {
 		List<SalonServiceSchedule> lst = salonservicescheduledao.findAll();
 		if (lst.isEmpty())
 			throw new SalonServiceScheduleNotFoundException(SalonConstants.SALON_SCHEDULE_EMPTY);

@@ -47,20 +47,20 @@ class TestViewSalonServiceByLocation {
 	@DisplayName(value= "testViewSalonServiceByLocation for Nagerbajar")
 	void testViewSalonServiceByLocation1() throws SalonServiceNotFoundException
 	{
-		assertTrue(salonservice.viewSalonServiceByLocation("Nagerbajar").size()>0);
+		assertTrue(salonservice.getSalonServiceByLocation("Nagerbajar").size()>0);
 	}
 	
 	@Test
 	@DisplayName(value="testViewSalonServiceByLocation for Chiriyamore")
 	void testViewSalonServiceByLocation2()
 	{
-		assertThrows(SalonServiceNotFoundException.class, ()-> salonservice.viewSalonServiceByLocation("Chiriyamore"));
+		assertThrows(SalonServiceNotFoundException.class, ()-> salonservice.getSalonServiceByLocation("Chiriyamore"));
 	}
 	
 	@Test
 	@DisplayName(value="testViewSalonServiceByLocation for Satgachi")
 	void testViewSalonServiceByLocation3()
 	{
-		assertThrows(SalonServiceNotFoundException.class, ()-> salonservice.viewSalonServiceByLocation("Satgachi"));
+		assertThrows(SalonServiceNotFoundException.class, ()-> salonservice.getSalonServiceByLocation("Satgachi"));
 	}
 }

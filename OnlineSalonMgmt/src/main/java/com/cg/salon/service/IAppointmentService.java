@@ -11,11 +11,11 @@ import com.cg.salon.exceptions.SalonServiceScheduleNotFoundException;
 
 public interface IAppointmentService {
 
-	public Appointment viewAppointmentById(int appId) throws AppointmentNotFoundException;
+	public Appointment getAppointmentById(int appId) throws AppointmentNotFoundException;
 
-	public List<Appointment> viewAppointmentByCustomerId(int custId) throws AppointmentNotFoundException;
+	public List<Appointment> getAppointmentByCustomerId(int custId) throws AppointmentNotFoundException;
 
-	public List<Appointment> viewAppointmentByScheduleId(int serviceScheduleId) throws AppointmentNotFoundException;
+	public List<Appointment> getAppointmentByScheduleId(int serviceScheduleId) throws AppointmentNotFoundException;
 
 	public Integer addAppointment(AppointmentDto appdto)
 			throws CustomerNotFoundException, SalonServiceScheduleNotFoundException,
@@ -24,6 +24,6 @@ public interface IAppointmentService {
 	public boolean cancelAppointment(int appid) throws AppointmentNotFoundException,
 	AppointmentCancelException;
 
-	public List<Appointment> viewAllAppointment() throws AppointmentNotFoundException;
+	public List<Appointment> getAllAppointment() throws AppointmentNotFoundException;
 
 }

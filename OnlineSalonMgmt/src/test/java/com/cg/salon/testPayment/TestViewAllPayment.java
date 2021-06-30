@@ -60,7 +60,7 @@ class TestViewAllPayment {
 	@Test
 	@DisplayName(value = "positive_test_viewallpayment")
 	void testviewAllPayment() throws PaymentNotFoundException {
-		assertNotNull(service.viewAllPayment());
+		assertNotNull(service.getAllPayment());
 
 	}
 

@@ -48,18 +48,18 @@ class TestViewCustomerByCity {
 	@Test
 	@DisplayName(value = "TestViewCustomerByCity for Kolkata")
 	void testViewCustomerByCity1() throws CustomerNotFoundException {
-		assertTrue(service.viewCustomerByCity("Kolkata").size() > 0);
+		assertTrue(service.getCustomerByCity("Kolkata").size() > 0);
 	}
 
 	@Test
 	@DisplayName(value = "TestViewCustomerByCity for Haveli")
 	void testViewCustomerByCity2() {
-		assertThrows(CustomerNotFoundException.class, () -> service.viewCustomerByCity("Haveli"));
+		assertThrows(CustomerNotFoundException.class, () -> service.getCustomerByCity("Haveli"));
 	}
 
 	@Test
 	@DisplayName(value = "TestViewCustomerByCity for Kochi")
 	void testViewCustomerByCity3() {
-		assertThrows(CustomerNotFoundException.class, () -> service.viewCustomerByCity("Kochi"));
+		assertThrows(CustomerNotFoundException.class, () -> service.getCustomerByCity("Kochi"));
 	}
 }

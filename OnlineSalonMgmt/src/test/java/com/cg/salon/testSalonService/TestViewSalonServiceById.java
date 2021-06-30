@@ -43,14 +43,14 @@ class TestViewSalonServiceById {
 	@DisplayName(value= "testviewsalonservicebyid for 1")
 	void testViewSalonServiceById1() throws SalonServiceNotFoundException
 	{
-		assertNotNull(salonservice.viewSalonServiceById(1));
+		assertNotNull(salonservice.getSalonServiceById(1));
 	}
 	
 	@Test
 	@DisplayName(value="testViewSalonServicebyid for 10")
 	void testViewSalonServiceById2()
 	{
-		assertThrows(SalonServiceNotFoundException.class, ()->salonservice.viewSalonServiceById(10));
+		assertThrows(SalonServiceNotFoundException.class, ()->salonservice.getSalonServiceById(10));
 		
 	}
 
@@ -58,7 +58,7 @@ class TestViewSalonServiceById {
 	@DisplayName(value="testViewSalonServicebyid for 20")
 	void testViewSalonServiceById3()
 	{
-		assertThrows(SalonServiceNotFoundException.class, ()->salonservice.viewSalonServiceById(20));
+		assertThrows(SalonServiceNotFoundException.class, ()->salonservice.getSalonServiceById(20));
 		
 	}
 }

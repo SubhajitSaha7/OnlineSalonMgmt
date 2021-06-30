@@ -14,6 +14,6 @@ import com.cg.salon.exceptions.PaymentNotFoundException;
 public interface IPaymentDao extends JpaRepository<Payment, Integer> {
 
 	@Query("from Payment p inner join fetch p.appointment a where a.appointmentId=:aid")
-	public List<Payment> viewPaymentByAppointmentId(@Param("aid") int aid) throws PaymentNotFoundException;
+	public List<Payment> getPaymentByAppointmentId(@Param("aid") int aid) throws PaymentNotFoundException;
 
 }

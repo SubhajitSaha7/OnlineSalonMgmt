@@ -58,7 +58,7 @@ public class BankAccountServiceImpl implements IBankAccountService {
 	 */
 
 	@Override
-	public BankAccount viewBankAccountBycvvNo(int cvvNo) throws BankAccountNotFoundException {
+	public BankAccount getBankAccountBycvvNo(int cvvNo) throws BankAccountNotFoundException {
 
 		Optional<BankAccount> optservice = bankAccountdao.findById(cvvNo);
 		if (!optservice.isPresent())

@@ -10,13 +10,13 @@ public interface ISalonService {
 
 	public Integer addSalonService(SalonServiceDto dto);
 
-	public SalonService viewSalonServiceById(int sid) throws SalonServiceNotFoundException;
+	public SalonService getSalonServiceById(int sid) throws SalonServiceNotFoundException;
 
-	public List<SalonService> viewSalonServiceByName(String serviceName) throws SalonServiceNotFoundException;
+	public List<SalonService> getSalonServiceByName(String serviceName) throws SalonServiceNotFoundException;
 
-	public List<SalonService> viewSalonServiceByLocation(String salonLocation) throws SalonServiceNotFoundException;
+	public List<SalonService> getSalonServiceByLocation(String salonLocation) throws SalonServiceNotFoundException;
 
 	public boolean editSalonService(SalonServiceDto dto) throws SalonServiceNotFoundException;
 	
-	public List<SalonService> viewAllSalonService() throws SalonServiceNotFoundException;
+	public List<SalonService> getAllSalonService() throws SalonServiceNotFoundException;
 }

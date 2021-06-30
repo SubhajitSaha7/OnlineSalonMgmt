@@ -78,7 +78,7 @@ public class BankAccountRestController {
 	 */
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewbybankaccountid/{cvvno}")
-	public BankAccount viewBankAccountByCvvNo(@PathVariable("cvvno") int cvvNo) throws BankAccountNotFoundException {
-		return service.viewBankAccountBycvvNo(cvvNo);
+	public BankAccount getBankAccountByCvvNo(@PathVariable("cvvno") int cvvNo) throws BankAccountNotFoundException {
+		return service.getBankAccountBycvvNo(cvvNo);
 	}
 }

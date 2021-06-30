@@ -117,7 +117,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 	 */
 
 	@Override
-	public List<Appointment> viewAllAppointment() throws AppointmentNotFoundException {
+	public List<Appointment> getAllAppointment() throws AppointmentNotFoundException {
 		List<Appointment> lst = appointmentdao.findAll();
 		if (lst.isEmpty()) {
 			throw new AppointmentNotFoundException(SalonConstants.APPOINTMENT_NOT_FOUND);
@@ -134,7 +134,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 	 */
 
 	@Override
-	public Appointment viewAppointmentById(int appId) throws AppointmentNotFoundException {
+	public Appointment getAppointmentById(int appId) throws AppointmentNotFoundException {
 
 		Optional<Appointment> optappointment = appointmentdao.findById(appId);
 		if (!optappointment.isPresent())
@@ -151,7 +151,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 	 */
 
 	@Override
-	public List<Appointment> viewAppointmentByCustomerId(int custId) throws AppointmentNotFoundException {
+	public List<Appointment> getAppointmentByCustomerId(int custId) throws AppointmentNotFoundException {
 
 		List<Appointment> list = appointmentdao.findByCustomerId(custId);
 		if (list.isEmpty())
@@ -168,7 +168,7 @@ public class AppointmentServiceImpl implements IAppointmentService {
 	 */
 
 	@Override
-	public List<Appointment> viewAppointmentByScheduleId(int serviceScheduleId) throws AppointmentNotFoundException {
+	public List<Appointment> getAppointmentByScheduleId(int serviceScheduleId) throws AppointmentNotFoundException {
 
 		List<Appointment> list = appointmentdao.findByScheduleId(serviceScheduleId);
 		if (list.isEmpty())

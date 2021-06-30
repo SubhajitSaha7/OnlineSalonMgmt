@@ -13,16 +13,16 @@ public interface ISalonServiceSchedule {
 
 	public Integer createSchedule(SalonServiceScheduleDto dto) throws SalonServiceNotFoundException;
 
-	public SalonServiceSchedule viewSalonServiceScheduleById(int sid) throws SalonServiceScheduleNotFoundException;
+	public SalonServiceSchedule getSalonServiceScheduleById(int sid) throws SalonServiceScheduleNotFoundException;
 
-	public List<SalonServiceSchedule> viewSalonServiceScheduleByDate(LocalDate date)
+	public List<SalonServiceSchedule> getSalonServiceScheduleByDate(LocalDate date)
 			throws SalonServiceScheduleNotFoundException;
 
-	public List<SalonServiceSchedule> viewSalonServiceScheduleByServiceId(int serid)
+	public List<SalonServiceSchedule> getSalonServiceScheduleByServiceId(int serid)
 			throws SalonServiceScheduleNotFoundException;
 
 	public boolean cancelSchedule(int scheduleId) throws SalonServiceScheduleNotFoundException, ScheduleCancelException;
 
-    public List<SalonServiceSchedule> viewAllSalonServiceSchedule() throws SalonServiceScheduleNotFoundException;
+    public List<SalonServiceSchedule> getAllSalonServiceSchedule() throws SalonServiceScheduleNotFoundException;
     
 }

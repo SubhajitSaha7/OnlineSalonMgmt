@@ -71,7 +71,7 @@ class TestViewAllAppointment {
 	@DisplayName(value = "testviewallappointment")
 	void testViewAllAppointment() throws AppointmentNotFoundException {
 
-		assertNotNull(service.viewAllAppointment());
+		assertNotNull(service.getAllAppointment());
 	}
 
 }

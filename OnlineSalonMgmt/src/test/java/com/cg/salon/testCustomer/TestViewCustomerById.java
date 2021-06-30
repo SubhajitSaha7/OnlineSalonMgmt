@@ -41,18 +41,18 @@ class TestViewCustomerById {
 	@Test
 	@DisplayName(value = "TestViewCustomerById for 1")
 	void testViewCustomerById1() throws CustomerNotFoundException {
-		assertNotNull(service.viewCustomerById(1));
+		assertNotNull(service.getCustomerById(1));
 	}
 
 	@Test
 	@DisplayName(value = "TestViewCustomerById for 6")
 	void testViewCustomerById2() {
-		assertThrows(CustomerNotFoundException.class, () -> service.viewCustomerById(6));
+		assertThrows(CustomerNotFoundException.class, () -> service.getCustomerById(6));
 	}
 
 	@Test
 	@DisplayName(value = "TestViewCustomerById for 100")
 	void testViewCustomerById3() {
-		assertThrows(CustomerNotFoundException.class, () -> service.viewCustomerById(100));
+		assertThrows(CustomerNotFoundException.class, () -> service.getCustomerById(100));
 	}
 }

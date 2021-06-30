@@ -67,8 +67,8 @@ public class PaymentRestController {
 	 */
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewbypaymentid/{pid}")
-	public Payment viewPaymentByPaymentId(@PathVariable("pid") Integer paymentId) throws PaymentNotFoundException {
-		return service.viewPaymentByPaymentId(paymentId);
+	public Payment getPaymentByPaymentId(@PathVariable("pid") Integer paymentId) throws PaymentNotFoundException {
+		return service.getPaymentByPaymentId(paymentId);
 	}
 
 	
@@ -81,8 +81,8 @@ public class PaymentRestController {
 	 */
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewallpayment")
-	public List<Payment> viewAllPayment() throws PaymentNotFoundException {
-		return service.viewAllPayment();
+	public List<Payment> getAllPayment() throws PaymentNotFoundException {
+		return service.getAllPayment();
 	}
 
 }

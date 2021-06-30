@@ -48,8 +48,8 @@ public class AppointmentRestController {
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewappointmentbyid/{appId}")
-	public Appointment viewAppointmentById(@PathVariable("appId") int appId) throws AppointmentNotFoundException {
-		return service.viewAppointmentById(appId);
+	public Appointment getAppointmentById(@PathVariable("appId") int appId) throws AppointmentNotFoundException {
+		return service.getAppointmentById(appId);
 	}
 	
 	/*
@@ -62,9 +62,9 @@ public class AppointmentRestController {
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewappointmentbycustomerid/{custid}")
-	public List<Appointment> viewAppointmentByCustomerId(@PathVariable("custid") int custId)
+	public List<Appointment> getAppointmentByCustomerId(@PathVariable("custid") int custId)
 			throws AppointmentNotFoundException {
-		return service.viewAppointmentByCustomerId(custId);
+		return service.getAppointmentByCustomerId(custId);
 	}
 	
 	/*
@@ -77,9 +77,9 @@ public class AppointmentRestController {
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewappointmentbyscheduleid/{sid}")
-	public List<Appointment> viewAppointmentByScheduleId(@PathVariable("sid") int serviceScheduleId)
+	public List<Appointment> getAppointmentByScheduleId(@PathVariable("sid") int serviceScheduleId)
 			throws AppointmentNotFoundException {
-		return service.viewAppointmentByScheduleId(serviceScheduleId);
+		return service.getAppointmentByScheduleId(serviceScheduleId);
 	}
 	
 	/*
@@ -135,8 +135,8 @@ public class AppointmentRestController {
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewallappointment")
-	public ResponseEntity<List<Appointment>> viewAllAppointments() throws AppointmentNotFoundException {
-		List<Appointment> list = service.viewAllAppointment();
+	public ResponseEntity<List<Appointment>> getAllAppointments() throws AppointmentNotFoundException {
+		List<Appointment> list = service.getAllAppointment();
 		if (list.size() <= 0) {
 			ResponseEntity<List<Appointment>> resp = new ResponseEntity<List<Appointment>>(list, HttpStatus.NOT_FOUND);
 			return resp;

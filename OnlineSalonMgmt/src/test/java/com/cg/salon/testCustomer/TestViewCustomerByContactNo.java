@@ -49,18 +49,18 @@ class TestViewCustomerByContactNo {
 	@Test
 	@DisplayName(value = "TestViewCustomerByContactNo for 9000123654")
 	void testViewCustomerByContactNo1() throws CustomerNotFoundException {
-		assertTrue(service.viewCustomerByContactNo("9000123654").size() > 0);
+		assertTrue(service.getCustomerByContactNo("9000123654").size() > 0);
 	}
 
 	@Test
 	@DisplayName(value = "TestViewCustomerByContactNo for 9034628125")
 	void testViewCustomerByContactNo2() {
-		assertThrows(CustomerNotFoundException.class, () -> service.viewCustomerByContactNo("9034628125"));
+		assertThrows(CustomerNotFoundException.class, () -> service.getCustomerByContactNo("9034628125"));
 	}
 
 	@Test
 	@DisplayName(value = "TestViewCustomerByContactNo for 7003456712")
 	void testViewCustomerByContactNo3() {
-		assertThrows(CustomerNotFoundException.class, () -> service.viewCustomerByContactNo("7003456712"));
+		assertThrows(CustomerNotFoundException.class, () -> service.getCustomerByContactNo("7003456712"));
 	}
 }

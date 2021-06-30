@@ -55,7 +55,7 @@ public class SalonServiceImpl implements ISalonService {
 	 */
 
 	@Override
-	public SalonService viewSalonServiceById(int sid) throws SalonServiceNotFoundException {
+	public SalonService getSalonServiceById(int sid) throws SalonServiceNotFoundException {
 
 		Optional<SalonService> optservice = salonservicedao.findById(sid);
 		if (!optservice.isPresent())
@@ -71,7 +71,7 @@ public class SalonServiceImpl implements ISalonService {
 	 */
 
 	@Override
-	public List<SalonService> viewSalonServiceByName(String serviceName) throws SalonServiceNotFoundException {
+	public List<SalonService> getSalonServiceByName(String serviceName) throws SalonServiceNotFoundException {
 
 		List<SalonService> lst = salonservicedao.findByServiceName(serviceName);
 		if (lst.isEmpty())
@@ -87,7 +87,7 @@ public class SalonServiceImpl implements ISalonService {
 	 */
 
 	@Override
-	public List<SalonService> viewSalonServiceByLocation(String serviceLocation) throws SalonServiceNotFoundException {
+	public List<SalonService> getSalonServiceByLocation(String serviceLocation) throws SalonServiceNotFoundException {
 
 		List<SalonService> lst = salonservicedao.findBySalonLocation(serviceLocation);
 		if (lst.isEmpty())
@@ -129,7 +129,7 @@ public class SalonServiceImpl implements ISalonService {
 	 * SalonServiceNotFoundException, if the salon service table is empty
 	 */
 	@Override
-	public List<SalonService> viewAllSalonService() throws SalonServiceNotFoundException {
+	public List<SalonService> getAllSalonService() throws SalonServiceNotFoundException {
 		List<SalonService> lst = salonservicedao.findAll();
 		if (lst.isEmpty()) {
 			throw new SalonServiceNotFoundException(SalonConstants.APPOINTMENT_NOT_FOUND);

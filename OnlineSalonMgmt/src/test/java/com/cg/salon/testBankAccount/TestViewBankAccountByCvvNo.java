@@ -41,21 +41,21 @@ class TestViewBankAccountByCvvNo {
 	@Test
 	@DisplayName(value = "testviewbycvvno for 122")
 	void testviewbyCvvNo1() throws BankAccountNotFoundException {
-		assertNotNull(service.viewBankAccountBycvvNo(122));
+		assertNotNull(service.getBankAccountBycvvNo(122));
 
 	}
 
 	@Test
 	@DisplayName(value = "testviewbycvvno for 221")
 	void testviewbyCvvNo2() throws BankAccountNotFoundException {
-		assertThrows(BankAccountNotFoundException.class, () -> service.viewBankAccountBycvvNo(221));
+		assertThrows(BankAccountNotFoundException.class, () -> service.getBankAccountBycvvNo(221));
 
 	}
 
 	@Test
 	@DisplayName(value = "testviewbycvvno for 6754")
 	void testviewbyCvvNo3() throws BankAccountNotFoundException {
-		assertThrows(BankAccountNotFoundException.class, () -> service.viewBankAccountBycvvNo(6754));
+		assertThrows(BankAccountNotFoundException.class, () -> service.getBankAccountBycvvNo(6754));
 
 	}
 

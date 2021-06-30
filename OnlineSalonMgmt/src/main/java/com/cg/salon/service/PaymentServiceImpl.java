@@ -78,7 +78,7 @@ public class PaymentServiceImpl implements IPaymentService {
 	 */
 
 	@Override
-	public Payment viewPaymentByPaymentId(Integer pid) throws PaymentNotFoundException {
+	public Payment getPaymentByPaymentId(Integer pid) throws PaymentNotFoundException {
 		Optional<Payment> optservice = paymentdao.findById(pid);
 		if (!optservice.isPresent())
 			throw new PaymentNotFoundException(SalonConstants.PAYMENT_NOT_EXIST);
@@ -93,7 +93,7 @@ public class PaymentServiceImpl implements IPaymentService {
 	 * Throws - PaymentNotFoundException, if the Payment List does not contain any values
 	 */
 	@Override
-	public List<Payment> viewAllPayment() throws PaymentNotFoundException {
+	public List<Payment> getAllPayment() throws PaymentNotFoundException {
 		List<Payment> lst = paymentdao.findAll();
 		if (lst.isEmpty())
 			throw new PaymentNotFoundException(SalonConstants.PAYMENT_NOT_FOUND);

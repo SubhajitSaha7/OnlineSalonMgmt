@@ -62,10 +62,11 @@ public class CustomerServiceImpl implements ICustomerService {
 	 */
 
 	@Override
-	public Customer viewCustomerById(int cid) throws CustomerNotFoundException {
+	public Customer getCustomerById(int cid) throws CustomerNotFoundException {
 		Optional<Customer> optservice = customerdao.findById(cid);
-		if (!optservice.isPresent())
+		if (!optservice.isPresent()) {
 			throw new CustomerNotFoundException(SalonConstants.CUSTOMER_NOT_EXIST + cid);
+		}
 		return optservice.get();
 	}
 
@@ -78,10 +79,11 @@ public class CustomerServiceImpl implements ICustomerService {
 	 */
 
 	@Override
-	public List<Customer> viewCustomerByName(String name) throws CustomerNotFoundException {
+	public List<Customer> getCustomerByName(String name) throws CustomerNotFoundException {
 		List<Customer> lst = customerdao.findByName(name);
-		if (lst.isEmpty())
+		if (lst.isEmpty()) {
 			throw new CustomerNotFoundException(SalonConstants.CUSTOMER_NOT_EXIST);
+		}
 		return lst;
 	}
 
@@ -94,10 +96,11 @@ public class CustomerServiceImpl implements ICustomerService {
 	 */
 
 	@Override
-	public List<Customer> viewCustomerByCity(String city) throws CustomerNotFoundException {
+	public List<Customer> getCustomerByCity(String city) throws CustomerNotFoundException {
 		List<Customer> lst = customerdao.findByCity(city);
-		if (lst.isEmpty())
+		if (lst.isEmpty()) {
 			throw new CustomerNotFoundException(SalonConstants.CUSTOMER_NOT_EXIST);
+		}
 		return lst;
 	}
 
@@ -110,10 +113,11 @@ public class CustomerServiceImpl implements ICustomerService {
 	 */
 
 	@Override
-	public List<Customer> viewCustomerByContactNo(String contactNo) throws CustomerNotFoundException {
+	public List<Customer> getCustomerByContactNo(String contactNo) throws CustomerNotFoundException {
 		List<Customer> lst = customerdao.findByContactNo(contactNo);
-		if (lst.isEmpty())
+		if (lst.isEmpty()) {
 			throw new CustomerNotFoundException(SalonConstants.CUSTOMER_NOT_EXIST);
+		}
 		return lst;
 	}
 

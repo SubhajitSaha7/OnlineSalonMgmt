@@ -93,10 +93,10 @@ public class SalonServiceScheduleRestController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewbysalonservicescheduleid/{salonservicescheduleid}")
-	public SalonServiceSchedule viewSalonServiceScheduleById(
+	public SalonServiceSchedule getSalonServiceScheduleById(
 			@PathVariable("salonservicescheduleid") int salonServiceScheduleId)
 			throws SalonServiceScheduleNotFoundException {
-		return schedule.viewSalonServiceScheduleById(salonServiceScheduleId);
+		return schedule.getSalonServiceScheduleById(salonServiceScheduleId);
 	}
 
 	/*
@@ -109,10 +109,10 @@ public class SalonServiceScheduleRestController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewbysalonservicescheduledate/{salonservicescheduledate}")
-	public List<SalonServiceSchedule> viewSalonServiceScheduleByDate(
+	public List<SalonServiceSchedule> getSalonServiceScheduleByDate(
 			@DateTimeFormat(pattern = "yyyy-MM-dd") @PathVariable("salonservicescheduledate") LocalDate salonServiceScheduleDate)
 			throws SalonServiceScheduleNotFoundException {
-		return schedule.viewSalonServiceScheduleByDate(salonServiceScheduleDate);
+		return schedule.getSalonServiceScheduleByDate(salonServiceScheduleDate);
 	}
 
 	/*
@@ -125,10 +125,10 @@ public class SalonServiceScheduleRestController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewbysalonservicescheduleserviceid/{salonservicescheduleserviceid}")
-	public List<SalonServiceSchedule> viewSalonServiceScheduleByServiceId(
+	public List<SalonServiceSchedule> getSalonServiceScheduleByServiceId(
 			@PathVariable("salonservicescheduleserviceid") int salonServiceScheduleServiceId)
 			throws SalonServiceScheduleNotFoundException {
-		return schedule.viewSalonServiceScheduleByServiceId(salonServiceScheduleServiceId);
+		return schedule.getSalonServiceScheduleByServiceId(salonServiceScheduleServiceId);
 	}
 	
 	/*
@@ -140,7 +140,7 @@ public class SalonServiceScheduleRestController {
 	 */
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewallsalonserviceschedule")
-	public List<SalonServiceSchedule> viewAllSalonServiceSchedule() throws SalonServiceScheduleNotFoundException {
-		return schedule.viewAllSalonServiceSchedule();
+	public List<SalonServiceSchedule> getAllSalonServiceSchedule() throws SalonServiceScheduleNotFoundException {
+		return schedule.getAllSalonServiceSchedule();
 	}
 }
